@@ -32,8 +32,8 @@ namespace WpfApp1
         List<Student> students = new List<Student>();
         List<Teacher> teachers = new List<Teacher>();
         //List<object> bothList = new List<object>();
-        string pathStudents = "D:\\C#\\Random file creating\\WpfStudents.json";
-        string pathTeachers = "D:\\C#\\Random file creating\\WpfTeachers.json";
+        string pathStudents = "D:\\C#\\RandomFileCreating\\WpfStudents.json";
+        string pathTeachers = "D:\\C#\\RandomFileCreating\\WpfTeachers.json";
         //string pathPeople = "D:\\C#\\Random file creating\\WpfallPeople.json";
         private GridLength originalHeightRow0;
         private GridLength originalHeightRow1;
