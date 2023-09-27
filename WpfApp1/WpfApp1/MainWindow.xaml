@@ -1,0 +1,315 @@
+﻿ <Window x:Class="WpfApp1.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:WpfApp1"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="450" Width="800">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Name="row0" Height="100"/>
+            <RowDefinition Name="row1" Height="50*"/>
+            <RowDefinition Name="row2" Height="50*"/>
+            <RowDefinition Name="row3" Height="50*"/>
+            <RowDefinition Name="row4" Height="50*"/>
+        </Grid.RowDefinitions>
+        <Rectangle Grid.Row="0" Fill="DarkGreen"/>
+        <TextBlock Name="topText"  Text="Welcome to my first program" FontSize="40" TextBlock.TextAlignment="Center" Height="50"/>
+
+        <Grid Name="AddObject" Grid.Row="1" Grid.RowSpan="1">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition/>
+            </Grid.ColumnDefinitions>
+            <Button Name="addStudents" Grid.Row="1" Grid.RowSpan="3" Grid.Column="0" Content="Add Student" FontSize="40"
+                    VerticalAlignment="Stretch" Click="addStudents_Click"/>
+            <Button Name="addTeachers" Grid.Row="1" Grid.RowSpan="3" Grid.Column="1" Content="Add Teacher" FontSize="40"
+                    VerticalAlignment="Stretch" Click="addTeachers_Click"/>
+        </Grid>
+
+        <Grid Name="showSeparately" Grid.Row="2">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition/>
+            </Grid.ColumnDefinitions>
+            <Button Name ="showStudents"  Grid.Row="1" Grid.Column="0" Content="Show all Students" FontSize="35" Click="showStudents_Click"/>
+            <Button Name ="showTeachers"  Grid.Row="1" Grid.Column="1" Content="Show all Teachers" FontSize="35" Click="showTeachers_Click"/>
+        </Grid>
+        <Grid Name="ShowPeople" Grid.Row="3">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+            <Button Name="showAllPeople" Content="Show all added people" FontSize="35" Click="showAllPeople_Click"/>
+        </Grid>
+
+        <Grid Name="botCol" Grid.Row="4">
+            <Rectangle Grid.Row="0" Fill="Red"/>
+            <TextBlock Name="bottomText" Text="Click on a button for a specific action" 
+           FontSize="40" HorizontalAlignment="Center"
+           VerticalAlignment="Center"/>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+
+        </Grid>
+
+        <Button Name="backToMenu" Grid.Row="4" Content="Return to Menu" HorizontalAlignment="Stretch"
+        VerticalAlignment="Stretch" Click="backToMenu_Click" Focusable="False" Visibility="Collapsed"/>
+
+        <TextBlock Name="firstNameBlock" Height="80" Grid.Row="1"  Visibility="Collapsed"
+                   VerticalAlignment="Bottom" HorizontalAlignment="Center" Margin="2"
+                   />
+        <TextBox Name="firstNameBox" Height="50"  Grid.Row="2"  Visibility="Collapsed"
+                 HorizontalAlignment="Stretch" HorizontalContentAlignment="Center"  VerticalAlignment="Bottom"
+                 Keyboard.KeyDown="firstNameStudentsBox_KeyDown" FontSize="20" Margin="10"/>
+
+
+        <TextBlock Name="lastNameBlock" Height="80" Grid.Row="1"  Visibility="Collapsed"
+                   VerticalAlignment="Bottom" HorizontalAlignment="Center" Margin="2"/>
+        <TextBox Name="lastNameBox" Height="50"  Grid.Row="2"  Visibility="Collapsed"
+                 HorizontalAlignment="Stretch" HorizontalContentAlignment="Center"  VerticalAlignment="Bottom"
+                 Keyboard.KeyDown="lastNameStudentsBox_KeyDown" FontSize="20" Margin="10"/>
+
+        <TextBlock Name="ageBlock" Height="80" Grid.Row="1"  Visibility="Collapsed"
+           VerticalAlignment="Bottom" HorizontalAlignment="Center" Margin="2"/>
+        <TextBox Name="ageBox" Height="50"  Grid.Row="2"  Visibility="Collapsed"
+         HorizontalAlignment="Stretch" HorizontalContentAlignment="Center"  VerticalAlignment="Bottom"
+         Keyboard.KeyDown="ageStudentsBox_KeyDown" FontSize="20" Margin="10"/>
+
+        <TextBlock Name="idBlock" Height="80" Grid.Row="1"  Visibility="Collapsed"
+           VerticalAlignment="Bottom" HorizontalAlignment="Center" Margin="2"/>
+        <TextBox Name="idBox" Height="50"  Grid.Row="2"  Visibility="Collapsed"
+         HorizontalAlignment="Stretch" HorizontalContentAlignment="Center"  VerticalAlignment="Bottom"
+         Keyboard.KeyDown="idStudentsBox_KeyDown" FontSize="20" Margin="10"/>
+
+        <TextBlock Name="specBlock" Height="80" Grid.Row="1"  Visibility="Collapsed"
+        VerticalAlignment="Bottom" HorizontalAlignment="Center" Margin="2"/>
+        <TextBox Name="specBox" Height="50"  Grid.Row="2"  Visibility="Collapsed"
+         HorizontalAlignment="Stretch" HorizontalContentAlignment="Center"  VerticalAlignment="Bottom"
+         Keyboard.KeyDown="specStudentsBox_KeyDown" FontSize="20" Margin="10"/>
+
+        <TextBlock Name="courseBlock" Height="80" Grid.Row="1"  Visibility="Collapsed"
+        VerticalAlignment="Bottom" HorizontalAlignment="Center" Margin="2"/>
+        <TextBox Name="courseBox" Height="50"  Grid.Row="2"  Visibility="Collapsed"
+        HorizontalAlignment="Stretch" HorizontalContentAlignment="Center"  VerticalAlignment="Bottom"
+        Keyboard.KeyDown="courseBox_KeyDown" FontSize="20" Margin="10"/>
+
+        <Grid >
+
+            <Grid.RowDefinitions>
+                <RowDefinition Height="100"/>
+            </Grid.RowDefinitions>
+
+        </Grid>
+        <Grid Grid.Row="0">
+            <Rectangle Name="studentsChoiceColor" Grid.Row="0" Fill="Red" Visibility="Collapsed"/>
+            <TextBlock Name="showStudentsChoice" Grid.Row="0" Text="All created students" 
+           FontSize="60" Visibility="Collapsed" HorizontalAlignment="Center"
+           VerticalAlignment="Center"/>
+        </Grid>
+
+        <Grid Grid.Row="1">
+            <TextBlock Name="CenterShownStudents" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+        </Grid>
+
+        <ListView Name="studentListView" Visibility="Collapsed" HorizontalAlignment="Stretch" 
+                  HorizontalContentAlignment="Center" IsEnabled="True" VerticalContentAlignment="Center" VerticalAlignment="Stretch"
+                  Focusable="True" Grid.Row="1" Grid.RowSpan="3">
+            <ListView.View>
+                <GridView>
+
+                    <GridViewColumn Header="First Name" Width="150">
+                        <GridViewColumn.CellTemplate>
+                            <DataTemplate>
+                                <TextBlock Text="{Binding Fname}" FontSize="15" HorizontalAlignment="Center" TextAlignment="Center"/>
+                            </DataTemplate>
+                        </GridViewColumn.CellTemplate>
+                    </GridViewColumn>
+
+                    <GridViewColumn Header="Last Name" Width="120" >
+                        <GridViewColumn.CellTemplate>
+                            <DataTemplate>
+                                <TextBlock Text="{Binding Lname}" FontSize="15" Focusable="False" HorizontalAlignment="Center"  TextAlignment="Center"/>
+                            </DataTemplate>
+                        </GridViewColumn.CellTemplate>
+                    </GridViewColumn>
+
+                    <GridViewColumn Header="Age" Width="60" >
+                        <GridViewColumn.CellTemplate>
+                            <DataTemplate>
+                                <TextBlock Text="{Binding Age}" FontSize="15" Focusable="False" HorizontalAlignment="Center"  TextAlignment="Center"/>
+                            </DataTemplate>
+                        </GridViewColumn.CellTemplate>
+                    </GridViewColumn>
+
+                    <GridViewColumn Header="ID" Width="120" >
+                        <GridViewColumn.CellTemplate>
+                            <DataTemplate>
+                                <TextBlock Text="{Binding Id}" FontSize="15" Focusable="False" HorizontalAlignment="Center"  TextAlignment="Center"/>
+                            </DataTemplate>
+                        </GridViewColumn.CellTemplate>
+                    </GridViewColumn>
+
+                    <GridViewColumn Header="Speciality" Width="120">
+                        <GridViewColumn.CellTemplate>
+                            <DataTemplate>
+                                <TextBlock Text="{Binding Speciality}" FontSize="15" Focusable="False" HorizontalAlignment="Center"  TextAlignment="Center"/>
+                            </DataTemplate>
+                        </GridViewColumn.CellTemplate>
+                    </GridViewColumn>
+
+                    <GridViewColumn Header="Course" Width="100" >
+                        <GridViewColumn.CellTemplate>
+                            <DataTemplate>
+                                <TextBlock Text="{Binding Course}" FontSize="15" Focusable="False" HorizontalAlignment="Center" TextAlignment="Center"/>
+                            </DataTemplate>
+                        </GridViewColumn.CellTemplate>
+                    </GridViewColumn>
+                </GridView>
+            </ListView.View>
+        </ListView>
+
+        <Grid Grid.Row="0">
+            <Rectangle Name="teachersChoiceColor" Grid.Row="0" Fill="Red" Visibility="Collapsed"/>
+            <TextBlock Name="showTeachersChoice" Grid.Row="0" Text="All created teachers" 
+                FontSize="60" Visibility="Collapsed" HorizontalAlignment="Center"
+                VerticalAlignment="Center"/>
+        </Grid>
+
+
+
+
+        <Grid Grid.Row="1">
+            <TextBlock Name="CenterShownTeachers" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+        </Grid>
+
+        <Grid Grid.Row="3">
+            <TextBlock Name="ShownTeachersText" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+        </Grid>
+        <ListView Name="TeacherListView" Visibility="Collapsed" HorizontalAlignment="Stretch" 
+          HorizontalContentAlignment="Center" IsEnabled="True" VerticalContentAlignment="Center" VerticalAlignment="Stretch"
+          Focusable="True" Grid.Row="1" Grid.RowSpan="3">
+
+            <ListView.View>
+
+                <GridView>
+
+                    <GridViewColumn Header="First Name" Width="150">
+                        <GridViewColumn.CellTemplate>
+                            <DataTemplate>
+                                <TextBlock Text="{Binding Fname}" FontSize="15" HorizontalAlignment="Center"  TextAlignment="Center"/>
+                            </DataTemplate>
+
+                        </GridViewColumn.CellTemplate>
+                    </GridViewColumn>
+
+                    <GridViewColumn Header="Last Name" Width="120" >
+                        <GridViewColumn.CellTemplate>
+                            <DataTemplate>
+                                <TextBlock Text="{Binding Lname}" FontSize="15" Focusable="False" HorizontalAlignment="Center"  TextAlignment="Center"/>
+                            </DataTemplate>
+                        </GridViewColumn.CellTemplate>
+                    </GridViewColumn>
+
+                    <GridViewColumn Header="Age" Width="60" >
+                        <GridViewColumn.CellTemplate>
+                            <DataTemplate>
+                                <TextBlock Text="{Binding Age}" FontSize="15" Focusable="False" HorizontalAlignment="Center"  TextAlignment="Center"/>
+                            </DataTemplate>
+                        </GridViewColumn.CellTemplate>
+                    </GridViewColumn>
+
+                    <GridViewColumn Header="ID" Width="120" >
+                        <GridViewColumn.CellTemplate>
+                            <DataTemplate>
+                                <TextBlock Text="{Binding Id}" FontSize="15" Focusable="False" HorizontalAlignment="Center"  TextAlignment="Center"/>
+                            </DataTemplate>
+                        </GridViewColumn.CellTemplate>
+                    </GridViewColumn>
+
+                    <GridViewColumn Header="YearsExperience" Width="120" >
+                        <GridViewColumn.CellTemplate>
+                            <DataTemplate>
+                                <TextBlock Text="{Binding YearsExperience}" FontSize="15" Focusable="False" HorizontalAlignment="Center"  TextAlignment="Center"/>
+                            </DataTemplate>
+                        </GridViewColumn.CellTemplate>
+                    </GridViewColumn>
+
+                    <GridViewColumn Header="Title" Width="120" >
+                        <GridViewColumn.CellTemplate>
+                            <DataTemplate>
+                                <TextBlock Text="{Binding Title}" FontSize="15" Focusable="False" HorizontalAlignment="Center"  TextAlignment="Center"/>
+                            </DataTemplate>
+                        </GridViewColumn.CellTemplate>
+                    </GridViewColumn>
+
+                    <GridViewColumn Header="Speciality" Width="120">
+                        <GridViewColumn.CellTemplate>
+                            <DataTemplate>
+                                <TextBlock Text="{Binding Speciality}" FontSize="15" Focusable="False" HorizontalAlignment="Center"  TextAlignment="Center"/>
+                            </DataTemplate>
+                        </GridViewColumn.CellTemplate>
+                    </GridViewColumn>
+                </GridView>
+            </ListView.View>
+        </ListView>
+
+
+        <TextBlock Name="firstNameTeacherBlock" Height="80" Grid.Row="1"  Visibility="Collapsed"
+            VerticalAlignment="Bottom" HorizontalAlignment="Center" Margin="2"
+            />
+        <TextBox Name="firstNameTeacherBox" Height="50"  Grid.Row="2"  Visibility="Collapsed"
+            HorizontalAlignment="Stretch" HorizontalContentAlignment="Center"  VerticalAlignment="Bottom"
+            Keyboard.KeyDown="firstNameTeacherBox_KeyDown" FontSize="20" Margin="10"/>
+
+
+        <TextBlock Name="lastNameTeacherBlock" Height="80" Grid.Row="1"  Visibility="Collapsed"
+            VerticalAlignment="Bottom" HorizontalAlignment="Center" Margin="2"/>
+        <TextBox Name="lastNameTeacherBox" Height="50"  Grid.Row="2"  Visibility="Collapsed"
+            HorizontalAlignment="Stretch" HorizontalContentAlignment="Center"  VerticalAlignment="Bottom"
+            Keyboard.KeyDown="lastNameTeacherBox_KeyDown" FontSize="20" Margin="10"/>
+
+        <TextBlock Name="ageTeacherBlock" Height="80" Grid.Row="1"  Visibility="Collapsed"
+            VerticalAlignment="Bottom" HorizontalAlignment="Center" Margin="2"/>
+        <TextBox Name="ageTeacherBox" Height="50"  Grid.Row="2"  Visibility="Collapsed"
+            HorizontalAlignment="Stretch" HorizontalContentAlignment="Center"  VerticalAlignment="Bottom"
+            Keyboard.KeyDown="ageTeacherBox_KeyDown" FontSize="20" Margin="10"/>
+
+        <TextBlock Name="idTeacherBlock" Height="80" Grid.Row="1"  Visibility="Collapsed"
+            VerticalAlignment="Bottom" HorizontalAlignment="Center" Margin="2"/>
+        <TextBox Name="idTeacherBox" Height="50"  Grid.Row="2"  Visibility="Collapsed"
+            HorizontalAlignment="Stretch" HorizontalContentAlignment="Center"  VerticalAlignment="Bottom"
+            Keyboard.KeyDown="idTeacherBox_KeyDown" FontSize="20" Margin="10"/>
+
+        <TextBlock Name="yearsExperienceTeacherBlock" Height="80" Grid.Row="1"  Visibility="Collapsed"
+            VerticalAlignment="Bottom" HorizontalAlignment="Center" Margin="2"/>
+        <TextBox Name="yearsExperienceTeacherBox" Height="50"  Grid.Row="2"  Visibility="Collapsed"
+            HorizontalAlignment="Stretch" HorizontalContentAlignment="Center"  VerticalAlignment="Bottom"
+            Keyboard.KeyDown="yearsExperienceTeacherBox_KeyDown" FontSize="20" Margin="10"/>
+
+        <TextBlock Name="titleTeacherBlock" Height="80" Grid.Row="1"  Visibility="Collapsed"
+            VerticalAlignment="Bottom" HorizontalAlignment="Center" Margin="2"/>
+        <TextBox Name="titleTeacherBox" Height="50"  Grid.Row="2"  Visibility="Collapsed"
+            HorizontalAlignment="Stretch" HorizontalContentAlignment="Center"  VerticalAlignment="Bottom"
+            Keyboard.KeyDown="titleTeacherBox_KeyDown" FontSize="20" Margin="10"/>
+
+        <TextBlock Name="specTeacherBlock" Height="80" Grid.Row="1"  Visibility="Collapsed"
+            VerticalAlignment="Bottom" HorizontalAlignment="Center" Margin="2"/>
+        <TextBox Name="specTeacherBox" Height="50"  Grid.Row="2"  Visibility="Collapsed"
+            HorizontalAlignment="Stretch" HorizontalContentAlignment="Center"  VerticalAlignment="Bottom"
+            Keyboard.KeyDown="specTeacherBox_KeyDown" FontSize="20" Margin="10"/>
+
+
+
+        <Grid Grid.Row="2">
+            <Rectangle Name="teachersChoice" Grid.Row="2" Fill="Red" Visibility="Collapsed"/>
+            <TextBlock Name="showTeachersCh" Grid.Row="2" Text="All created teachers" 
+        FontSize="60" Visibility="Collapsed" HorizontalAlignment="Center"
+        VerticalAlignment="Center"/>
+        </Grid>
+
+
+    </Grid>
+
+</Window>

@@ -1,0 +1,14 @@
+C:\Users\Microinvest\source\repos\FibonacciSequence\FibonacciSequence\bin\Debug\net6.0\FibonacciSequence.exe
+C:\Users\Microinvest\source\repos\FibonacciSequence\FibonacciSequence\bin\Debug\net6.0\FibonacciSequence.deps.json
+C:\Users\Microinvest\source\repos\FibonacciSequence\FibonacciSequence\bin\Debug\net6.0\FibonacciSequence.runtimeconfig.json
+C:\Users\Microinvest\source\repos\FibonacciSequence\FibonacciSequence\bin\Debug\net6.0\FibonacciSequence.dll
+C:\Users\Microinvest\source\repos\FibonacciSequence\FibonacciSequence\bin\Debug\net6.0\FibonacciSequence.pdb
+C:\Users\Microinvest\source\repos\FibonacciSequence\FibonacciSequence\obj\Debug\net6.0\FibonacciSequence.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\Microinvest\source\repos\FibonacciSequence\FibonacciSequence\obj\Debug\net6.0\FibonacciSequence.AssemblyInfoInputs.cache
+C:\Users\Microinvest\source\repos\FibonacciSequence\FibonacciSequence\obj\Debug\net6.0\FibonacciSequence.AssemblyInfo.cs
+C:\Users\Microinvest\source\repos\FibonacciSequence\FibonacciSequence\obj\Debug\net6.0\FibonacciSequence.csproj.CoreCompileInputs.cache
+C:\Users\Microinvest\source\repos\FibonacciSequence\FibonacciSequence\obj\Debug\net6.0\FibonacciSequence.dll
+C:\Users\Microinvest\source\repos\FibonacciSequence\FibonacciSequence\obj\Debug\net6.0\refint\FibonacciSequence.dll
+C:\Users\Microinvest\source\repos\FibonacciSequence\FibonacciSequence\obj\Debug\net6.0\FibonacciSequence.pdb
+C:\Users\Microinvest\source\repos\FibonacciSequence\FibonacciSequence\obj\Debug\net6.0\FibonacciSequence.genruntimeconfig.cache
+C:\Users\Microinvest\source\repos\FibonacciSequence\FibonacciSequence\obj\Debug\net6.0\ref\FibonacciSequence.dll

@@ -1,0 +1,14 @@
+C:\Users\Microinvest\source\repos\ConstructorsExam\ConstructorsExam\obj\Debug\net6.0\ConstructorsExam.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\Microinvest\source\repos\ConstructorsExam\ConstructorsExam\obj\Debug\net6.0\ConstructorsExam.AssemblyInfoInputs.cache
+C:\Users\Microinvest\source\repos\ConstructorsExam\ConstructorsExam\obj\Debug\net6.0\ConstructorsExam.AssemblyInfo.cs
+C:\Users\Microinvest\source\repos\ConstructorsExam\ConstructorsExam\obj\Debug\net6.0\ConstructorsExam.csproj.CoreCompileInputs.cache
+C:\Users\Microinvest\source\repos\ConstructorsExam\ConstructorsExam\bin\Debug\net6.0\ConstructorsExam.exe
+C:\Users\Microinvest\source\repos\ConstructorsExam\ConstructorsExam\bin\Debug\net6.0\ConstructorsExam.deps.json
+C:\Users\Microinvest\source\repos\ConstructorsExam\ConstructorsExam\bin\Debug\net6.0\ConstructorsExam.runtimeconfig.json
+C:\Users\Microinvest\source\repos\ConstructorsExam\ConstructorsExam\bin\Debug\net6.0\ConstructorsExam.dll
+C:\Users\Microinvest\source\repos\ConstructorsExam\ConstructorsExam\bin\Debug\net6.0\ConstructorsExam.pdb
+C:\Users\Microinvest\source\repos\ConstructorsExam\ConstructorsExam\obj\Debug\net6.0\ConstructorsExam.dll
+C:\Users\Microinvest\source\repos\ConstructorsExam\ConstructorsExam\obj\Debug\net6.0\refint\ConstructorsExam.dll
+C:\Users\Microinvest\source\repos\ConstructorsExam\ConstructorsExam\obj\Debug\net6.0\ConstructorsExam.pdb
+C:\Users\Microinvest\source\repos\ConstructorsExam\ConstructorsExam\obj\Debug\net6.0\ConstructorsExam.genruntimeconfig.cache
+C:\Users\Microinvest\source\repos\ConstructorsExam\ConstructorsExam\obj\Debug\net6.0\ref\ConstructorsExam.dll

@@ -1,0 +1,14 @@
+C:\Users\Microinvest\source\repos\DifferentCollections\DifferentCollections\bin\Debug\net6.0\DifferentCollections.exe
+C:\Users\Microinvest\source\repos\DifferentCollections\DifferentCollections\bin\Debug\net6.0\DifferentCollections.deps.json
+C:\Users\Microinvest\source\repos\DifferentCollections\DifferentCollections\bin\Debug\net6.0\DifferentCollections.runtimeconfig.json
+C:\Users\Microinvest\source\repos\DifferentCollections\DifferentCollections\bin\Debug\net6.0\DifferentCollections.dll
+C:\Users\Microinvest\source\repos\DifferentCollections\DifferentCollections\bin\Debug\net6.0\DifferentCollections.pdb
+C:\Users\Microinvest\source\repos\DifferentCollections\DifferentCollections\obj\Debug\net6.0\DifferentCollections.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\Microinvest\source\repos\DifferentCollections\DifferentCollections\obj\Debug\net6.0\DifferentCollections.AssemblyInfoInputs.cache
+C:\Users\Microinvest\source\repos\DifferentCollections\DifferentCollections\obj\Debug\net6.0\DifferentCollections.AssemblyInfo.cs
+C:\Users\Microinvest\source\repos\DifferentCollections\DifferentCollections\obj\Debug\net6.0\DifferentCollections.csproj.CoreCompileInputs.cache
+C:\Users\Microinvest\source\repos\DifferentCollections\DifferentCollections\obj\Debug\net6.0\DifferentCollections.dll
+C:\Users\Microinvest\source\repos\DifferentCollections\DifferentCollections\obj\Debug\net6.0\refint\DifferentCollections.dll
+C:\Users\Microinvest\source\repos\DifferentCollections\DifferentCollections\obj\Debug\net6.0\DifferentCollections.pdb
+C:\Users\Microinvest\source\repos\DifferentCollections\DifferentCollections\obj\Debug\net6.0\DifferentCollections.genruntimeconfig.cache
+C:\Users\Microinvest\source\repos\DifferentCollections\DifferentCollections\obj\Debug\net6.0\ref\DifferentCollections.dll
