@@ -18,3 +18,7 @@ C:\Users\Microinvest\source\repos\WpfApp1\WpfApp1\obj\Debug\net6.0-windows\refin
 C:\Users\Microinvest\source\repos\WpfApp1\WpfApp1\obj\Debug\net6.0-windows\WpfApp1.pdb
 C:\Users\Microinvest\source\repos\WpfApp1\WpfApp1\obj\Debug\net6.0-windows\WpfApp1.genruntimeconfig.cache
 C:\Users\Microinvest\source\repos\WpfApp1\WpfApp1\obj\Debug\net6.0-windows\ref\WpfApp1.dll
+C:\Users\Microinvest\source\repos\WpfApp1\WpfApp1\obj\Debug\net6.0-windows\WindowStudent.g.cs
+C:\Users\Microinvest\source\repos\WpfApp1\WpfApp1\obj\Debug\net6.0-windows\WindowTeacher.g.cs
+C:\Users\Microinvest\source\repos\WpfApp1\WpfApp1\obj\Debug\net6.0-windows\WindowStudent.baml
+C:\Users\Microinvest\source\repos\WpfApp1\WpfApp1\obj\Debug\net6.0-windows\WindowTeacher.baml

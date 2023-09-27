@@ -23,9 +23,9 @@
                 <ColumnDefinition/>
             </Grid.ColumnDefinitions>
             <Button Name="addStudents" Grid.Row="1" Grid.RowSpan="3" Grid.Column="0" Content="Add Student" FontSize="40"
-                    VerticalAlignment="Stretch" Click="addStudents_Click"/>
+                    VerticalAlignment="Stretch" Click="AddStudents_Click"/>
             <Button Name="addTeachers" Grid.Row="1" Grid.RowSpan="3" Grid.Column="1" Content="Add Teacher" FontSize="40"
-                    VerticalAlignment="Stretch" Click="addTeachers_Click"/>
+                    VerticalAlignment="Stretch" Click="AddTeachers_Click"/>
         </Grid>
 
         <Grid Name="showSeparately" Grid.Row="2">
@@ -33,14 +33,14 @@
                 <ColumnDefinition Width="*"/>
                 <ColumnDefinition/>
             </Grid.ColumnDefinitions>
-            <Button Name ="showStudents"  Grid.Row="1" Grid.Column="0" Content="Show all Students" FontSize="35" Click="showStudents_Click"/>
-            <Button Name ="showTeachers"  Grid.Row="1" Grid.Column="1" Content="Show all Teachers" FontSize="35" Click="showTeachers_Click"/>
+            <Button Name ="showStudents"  Grid.Row="1" Grid.Column="0" Content="Show all Students" FontSize="35" Click="ShowStudents_Click"/>
+            <Button Name ="showTeachers"  Grid.Row="1" Grid.Column="1" Content="Show all Teachers" FontSize="35" Click="ShowTeachers_Click"/>
         </Grid>
         <Grid Name="ShowPeople" Grid.Row="3">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="*"/>
             </Grid.ColumnDefinitions>
-            <Button Name="showAllPeople" Content="Show all added people" FontSize="35" Click="showAllPeople_Click"/>
+            <Button Name="showAllPeople" Content="Show all added people" FontSize="35" Click="ShowAllPeople_Click"/>
         </Grid>
 
         <Grid Name="botCol" Grid.Row="4">
@@ -55,9 +55,9 @@
         </Grid>
 
         <Button Name="backToMenu" Grid.Row="4" Content="Return to Menu" HorizontalAlignment="Stretch"
-        VerticalAlignment="Stretch" Click="backToMenu_Click" Focusable="False" Visibility="Collapsed"/>
+        VerticalAlignment="Stretch" Click="BackToMenu_Click" Focusable="False" Visibility="Collapsed"/>
 
-        <TextBlock Name="firstNameBlock" Height="80" Grid.Row="1"  Visibility="Collapsed"
+        <!--<TextBlock Name="firstNameBlock" Height="80" Grid.Row="1"  Visibility="Collapsed"
                    VerticalAlignment="Bottom" HorizontalAlignment="Center" Margin="2"
                    />
         <TextBox Name="firstNameBox" Height="50"  Grid.Row="2"  Visibility="Collapsed"
@@ -93,7 +93,7 @@
         VerticalAlignment="Bottom" HorizontalAlignment="Center" Margin="2"/>
         <TextBox Name="courseBox" Height="50"  Grid.Row="2"  Visibility="Collapsed"
         HorizontalAlignment="Stretch" HorizontalContentAlignment="Center"  VerticalAlignment="Bottom"
-        Keyboard.KeyDown="courseBox_KeyDown" FontSize="20" Margin="10"/>
+        Keyboard.KeyDown="courseBox_KeyDown" FontSize="20" Margin="10"/>-->
 
         <Grid >
 
@@ -256,7 +256,7 @@
         </ListView>
 
 
-        <TextBlock Name="firstNameTeacherBlock" Height="80" Grid.Row="1"  Visibility="Collapsed"
+        <!--<TextBlock Name="firstNameTeacherBlock" Height="80" Grid.Row="1"  Visibility="Collapsed"
             VerticalAlignment="Bottom" HorizontalAlignment="Center" Margin="2"
             />
         <TextBox Name="firstNameTeacherBox" Height="50"  Grid.Row="2"  Visibility="Collapsed"
@@ -298,7 +298,7 @@
             VerticalAlignment="Bottom" HorizontalAlignment="Center" Margin="2"/>
         <TextBox Name="specTeacherBox" Height="50"  Grid.Row="2"  Visibility="Collapsed"
             HorizontalAlignment="Stretch" HorizontalContentAlignment="Center"  VerticalAlignment="Bottom"
-            Keyboard.KeyDown="specTeacherBox_KeyDown" FontSize="20" Margin="10"/>
+            Keyboard.KeyDown="specTeacherBox_KeyDown" FontSize="20" Margin="10"/>-->
 
 
 
