@@ -1,8 +1,14 @@
 {
   "version": 2,
+<<<<<<< HEAD
   "dgSpecHash": "RHT2PLQtlT/AADqPWKWgWJvki51WhRW/SwEPHLhiLPV4nno5Br2MQJRV2IzYpKJ8tX8Td+vQLQUfPFQCw5IXlg==",
   "success": true,
   "projectFilePath": "C:\\Users\\Microinvest\\source\\repos\\ConsoleApp1\\ConsoleApp1\\ConsoleApp1.csproj",
+=======
+  "dgSpecHash": "taNul/XSCbzQ8JhDk+DmeQ/2gvZL7mXin/B/PTiHISPTe2JGQEFQ80zGJsGBY6tCFM5ibzWhPO2HdKS1dLxang==",
+  "success": true,
+  "projectFilePath": "D:\\C#\\ConsoleApp1\\ConsoleApp1\\ConsoleApp1.csproj",
+>>>>>>> d0ae06a9cb8fd17fad8c791b956f0716bcfa84aa
   "expectedPackageFiles": [],
   "logs": []
 }

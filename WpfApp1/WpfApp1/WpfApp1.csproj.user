@@ -7,6 +7,7 @@
     </ApplicationDefinition>
   </ItemGroup>
   <ItemGroup>
+<<<<<<< HEAD
     <Compile Update="WindowStudent.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
@@ -24,5 +25,10 @@
     <Page Update="WindowTeacher.xaml">
       <SubType>Designer</SubType>
     </Page>
+=======
+    <Page Update="MainWindow.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+>>>>>>> d0ae06a9cb8fd17fad8c791b956f0716bcfa84aa
   </ItemGroup>
 </Project>

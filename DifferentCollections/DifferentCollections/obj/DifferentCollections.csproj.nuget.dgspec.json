@@ -1,6 +1,7 @@
 {
   "format": 1,
   "restore": {
+<<<<<<< HEAD
     "C:\\Users\\Microinvest\\source\\repos\\DifferentCollections\\DifferentCollections\\DifferentCollections.csproj": {}
   },
   "projects": {
@@ -15,6 +16,22 @@
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\Microinvest\\AppData\\Roaming\\NuGet\\NuGet.Config",
+=======
+    "D:\\C#\\DifferentCollections\\DifferentCollections\\DifferentCollections.csproj": {}
+  },
+  "projects": {
+    "D:\\C#\\DifferentCollections\\DifferentCollections\\DifferentCollections.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "D:\\C#\\DifferentCollections\\DifferentCollections\\DifferentCollections.csproj",
+        "projectName": "DifferentCollections",
+        "projectPath": "D:\\C#\\DifferentCollections\\DifferentCollections\\DifferentCollections.csproj",
+        "packagesPath": "C:\\Users\\marti\\.nuget\\packages\\",
+        "outputPath": "D:\\C#\\DifferentCollections\\DifferentCollections\\obj\\",
+        "projectStyle": "PackageReference",
+        "configFilePaths": [
+          "C:\\Users\\marti\\AppData\\Roaming\\NuGet\\NuGet.Config",
+>>>>>>> d0ae06a9cb8fd17fad8c791b956f0716bcfa84aa
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [

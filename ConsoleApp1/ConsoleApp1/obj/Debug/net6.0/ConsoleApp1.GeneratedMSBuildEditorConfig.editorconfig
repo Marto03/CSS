@@ -8,4 +8,8 @@ build_property.PlatformNeutralAssembly =
 build_property.EnforceExtendedAnalyzerRules = 
 build_property._SupportedPlatformList = Linux,macOS,Windows
 build_property.RootNamespace = ConsoleApp1
+<<<<<<< HEAD
 build_property.ProjectDir = C:\Users\Microinvest\source\repos\ConsoleApp1\ConsoleApp1\
+=======
+build_property.ProjectDir = D:\C#\ConsoleApp1\ConsoleApp1\
+>>>>>>> d0ae06a9cb8fd17fad8c791b956f0716bcfa84aa
