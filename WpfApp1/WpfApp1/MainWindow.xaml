@@ -5,7 +5,8 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:WpfApp1"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
+        WindowStartupLocation = "CenterScreen"
+        Title="MainWindow" Height="550" Width="800">
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Name="row0" Height="100"/>
@@ -56,44 +57,6 @@
 
         <Button Name="backToMenu" Grid.Row="4" Content="Return to Menu" HorizontalAlignment="Stretch"
         VerticalAlignment="Stretch" Click="backToMenu_Click" Focusable="False" Visibility="Collapsed"/>
-
-        <TextBlock Name="firstNameBlock" Height="80" Grid.Row="1"  Visibility="Collapsed"
-                   VerticalAlignment="Bottom" HorizontalAlignment="Center" Margin="2"
-                   />
-        <TextBox Name="firstNameBox" Height="50"  Grid.Row="2"  Visibility="Collapsed"
-                 HorizontalAlignment="Stretch" HorizontalContentAlignment="Center"  VerticalAlignment="Bottom"
-                 Keyboard.KeyDown="firstNameStudentsBox_KeyDown" FontSize="20" Margin="10"/>
-
-
-        <TextBlock Name="lastNameBlock" Height="80" Grid.Row="1"  Visibility="Collapsed"
-                   VerticalAlignment="Bottom" HorizontalAlignment="Center" Margin="2"/>
-        <TextBox Name="lastNameBox" Height="50"  Grid.Row="2"  Visibility="Collapsed"
-                 HorizontalAlignment="Stretch" HorizontalContentAlignment="Center"  VerticalAlignment="Bottom"
-                 Keyboard.KeyDown="lastNameStudentsBox_KeyDown" FontSize="20" Margin="10"/>
-
-        <TextBlock Name="ageBlock" Height="80" Grid.Row="1"  Visibility="Collapsed"
-           VerticalAlignment="Bottom" HorizontalAlignment="Center" Margin="2"/>
-        <TextBox Name="ageBox" Height="50"  Grid.Row="2"  Visibility="Collapsed"
-         HorizontalAlignment="Stretch" HorizontalContentAlignment="Center"  VerticalAlignment="Bottom"
-         Keyboard.KeyDown="ageStudentsBox_KeyDown" FontSize="20" Margin="10"/>
-
-        <TextBlock Name="idBlock" Height="80" Grid.Row="1"  Visibility="Collapsed"
-           VerticalAlignment="Bottom" HorizontalAlignment="Center" Margin="2"/>
-        <TextBox Name="idBox" Height="50"  Grid.Row="2"  Visibility="Collapsed"
-         HorizontalAlignment="Stretch" HorizontalContentAlignment="Center"  VerticalAlignment="Bottom"
-         Keyboard.KeyDown="idStudentsBox_KeyDown" FontSize="20" Margin="10"/>
-
-        <TextBlock Name="specBlock" Height="80" Grid.Row="1"  Visibility="Collapsed"
-        VerticalAlignment="Bottom" HorizontalAlignment="Center" Margin="2"/>
-        <TextBox Name="specBox" Height="50"  Grid.Row="2"  Visibility="Collapsed"
-         HorizontalAlignment="Stretch" HorizontalContentAlignment="Center"  VerticalAlignment="Bottom"
-         Keyboard.KeyDown="specStudentsBox_KeyDown" FontSize="20" Margin="10"/>
-
-        <TextBlock Name="courseBlock" Height="80" Grid.Row="1"  Visibility="Collapsed"
-        VerticalAlignment="Bottom" HorizontalAlignment="Center" Margin="2"/>
-        <TextBox Name="courseBox" Height="50"  Grid.Row="2"  Visibility="Collapsed"
-        HorizontalAlignment="Stretch" HorizontalContentAlignment="Center"  VerticalAlignment="Bottom"
-        Keyboard.KeyDown="courseBox_KeyDown" FontSize="20" Margin="10"/>
 
         <Grid >
 
@@ -254,52 +217,6 @@
                 </GridView>
             </ListView.View>
         </ListView>
-
-
-        <TextBlock Name="firstNameTeacherBlock" Height="80" Grid.Row="1"  Visibility="Collapsed"
-            VerticalAlignment="Bottom" HorizontalAlignment="Center" Margin="2"
-            />
-        <TextBox Name="firstNameTeacherBox" Height="50"  Grid.Row="2"  Visibility="Collapsed"
-            HorizontalAlignment="Stretch" HorizontalContentAlignment="Center"  VerticalAlignment="Bottom"
-            Keyboard.KeyDown="firstNameTeacherBox_KeyDown" FontSize="20" Margin="10"/>
-
-
-        <TextBlock Name="lastNameTeacherBlock" Height="80" Grid.Row="1"  Visibility="Collapsed"
-            VerticalAlignment="Bottom" HorizontalAlignment="Center" Margin="2"/>
-        <TextBox Name="lastNameTeacherBox" Height="50"  Grid.Row="2"  Visibility="Collapsed"
-            HorizontalAlignment="Stretch" HorizontalContentAlignment="Center"  VerticalAlignment="Bottom"
-            Keyboard.KeyDown="lastNameTeacherBox_KeyDown" FontSize="20" Margin="10"/>
-
-        <TextBlock Name="ageTeacherBlock" Height="80" Grid.Row="1"  Visibility="Collapsed"
-            VerticalAlignment="Bottom" HorizontalAlignment="Center" Margin="2"/>
-        <TextBox Name="ageTeacherBox" Height="50"  Grid.Row="2"  Visibility="Collapsed"
-            HorizontalAlignment="Stretch" HorizontalContentAlignment="Center"  VerticalAlignment="Bottom"
-            Keyboard.KeyDown="ageTeacherBox_KeyDown" FontSize="20" Margin="10"/>
-
-        <TextBlock Name="idTeacherBlock" Height="80" Grid.Row="1"  Visibility="Collapsed"
-            VerticalAlignment="Bottom" HorizontalAlignment="Center" Margin="2"/>
-        <TextBox Name="idTeacherBox" Height="50"  Grid.Row="2"  Visibility="Collapsed"
-            HorizontalAlignment="Stretch" HorizontalContentAlignment="Center"  VerticalAlignment="Bottom"
-            Keyboard.KeyDown="idTeacherBox_KeyDown" FontSize="20" Margin="10"/>
-
-        <TextBlock Name="yearsExperienceTeacherBlock" Height="80" Grid.Row="1"  Visibility="Collapsed"
-            VerticalAlignment="Bottom" HorizontalAlignment="Center" Margin="2"/>
-        <TextBox Name="yearsExperienceTeacherBox" Height="50"  Grid.Row="2"  Visibility="Collapsed"
-            HorizontalAlignment="Stretch" HorizontalContentAlignment="Center"  VerticalAlignment="Bottom"
-            Keyboard.KeyDown="yearsExperienceTeacherBox_KeyDown" FontSize="20" Margin="10"/>
-
-        <TextBlock Name="titleTeacherBlock" Height="80" Grid.Row="1"  Visibility="Collapsed"
-            VerticalAlignment="Bottom" HorizontalAlignment="Center" Margin="2"/>
-        <TextBox Name="titleTeacherBox" Height="50"  Grid.Row="2"  Visibility="Collapsed"
-            HorizontalAlignment="Stretch" HorizontalContentAlignment="Center"  VerticalAlignment="Bottom"
-            Keyboard.KeyDown="titleTeacherBox_KeyDown" FontSize="20" Margin="10"/>
-
-        <TextBlock Name="specTeacherBlock" Height="80" Grid.Row="1"  Visibility="Collapsed"
-            VerticalAlignment="Bottom" HorizontalAlignment="Center" Margin="2"/>
-        <TextBox Name="specTeacherBox" Height="50"  Grid.Row="2"  Visibility="Collapsed"
-            HorizontalAlignment="Stretch" HorizontalContentAlignment="Center"  VerticalAlignment="Bottom"
-            Keyboard.KeyDown="specTeacherBox_KeyDown" FontSize="20" Margin="10"/>
-
 
 
         <Grid Grid.Row="2">
