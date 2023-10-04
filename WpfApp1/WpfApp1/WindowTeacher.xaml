@@ -5,6 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:WpfApp1"
         mc:Ignorable="d"
+        WindowStartupLocation = "CenterScreen"
         Title="WindowTeacher" Height="600" Width="800">
     <Grid>
         <Grid.RowDefinitions>
@@ -43,6 +44,7 @@
            Text="Age"
         VerticalAlignment="Top" HorizontalAlignment="Left" Margin="20,80"/>
             <TextBox Name="ageBox" Grid.Row="1" Grid.Column ="1"  Visibility="Visible"
+                     local:TextBoxPlaceHolder.Placeholder=""
         HorizontalAlignment="Stretch" HorizontalContentAlignment="Center"  VerticalAlignment="Top"
         Keyboard.KeyDown="AgeBox_KeyDown" FontSize="20" Margin="10,80"/>
 
@@ -50,12 +52,14 @@
         Text="id"
         VerticalAlignment="Top" HorizontalAlignment="Left" Margin="20,115"/>
             <TextBox Name="idBox" Grid.Row="1" Grid.Column ="1"  Visibility="Visible"
+                     local:TextBoxPlaceHolder.Placeholder=""
         HorizontalAlignment="Stretch" HorizontalContentAlignment="Center"  VerticalAlignment="Top"
         Keyboard.KeyDown="IdBox_KeyDown" FontSize="20" Margin="10,115"/>
 
             <TextBlock Name="yearsExperienceBlock"  Grid.Row="1" Grid.Column="0" Text="Years Experience"  Visibility="Visible" 
                 VerticalAlignment="Top" HorizontalAlignment="Left" Margin="20,150"/>
             <TextBox Name="yearsExperienceBox" Grid.Row="1" Grid.Column ="1"  Visibility="Visible"
+                     local:TextBoxPlaceHolder.Placeholder=""
                 HorizontalAlignment="Stretch" HorizontalContentAlignment="Center"  VerticalAlignment="Top"
                 Keyboard.KeyDown="YearsExperienceBox_KeyDown" FontSize="20" Margin="10,150"/>
 

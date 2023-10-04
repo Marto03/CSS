@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows;
+﻿using System.Windows;
 using System.Windows.Controls;
 
 namespace WpfApp1
@@ -40,7 +35,6 @@ namespace WpfApp1
                 }
             }
         }
-
         private static void TextBox_GotFocus(object sender, RoutedEventArgs e)
         {
             var textBox = (TextBox)sender;
@@ -49,7 +43,6 @@ namespace WpfApp1
                 textBox.Text = string.Empty;
             }
         }
-
         private static void TextBox_LostFocus(object sender, RoutedEventArgs e)
         {
             var textBox = (TextBox)sender;
@@ -58,7 +51,6 @@ namespace WpfApp1
                 textBox.Text = GetPlaceholder(textBox);
             }
         }
-
         private static void UpdatePlaceHolderVisibility(TextBox textBox)
         {
             if (textBox.IsFocused || !string.IsNullOrWhiteSpace(textBox.Text))
@@ -71,6 +63,4 @@ namespace WpfApp1
             }
         }
     }
-
-    
 }

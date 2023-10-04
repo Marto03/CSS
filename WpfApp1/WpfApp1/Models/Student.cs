@@ -1,8 +1,18 @@
 ﻿namespace WpfApp1.Models
 {
-    public class Student
+    public class Student : BothPeople
     {
         private string fname;
+
+        public Student(string fname, string lname, int age, long id, string speciality, int course) : base(fname, lname, age, id, speciality)
+        {
+            Fname = fname;
+            Lname = lname;
+            Age = age;
+            Id = id;
+            Speciality = speciality;
+            Course = course;
+        }
 
         public string Fname
         {
@@ -21,14 +31,6 @@
         public string Speciality { get; set; }
         public int Course { get; set; }
 
-        public Student(string fname, string lname, int age, long id, string speciality, int course)
-        {
-            Fname = fname;
-            Lname = lname;
-            Age = age;
-            Id = id;
-            Speciality = speciality;
-            Course = course;
-        }
+
     }
 }

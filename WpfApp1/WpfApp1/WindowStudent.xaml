@@ -5,6 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:WpfApp1"
         mc:Ignorable="d"
+        WindowStartupLocation = "CenterScreen"
         Title="WindowStudent" Height="550" Width="800">
     <Grid>
 
@@ -13,13 +14,13 @@
             <RowDefinition x:Name="mid" Height="10*"/>
             <RowDefinition x:Name="bot" Height="*"/>
         </Grid.RowDefinitions>
-        
+
         <Rectangle Name="studentsChoiceColor" Grid.Row="0" Fill="Red" Visibility="Visible"/>
         <TextBlock Name="showStudentsData" Grid.Row="0" Text="Students data" 
             FontSize="50" Visibility="Visible" HorizontalAlignment="Center"
                    VerticalAlignment="Center"/>
 
-        
+
         <Grid Grid.Row="1">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="200"/>
@@ -44,6 +45,7 @@
                    Text="Age"
                 VerticalAlignment="Top" HorizontalAlignment="Left" Margin="20,80"/>
             <TextBox Name="ageBox" Grid.Row="1" Grid.Column ="1"  Visibility="Visible"
+                     local:TextBoxPlaceHolder.Placeholder=""
                 HorizontalAlignment="Stretch" HorizontalContentAlignment="Center"  VerticalAlignment="Top"
                 Keyboard.KeyDown="AgeBox_KeyDown" FontSize="20" Margin="10,80"/>
 
@@ -51,6 +53,7 @@
                 Text="id"
                 VerticalAlignment="Top" HorizontalAlignment="Left" Margin="20,115"/>
             <TextBox Name="idBox" Grid.Row="1" Grid.Column ="1"  Visibility="Visible"
+                     local:TextBoxPlaceHolder.Placeholder=""
                 HorizontalAlignment="Stretch" HorizontalContentAlignment="Center"  VerticalAlignment="Top"
                 Keyboard.KeyDown="IdBox_KeyDown" FontSize="20" Margin="10,115"/>
 
@@ -64,19 +67,17 @@
             <TextBlock Name="courseBlock"  Grid.Row="1" Grid.Column="0" Text="course"  Visibility="Visible" 
                 VerticalAlignment="Top" HorizontalAlignment="Left" Margin="20,185"/>
             <TextBox Name="courseBox" Grid.Row="1" Grid.Column ="1"  Visibility="Visible"
+                     local:TextBoxPlaceHolder.Placeholder=""
                 HorizontalAlignment="Stretch" HorizontalContentAlignment="Center"  VerticalAlignment="Top"
                 Keyboard.KeyDown="CourseBox_KeyDown" FontSize="20" Margin="10,185"/>
-            
+
         </Grid>
         <Button Name="backToMenu" Grid.Row="2"  Content="Return to Menu" HorizontalAlignment="Stretch"
             VerticalAlignment="Stretch" Click="BackToMenu_Click" Focusable="False" Visibility="Visible"/>
-        <!--<Grid>
-            <TextBox local:TextBoxPlaceHolder.Placeholder="awdawd"
-         HorizontalAlignment="Center"
-         VerticalAlignment="Center"
-         Width="200"
-         Height="30" />
-        </Grid>-->
-        
+        <Grid>
+            <TextBox x:Name="boxHolder" local:TextBoxPlaceHolder.Placeholder="smth"
+                     Visibility="Collapsed"/>
+        </Grid>
+
     </Grid>
 </Window>

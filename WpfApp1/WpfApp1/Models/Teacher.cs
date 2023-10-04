@@ -1,6 +1,6 @@
 ﻿namespace WpfApp1.Models
 {
-    public class Teacher
+    public class Teacher : BothPeople
     {
         public string Fname { get; set; }
         public string Lname { get; set; }
@@ -10,7 +10,9 @@
         public string Title { get; set; }
         public string Speciality { get; set; }
 
-        public Teacher(string fname, string lname, int age, long id, int yearsExperience, string title, string speciality)
+
+
+        public Teacher(string fname, string lname, int age, long id, int yearsExperience, string title, string speciality) : base(fname, lname, age, id, speciality)
         {
             Fname = fname;
             Lname = lname;
