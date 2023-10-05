@@ -4,6 +4,7 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:WpfApp1"
+        xmlns:viewmodel="clr-namespace:WpfApp1.ViewModel.Buttons"
         mc:Ignorable="d"
         WindowStartupLocation = "CenterScreen"
         Title="MainWindow" Height="550" Width="800">
@@ -34,7 +35,7 @@
                 <ColumnDefinition Width="*"/>
                 <ColumnDefinition/>
             </Grid.ColumnDefinitions>
-            <Button Name ="showStudents"  Grid.Row="1" Grid.Column="0" Content="Show all Students" FontSize="35" Click="ShowStudents_Click"/>
+            <Button Command="{Binding ButtonAddStudents}" Name ="showStudents"  Grid.Row="1" Grid.Column="0" Content="Show all Students" FontSize="35" Click="ShowStudents_Click"/>
             <Button Name ="showTeachers"  Grid.Row="1" Grid.Column="1" Content="Show all Teachers" FontSize="35" Click="ShowTeachers_Click"/>
         </Grid>
         <Grid Name="ShowPeople" Grid.Row="3">

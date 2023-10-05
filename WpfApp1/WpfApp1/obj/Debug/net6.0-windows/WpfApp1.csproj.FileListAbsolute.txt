@@ -4,15 +4,11 @@ C:\Users\Microinvest\source\repos\WpfApp1\WpfApp1\bin\Debug\net6.0-windows\WpfAp
 C:\Users\Microinvest\source\repos\WpfApp1\WpfApp1\bin\Debug\net6.0-windows\WpfApp1.dll
 C:\Users\Microinvest\source\repos\WpfApp1\WpfApp1\bin\Debug\net6.0-windows\WpfApp1.pdb
 C:\Users\Microinvest\source\repos\WpfApp1\WpfApp1\obj\Debug\net6.0-windows\MainWindow.g.cs
-C:\Users\Microinvest\source\repos\WpfApp1\WpfApp1\obj\Debug\net6.0-windows\WindowStudent.g.cs
-C:\Users\Microinvest\source\repos\WpfApp1\WpfApp1\obj\Debug\net6.0-windows\WindowTeacher.g.cs
 C:\Users\Microinvest\source\repos\WpfApp1\WpfApp1\obj\Debug\net6.0-windows\App.g.cs
 C:\Users\Microinvest\source\repos\WpfApp1\WpfApp1\obj\Debug\net6.0-windows\GeneratedInternalTypeHelper.g.cs
 C:\Users\Microinvest\source\repos\WpfApp1\WpfApp1\obj\Debug\net6.0-windows\WpfApp1_MarkupCompile.cache
 C:\Users\Microinvest\source\repos\WpfApp1\WpfApp1\obj\Debug\net6.0-windows\WpfApp1_MarkupCompile.lref
 C:\Users\Microinvest\source\repos\WpfApp1\WpfApp1\obj\Debug\net6.0-windows\MainWindow.baml
-C:\Users\Microinvest\source\repos\WpfApp1\WpfApp1\obj\Debug\net6.0-windows\WindowStudent.baml
-C:\Users\Microinvest\source\repos\WpfApp1\WpfApp1\obj\Debug\net6.0-windows\WindowTeacher.baml
 C:\Users\Microinvest\source\repos\WpfApp1\WpfApp1\obj\Debug\net6.0-windows\WpfApp1.g.resources
 C:\Users\Microinvest\source\repos\WpfApp1\WpfApp1\obj\Debug\net6.0-windows\WpfApp1.GeneratedMSBuildEditorConfig.editorconfig
 C:\Users\Microinvest\source\repos\WpfApp1\WpfApp1\obj\Debug\net6.0-windows\WpfApp1.AssemblyInfoInputs.cache
@@ -26,3 +22,7 @@ C:\Users\Microinvest\source\repos\WpfApp1\WpfApp1\obj\Debug\net6.0-windows\ref\W
 C:\Users\Microinvest\source\repos\WpfApp1\WpfApp1\bin\Debug\net6.0-windows\Newtonsoft.Json.dll
 C:\Users\Microinvest\source\repos\WpfApp1\WpfApp1\obj\Debug\net6.0-windows\WpfApp1.csproj.AssemblyReference.cache
 C:\Users\Microinvest\source\repos\WpfApp1\WpfApp1\obj\Debug\net6.0-windows\WpfApp1.csproj.CopyComplete
+C:\Users\Microinvest\source\repos\WpfApp1\WpfApp1\obj\Debug\net6.0-windows\StudentView\WindowStudent.g.cs
+C:\Users\Microinvest\source\repos\WpfApp1\WpfApp1\obj\Debug\net6.0-windows\TeacherView\WindowTeacher.g.cs
+C:\Users\Microinvest\source\repos\WpfApp1\WpfApp1\obj\Debug\net6.0-windows\StudentView\WindowStudent.baml
+C:\Users\Microinvest\source\repos\WpfApp1\WpfApp1\obj\Debug\net6.0-windows\TeacherView\WindowTeacher.baml

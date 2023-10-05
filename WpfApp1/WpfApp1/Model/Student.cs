@@ -1,8 +1,10 @@
-﻿namespace WpfApp1.Model
+﻿using System.ComponentModel;
+namespace WpfApp1.Model
 {
     public class Student : BothPeople
     {
         private string fname;
+
         public Student(string fname, string lname, int age, long id, string speciality, int course) : base(fname, lname, age, id, speciality)
         {
             Fname = fname;

@@ -10,11 +10,11 @@ none
 false
 TRACE;DEBUG;NET;NET6_0;NETCOREAPP
 C:\Users\Microinvest\source\repos\WpfApp1\WpfApp1\App.xaml
-31285336060
+3-353382345
 
-12-833965672
+171047356736
 195607468347
-MainWindow.xaml;WindowStudent.xaml;WindowTeacher.xaml;
+MainWindow.xaml;Views\StudentView\WindowStudent.xaml;Views\TeacherView\WindowTeacher.xaml;
 
 False
 

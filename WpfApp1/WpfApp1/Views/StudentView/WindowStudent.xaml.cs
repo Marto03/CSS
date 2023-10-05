@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.IO;
 using System.Linq;
 using System.Text.Json;
@@ -7,9 +8,9 @@ using System.Windows;
 using System.Windows.Input;
 using WpfApp1.Model;
 
-namespace WpfApp1
+namespace WpfApp1.Views.StudentView
 {
-    public partial class WindowTeacher : Window
+    public partial class WindowStudent : Window, INotifyPropertyChanged
     {
         private string fname;
         private string lname;
@@ -17,41 +18,43 @@ namespace WpfApp1
         private int age;
         private string idString;
         private long id;
-        private int yearsExperience;
-        private string yearsExperienceString;
-        private string title;
         private string spec;
-        private List<Teacher> teachers = new List<Teacher>();
+        private string courseString;
+        private int course;
+        private List<Student> students = new List<Student>();
         private List<BothPeople> bothPeople = new List<BothPeople>();
-        private string pathTeachers = "C:\\Users\\Microinvest\\source\\repos\\FileCreating\\WpfTeachers.json";
+        private string pathStudents = "C:\\Users\\Microinvest\\source\\repos\\FileCreating\\WpfStudents.json";
         private string pathPeople = "C:\\Users\\Microinvest\\source\\repos\\FileCreating\\WpfallPeople.json";
 
-        public WindowTeacher()
+        public event PropertyChangedEventHandler? PropertyChanged;
+
+        public WindowStudent()
         {
             InitializeComponent();
-            teachers = ShownTeachers();
-            BothPeople peoples = new BothPeople(fname, lname, age, id, spec);
-            bothPeople = peoples.ShownPeople();
+            students = ShownStudents();
+            BothPeople allPeople = new BothPeople(fname, lname, age, id, spec);
+            bothPeople = allPeople.ShownPeople();
         }
-        public List<Teacher> ShownTeachers()
+        public List<Student> ShownStudents()
         {
-            if (File.Exists(pathTeachers))
+            if (File.Exists(pathStudents) && !string.IsNullOrWhiteSpace(File.ReadAllText(pathStudents)))
             {
-                string fileContent = File.ReadAllText(pathTeachers);
+                string fileContent = File.ReadAllText(pathStudents);
                 try
                 {
-                    List<Teacher> teacher = JsonSerializer.Deserialize<List<Teacher>>(fileContent);
-                    return teacher;
+                    List<Student> student = JsonSerializer.Deserialize<List<Student>>(fileContent);
+                    return student;
                 }
                 catch (Exception ex)
                 {
                     MessageBox.Show($"Error: {ex.Message}");
                 }
             }
-            return new List<Teacher>();
+            return new List<Student>();
         }
         private void FirstNameBox_KeyDown(object sender, KeyEventArgs e)
         {
+
             if (e.Key == System.Windows.Input.Key.Enter)
             {
                 fname = firstNameBox.Text;
@@ -88,6 +91,7 @@ namespace WpfApp1
                 }
             }
         }
+
         private void AgeBox_KeyDown(object sender, KeyEventArgs e)
         {
             if (e.Key == System.Windows.Input.Key.Enter)
@@ -102,6 +106,7 @@ namespace WpfApp1
                 {
                     ageBox.Text = "Wrong age";
                     TextBoxPlaceHolder.SetPlaceholder(ageBox, "Wrong age");
+                    TextBoxPlaceHolder.GetPlaceholder(ageBox);
                     ageString = ageBox.Text;
                     idBox.Focus();
                 }
@@ -115,18 +120,18 @@ namespace WpfApp1
                 idString = idBox.Text;
                 if (long.TryParse(idString, out id) && idString.Length == 10 && id > 0)
                 {
-                    bool TeacherExists = teachers.Any(person => person.Fname == fname && person.Lname == lname &&
+                    bool StudentExists = students.Any(person => person.Fname == fname && person.Lname == lname &&
                         person.Age == age && person.Id == id);
-                    if (!TeacherExists)
+                    if (!StudentExists)
                     {
-                        yearsExperienceBox.Focus();
+                        specBox.Focus();
                     }
                     else
                     {
-                        idBox.Text = "Teacher already exists";
-                        TextBoxPlaceHolder.SetPlaceholder(idBox, "Teacher already exists");
+                        idBox.Text = "Student already exists";
+                        TextBoxPlaceHolder.SetPlaceholder(idBox, "Student already exists");
                         idString = idBox.Text;
-                        yearsExperienceBox.Focus();
+                        specBox.Focus();
                     }
                 }
                 else
@@ -134,44 +139,6 @@ namespace WpfApp1
                     idBox.Text = "EGN Must be 10 digits";
                     TextBoxPlaceHolder.SetPlaceholder(idBox, "EGN Must be 10 digits");
                     idString = idBox.Text;
-                    yearsExperienceBox.Focus();
-                }
-            }
-        }
-        private void YearsExperienceBox_KeyDown(object sender, KeyEventArgs e)
-        {
-            if (e.Key == System.Windows.Input.Key.Enter)
-            {
-                e.Handled = true;
-                yearsExperienceString = yearsExperienceBox.Text;
-                if (int.TryParse(yearsExperienceString, out yearsExperience) && yearsExperience > 0)
-                {
-                    titleBox.Focus();
-                }
-                else
-                {
-                    yearsExperienceBox.Text = "Wrong number,Input Teacher's work experience";
-                    TextBoxPlaceHolder.SetPlaceholder(yearsExperienceBox, "Wrong number,Input Teacher's work experience");
-                    yearsExperienceString = yearsExperienceBox.Text;
-                    titleBox.Focus();
-                }
-            }
-        }
-        private void TitleBox_KeyDown(object sender, KeyEventArgs e)
-        {
-            if (e.Key == System.Windows.Input.Key.Enter)
-            {
-                e.Handled = true;
-                title = titleBox.Text;
-                if (string.IsNullOrEmpty(title) || !title.All(char.IsLetter))
-                {
-                    titleBox.Text = "Invalid title";
-                    TextBoxPlaceHolder.SetPlaceholder(titleBox, "Invalid title");
-                    title = titleBox.Text;
-                    specBox.Focus();
-                }
-                else
-                {
                     specBox.Focus();
                 }
             }
@@ -184,25 +151,36 @@ namespace WpfApp1
                 e.Handled = true;
                 if (string.IsNullOrEmpty(spec) || !spec.All(char.IsLetter))
                 {
-                    specBox.Text = "Invalid speciality";
-                    TextBoxPlaceHolder.SetPlaceholder(specBox, "Invalid speciality");
+                    specBox.Text = "Wrong speciality";
+                    TextBoxPlaceHolder.SetPlaceholder(specBox, "Wrong speciality");
                     spec = specBox.Text;
-                    firstNameBox.Focus();
+                    courseBox.Focus();
                 }
                 else
                 {
-                    if (!fname.Contains("Invalid name") && !lname.Contains("Invalid name") && !age.Equals(0) && !id.Equals(0) && !yearsExperience.Equals(0) && !title.Contains("Invalid title") && !spec.Contains("Invalid speciality"))
-                    {
-                        Teacher teacher = new Teacher(fname, lname, age, id, yearsExperience, title, spec);
-                        teachers.Add(teacher);
+                    courseBox.Focus();
+                }
+            }
+        }
+        private void CourseBox_KeyDown(object sender, KeyEventArgs e)
+        {
 
+            if (e.Key == System.Windows.Input.Key.Enter)
+            {
+                courseString = courseBox.Text;
+                if (int.TryParse(courseString, out course) && course > 0)
+                {
+                    if (!fname.Contains("Invalid name") && !lname.Contains("Invalid name") && !age.Equals(0) && !id.Equals(0) && !spec.Contains("Wrong speciality"))
+                    {
+                        Student student = new Student(fname, lname, age, id, spec, course);
+                        students.Add(student);
                         bool PersonExists = bothPeople.Any(person => person.Fname == fname && person.Lname == lname &&
                             person.Age == age && person.Id == id);
                         if (!PersonExists)
                         {
-                            bothPeople.Add(teacher);
+                            bothPeople.Add(student);
                         }
-                        string json = JsonSerializer.Serialize(teachers, new JsonSerializerOptions
+                        string json = JsonSerializer.Serialize(students, new JsonSerializerOptions
                         {
                             WriteIndented = true
                         });
@@ -213,29 +191,34 @@ namespace WpfApp1
                         try
                         {
                             File.WriteAllText(pathPeople, jsonPeople);
-                            File.WriteAllText(pathTeachers, json);
+                            File.WriteAllText(pathStudents, json);
                         }
                         catch (Exception es)
                         {
-                            showTeachersData.Text = es.Message;
+                            showStudentsData.Text = es.Message;
                         }
                         finally
                         {
-                            showTeachersData.Text = "Teacher created succesfully";
+                            showStudentsData.Text = "Student created succesfully";
                             firstNameBox.Focusable = false;
                             lastNameBox.Focusable = false;
                             ageBox.Focusable = false;
                             idBox.Focusable = false;
-                            yearsExperienceBox.Focusable = false;
-                            titleBox.Focusable = false;
                             specBox.Focusable = false;
+                            courseBox.Focusable = false;
                         }
                     }
                     else
                     {
-                        e.Handled = false;
                         firstNameBox.Focus();
                     }
+                }
+                else
+                {
+                    courseBox.Text = "Invalid number, Input Student's course";
+                    TextBoxPlaceHolder.SetPlaceholder(courseBox, "Invalid number, Input Student's course");
+                    firstNameBox.Focus();
+                    courseString = courseBox.Text;
                 }
             }
         }

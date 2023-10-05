@@ -1,4 +1,5 @@
-﻿namespace WpfApp1.Model
+﻿using System.ComponentModel;
+namespace WpfApp1.Model
 {
     public interface IPeople
     {

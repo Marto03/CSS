@@ -3,10 +3,10 @@ using System.Windows;
 using System;
 using System.IO;
 using System.Text.Json;
-
+using System.ComponentModel;
 namespace WpfApp1.Model
 {
-    public class BothPeople : IPeople
+    public class BothPeople : IPeople , INotifyPropertyChanged
     {
         public BothPeople(string fname, string lname, int age, long id, string speciality)
         {
@@ -22,6 +22,9 @@ namespace WpfApp1.Model
         public long Id { get; set; }
         public string Speciality { get; set; }
         private string pathPeople = "C:\\Users\\Microinvest\\source\\repos\\FileCreating\\WpfallPeople.json";
+
+        public event PropertyChangedEventHandler? PropertyChanged;
+
         public List<BothPeople> ShownPeople()
         {
             if (File.Exists(pathPeople))
