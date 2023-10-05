@@ -5,7 +5,7 @@ using System.Linq;
 using System.Text.Json;
 using System.Windows;
 using System.Windows.Input;
-using WpfApp1.Models;
+using WpfApp1.Model;
 
 namespace WpfApp1
 {
@@ -35,24 +35,9 @@ namespace WpfApp1
         }
         public List<Teacher> ShownTeachers()
         {
-            if (!File.Exists(pathTeachers))
+            if (File.Exists(pathTeachers))
             {
-                File.Create(pathTeachers);
-                string defaultFile = "[]";
-                File.WriteAllText(pathTeachers, defaultFile);
-            }
-            string fileContent = File.ReadAllText(pathTeachers);
-            if (string.IsNullOrWhiteSpace(fileContent))
-            {
-                string defaultFile = "[]";
-                File.WriteAllText(pathTeachers, defaultFile);
-
-            }
-
-            else if (File.Exists(pathTeachers))
-            {
-
-                
+                string fileContent = File.ReadAllText(pathTeachers);
                 try
                 {
                     List<Teacher> teacher = JsonSerializer.Deserialize<List<Teacher>>(fileContent);
@@ -122,13 +107,11 @@ namespace WpfApp1
                 }
             }
         }
-
         private void IdBox_KeyDown(object sender, KeyEventArgs e)
         {
             if (e.Key == System.Windows.Input.Key.Enter)
             {
                 e.Handled = true;
-
                 idString = idBox.Text;
                 if (long.TryParse(idString, out id) && idString.Length == 10 && id > 0)
                 {
@@ -155,7 +138,6 @@ namespace WpfApp1
                 }
             }
         }
-
         private void YearsExperienceBox_KeyDown(object sender, KeyEventArgs e)
         {
             if (e.Key == System.Windows.Input.Key.Enter)
@@ -175,7 +157,6 @@ namespace WpfApp1
                 }
             }
         }
-
         private void TitleBox_KeyDown(object sender, KeyEventArgs e)
         {
             if (e.Key == System.Windows.Input.Key.Enter)
@@ -188,7 +169,6 @@ namespace WpfApp1
                     TextBoxPlaceHolder.SetPlaceholder(titleBox, "Invalid title");
                     title = titleBox.Text;
                     specBox.Focus();
-
                 }
                 else
                 {
@@ -215,7 +195,13 @@ namespace WpfApp1
                     {
                         Teacher teacher = new Teacher(fname, lname, age, id, yearsExperience, title, spec);
                         teachers.Add(teacher);
-                        bothPeople.Add(teacher);
+
+                        bool PersonExists = bothPeople.Any(person => person.Fname == fname && person.Lname == lname &&
+                            person.Age == age && person.Id == id);
+                        if (!PersonExists)
+                        {
+                            bothPeople.Add(teacher);
+                        }
                         string json = JsonSerializer.Serialize(teachers, new JsonSerializerOptions
                         {
                             WriteIndented = true
@@ -253,7 +239,6 @@ namespace WpfApp1
                 }
             }
         }
-
         private void BackToMenu_Click(object sender, RoutedEventArgs e)
         {
             MainWindow mainWindow = new MainWindow();

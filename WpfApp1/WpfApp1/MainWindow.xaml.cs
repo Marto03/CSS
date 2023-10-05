@@ -3,7 +3,7 @@ using System.Text.Json;
 using System;
 using System.Windows;
 using System.IO;
-using WpfApp1.Models;
+using WpfApp1.Model;
  //                                 Must add MVVM model-view-viewmodel
 namespace WpfApp1
 {
@@ -15,13 +15,28 @@ namespace WpfApp1
         public MainWindow()
         {
             InitializeComponent();
-        }
-
-        private void addStudents_Click(object sender, RoutedEventArgs e)
-        {
-            if(!File.Exists(pathStudents))
+            if (!File.Exists(pathStudents))
             {
                 File.Create(pathStudents);
+            }
+            if (!File.Exists(pathTeachers))
+            {
+                File.Create(pathTeachers);
+            }
+        }
+        private void AddStudents_Click(object sender, RoutedEventArgs e)
+        {
+            if (!File.Exists(pathStudents))
+            {
+                File.Create(pathStudents);
+                string defaultFile = "[]";
+                File.WriteAllText(pathStudents, defaultFile);
+            }
+            if (string.IsNullOrWhiteSpace(File.ReadAllText(pathStudents)))
+            {
+                string defaultFile = "[]";
+                File.WriteAllText(pathStudents, defaultFile);
+
             }
             WindowStudent student = new WindowStudent();
             student.InitializeComponent();
@@ -29,9 +44,20 @@ namespace WpfApp1
             student.Show();
             Close();
         }
-
-        private void addTeachers_Click(object sender, RoutedEventArgs e)
+        private void AddTeachers_Click(object sender, RoutedEventArgs e)
         {
+            if (!File.Exists(pathTeachers))
+            {
+                File.Create(pathTeachers);
+                string defaultFile = "[]";
+                File.WriteAllText(pathTeachers, defaultFile);
+            }
+            if (string.IsNullOrWhiteSpace(File.ReadAllText(pathTeachers)))
+            {
+                string defaultFile = "[]";
+                File.WriteAllText(pathTeachers, defaultFile);
+
+            }
             WindowTeacher windowTeacher = new WindowTeacher();
             windowTeacher.InitializeComponent();
             windowTeacher.firstNameBox.Focus();
@@ -39,7 +65,7 @@ namespace WpfApp1
             Close();
         }
 
-        private void showStudents_Click(object sender, RoutedEventArgs e)
+        private void ShowStudents_Click(object sender, RoutedEventArgs e)
         {
             AddObject.Visibility = Visibility.Collapsed;
             showSeparately.Visibility = Visibility.Collapsed;
@@ -59,11 +85,9 @@ namespace WpfApp1
                 File.Create(pathStudents);
                 string defaultFile = "[]";
                 File.WriteAllText(pathStudents, defaultFile);
-
             }
 
-            string fileContent = File.ReadAllText(pathStudents);
-            if (string.IsNullOrWhiteSpace(fileContent))
+            if (string.IsNullOrWhiteSpace(File.ReadAllText(pathStudents)))
             {
                 string defaultFile = "[]";
                 File.WriteAllText(pathStudents, defaultFile);
@@ -73,12 +97,8 @@ namespace WpfApp1
             {
                 try
                 {
-                    
-                    if (string.IsNullOrWhiteSpace(fileContent))
-                    {
-                        studentListView.Visibility = Visibility.Collapsed;
-                        CenterShownStudents.Text = "File is empty";
-                    }
+
+                    string fileContent = File.ReadAllText(pathStudents);
                     List<Student> students = JsonSerializer.Deserialize<List<Student>>(fileContent);
                     studentsList.AddRange(students);
                 }
@@ -94,8 +114,7 @@ namespace WpfApp1
                 CenterShownStudents.Text = "No such file";
             }
         }
-
-        private void showTeachers_Click(object sender, RoutedEventArgs e)
+        private void ShowTeachers_Click(object sender, RoutedEventArgs e)
         {
             AddObject.Visibility = Visibility.Collapsed;
             showSeparately.Visibility = Visibility.Collapsed;
@@ -109,29 +128,23 @@ namespace WpfApp1
             CenterShownTeachers.VerticalAlignment = VerticalAlignment.Center;
             TeacherListView.Visibility = Visibility.Visible;
             List<Teacher> teachersList = new List<Teacher>();
-            //                                                  Must fix that
-            //if (!File.Exists(pathTeachers))
-            //{
-            //    File.Create(pathTeachers);
-            //    string defaultFile = "[]";
-            //    File.WriteAllText(pathTeachers, defaultFile);
-            //}
-            //else if (File.ReadAllText(pathTeachers).Equals(null))
-            //{
-            //    string defaultFile = "[]";
-            //    File.WriteAllText(pathTeachers, defaultFile);
+            if (!File.Exists(pathTeachers))
+            {
+                File.Create(pathTeachers);
+                string defaultFile = "[]";
+                File.WriteAllText(pathTeachers, defaultFile);
+            }
+            if (string.IsNullOrWhiteSpace(File.ReadAllText(pathTeachers)))
+            {
+                string defaultFile = "[]";
+                File.WriteAllText(pathTeachers, defaultFile);
 
-            //}
-            if (File.Exists(pathTeachers))
+            }
+            else if (File.Exists(pathTeachers))
             {
                 try
                 {
                     string fileContent = File.ReadAllText(pathTeachers);
-                    if (string.IsNullOrWhiteSpace(fileContent))
-                    {
-                        TeacherListView.Visibility = Visibility.Collapsed;
-                        CenterShownTeachers.Text = "File is empty";
-                    }
                     List<Teacher> teachers = JsonSerializer.Deserialize<List<Teacher>>(fileContent);
                     teachersList.AddRange(teachers);
                 }
@@ -139,7 +152,6 @@ namespace WpfApp1
                 {
                     MessageBox.Show($"Error: {ex.Message}");
                 }
-
                 TeacherListView.ItemsSource = teachersList;
             }
             else
@@ -148,10 +160,11 @@ namespace WpfApp1
                 CenterShownTeachers.Text = "No such file";
             }
         }
-        private void showAllPeople_Click(object sender, RoutedEventArgs e)
+        private void ShowAllPeople_Click(object sender, RoutedEventArgs e)
         {
             showStudentsChoice.Visibility = Visibility.Visible;
             showStudentsChoice.FontSize = 50;
+            showStudentsChoice.Text = "All created people";
             showTeachersCh.FontSize = 50;
             backToMenu.Visibility = Visibility.Visible;
             PeopleListView.Visibility = Visibility.Visible;
@@ -166,12 +179,6 @@ namespace WpfApp1
                 try
                 {
                     string fileContent = File.ReadAllText(pathPeople);
-                    if (string.IsNullOrWhiteSpace(fileContent))
-                    {
-                        TeacherListView.Visibility = Visibility.Collapsed;
-                        ShownTeachersText.Visibility = Visibility.Visible;
-                        ShownTeachersText.Text = "File is empty";
-                    }
                     List<BothPeople> peoples = JsonSerializer.Deserialize<List<BothPeople>>(fileContent);
                     bothPeople.AddRange(peoples);
                 }
@@ -182,16 +189,8 @@ namespace WpfApp1
                 PeopleListView.ItemsSource = bothPeople;
             }
         }
-        private void backToMenu_Click(object sender, RoutedEventArgs e)
+        private void BackToMenu_Click(object sender, RoutedEventArgs e)
         {
-            WindowStudent windowStudent = new WindowStudent();
-            windowStudent.Visibility = Visibility.Collapsed;
-            windowStudent.Close();
-
-            WindowTeacher windowTeacher = new WindowTeacher();
-            windowTeacher.Visibility = Visibility.Collapsed;
-            windowTeacher.Close();
-
             MainWindow mainWindow = new MainWindow();
             mainWindow.InitializeComponent();
             mainWindow.Show();

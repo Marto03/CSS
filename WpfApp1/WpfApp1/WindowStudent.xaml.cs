@@ -5,7 +5,7 @@ using System.Linq;
 using System.Text.Json;
 using System.Windows;
 using System.Windows.Input;
-using WpfApp1.Models;
+using WpfApp1.Model;
 
 namespace WpfApp1
 {
@@ -28,22 +28,12 @@ namespace WpfApp1
         {
             InitializeComponent();
             students = ShownStudents();
-            BothPeople allPeople = new BothPeople(fname,lname,age,id,spec);
+            BothPeople allPeople = new BothPeople(fname, lname, age, id, spec);
             bothPeople = allPeople.ShownPeople();
         }
         public List<Student> ShownStudents()
         {
-            if (!File.Exists(pathStudents))
-            {
-                File.Create(pathStudents);
-            }
-
-            else if (File.Exists(pathStudents) && File.ReadAllText(pathStudents).Contains(""))
-            {
-                string defaultFile = "[]";
-                File.WriteAllText(pathStudents, defaultFile);
-            }
-            else if (File.Exists(pathStudents))
+            if (File.Exists(pathStudents) && !string.IsNullOrWhiteSpace(File.ReadAllText(pathStudents)))
             {
                 string fileContent = File.ReadAllText(pathStudents);
                 try
@@ -58,7 +48,6 @@ namespace WpfApp1
             }
             return new List<Student>();
         }
-
         private void FirstNameBox_KeyDown(object sender, KeyEventArgs e)
         {
 
@@ -119,13 +108,11 @@ namespace WpfApp1
                 }
             }
         }
-
         private void IdBox_KeyDown(object sender, KeyEventArgs e)
         {
             if (e.Key == System.Windows.Input.Key.Enter)
             {
                 e.Handled = true;
-
                 idString = idBox.Text;
                 if (long.TryParse(idString, out id) && idString.Length == 10 && id > 0)
                 {
@@ -152,7 +139,6 @@ namespace WpfApp1
                 }
             }
         }
-
         private void SpecBox_KeyDown(object sender, KeyEventArgs e)
         {
             if (e.Key == System.Windows.Input.Key.Enter)
@@ -172,7 +158,6 @@ namespace WpfApp1
                 }
             }
         }
-
         private void CourseBox_KeyDown(object sender, KeyEventArgs e)
         {
 
@@ -185,7 +170,12 @@ namespace WpfApp1
                     {
                         Student student = new Student(fname, lname, age, id, spec, course);
                         students.Add(student);
-                        bothPeople.Add(student);
+                        bool PersonExists = bothPeople.Any(person => person.Fname == fname && person.Lname == lname &&
+                            person.Age == age && person.Id == id);
+                        if (!PersonExists)
+                        {
+                            bothPeople.Add(student);
+                        }
                         string json = JsonSerializer.Serialize(students, new JsonSerializerOptions
                         {
                             WriteIndented = true
