@@ -25,7 +25,6 @@ namespace WpfApp1.ViewModel.Buttons
             {
                 string defaultFile = "[]";
                 File.WriteAllText(pathTeachers, defaultFile);
-
             }
             WindowTeacher teacher = new WindowTeacher();
             var teacherViewModel = new TeacherViewModel();

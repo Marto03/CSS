@@ -3,31 +3,33 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:local="clr-namespace:WpfApp1"
-        xmlns:viewmodel="clr-namespace:WpfApp1.ViewModel.Buttons"
+        xmlns:local="clr-namespace:WpfApp1.ViewModel"
         mc:Ignorable="d"
-        WindowStartupLocation = "CenterScreen"
+        WindowStartupLocation="CenterScreen"
+        d:DataContext="{d:DesignInstance Type=local:MainWindowViewModel}"
         Title="MainWindow" Height="550" Width="800">
+
+
     <Grid>
         <Grid.RowDefinitions>
-            <RowDefinition Name="row0" Height="100"/>
-            <RowDefinition Name="row1" Height="50*"/>
-            <RowDefinition Name="row2" Height="50*"/>
-            <RowDefinition Name="row3" Height="50*"/>
-            <RowDefinition Name="row4" Height="50*"/>
+            <RowDefinition Name="row0" Height="100" />
+            <RowDefinition Name="row1" Height="50*" />
+            <RowDefinition Name="row2" Height="50*" />
+            <RowDefinition Name="row3" Height="50*" />
+            <RowDefinition Name="row4" Height="50*" />
         </Grid.RowDefinitions>
-        <Rectangle Grid.Row="0" Fill="DarkGreen"/>
-        <TextBlock Name="topText"  Text="Welcome to my first program" FontSize="40" TextBlock.TextAlignment="Center" Height="50"/>
+        <Rectangle Grid.Row="0" Fill="DarkGreen" />
+        <TextBlock Name="topText" Text="Welcome to my first program" FontSize="40" TextBlock.TextAlignment="Center" Height="50" />
 
         <Grid Name="AddObject" Grid.Row="1" Grid.RowSpan="1">
             <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="*"/>
-                <ColumnDefinition/>
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition />
             </Grid.ColumnDefinitions>
             <Button Name="addStudents" Grid.Row="1" Grid.RowSpan="3" Grid.Column="0" Content="Add Student" FontSize="40"
-                    VerticalAlignment="Stretch" Click="AddStudents_Click"/>
+                    VerticalAlignment="Stretch" Command="{Binding ButtonAddStudents}"/>
             <Button Name="addTeachers" Grid.Row="1" Grid.RowSpan="3" Grid.Column="1" Content="Add Teacher" FontSize="40"
-                    VerticalAlignment="Stretch" Click="AddTeachers_Click"/>
+                    VerticalAlignment="Stretch" Command="{Binding ButtonAddTeachers}"/>
         </Grid>
 
         <Grid Name="showSeparately" Grid.Row="2">
@@ -35,8 +37,8 @@
                 <ColumnDefinition Width="*"/>
                 <ColumnDefinition/>
             </Grid.ColumnDefinitions>
-            <Button Command="{Binding ButtonAddStudents}" Name ="showStudents"  Grid.Row="1" Grid.Column="0" Content="Show all Students" FontSize="35" Click="ShowStudents_Click"/>
-            <Button Name ="showTeachers"  Grid.Row="1" Grid.Column="1" Content="Show all Teachers" FontSize="35" Click="ShowTeachers_Click"/>
+            <Button Command="{Binding ButtonShowStudents}" Name ="showStudents"  Grid.Row="1" Grid.Column="0" Content="Show all Students" FontSize="35" Click="ShowStudents_Click"/>
+            <Button Command="{Binding ButtonShowTeachers}" Name ="showTeachers"  Grid.Row="1" Grid.Column="1" Content="Show all Teachers" FontSize="35" Click="ShowTeachers_Click"/>
         </Grid>
         <Grid Name="ShowPeople" Grid.Row="3">
             <Grid.ColumnDefinitions>

@@ -5,6 +5,8 @@ using System.Windows;
 using System.IO;
 using WpfApp1.Model;
 using WpfApp1.ViewModel;
+using WpfApp1.ViewModel.Buttons;
+using WpfApp1.Views.TeacherView;
 //                                 Must add MVVM model-view-viewmodel
 namespace WpfApp1
 {
@@ -16,8 +18,8 @@ namespace WpfApp1
         public MainWindow()
         {
             InitializeComponent();
-            var mainWindowsViewModel = new Main
-            DataContext 
+            //var mainWindowsViewModel = new MainWindow();
+            //DataContext = MainWindowViewModel();
             if (!File.Exists(pathStudents))
             {
                 File.Create(pathStudents);
@@ -27,6 +29,7 @@ namespace WpfApp1
                 File.Create(pathTeachers);
             }
         }
+
         private void AddStudents_Click(object sender, RoutedEventArgs e)
         {
             if (!File.Exists(pathStudents))
@@ -41,16 +44,21 @@ namespace WpfApp1
                 File.WriteAllText(pathStudents, defaultFile);
 
             }
-            WindowStudent student = new WindowStudent();
+            //WindowStudent student = new WindowStudent();
             var studentViewModel = new StudentViewModel();
-            student.DataContext = studentViewModel;
-            student.InitializeComponent();
-            student.firstNameBox.Focus();
-            student.Show();
+            //student.DataContext = studentViewModel;
+            //student.InitializeComponent();
+            //student.firstNameBox.Focus();
+            //student.Show();
             Close();
         }
         private void AddTeachers_Click(object sender, RoutedEventArgs e)
         {
+            WindowTeacher windowTeacher = new WindowTeacher();
+            windowTeacher.InitializeComponent();
+            windowTeacher.Show();
+
+
             if (!File.Exists(pathTeachers))
             {
                 File.Create(pathTeachers);
@@ -63,10 +71,10 @@ namespace WpfApp1
                 File.WriteAllText(pathTeachers, defaultFile);
 
             }
-            WindowTeacher windowTeacher = new WindowTeacher();
-            windowTeacher.InitializeComponent();
-            windowTeacher.firstNameBox.Focus();
-            windowTeacher.Show();
+            //WindowTeacher windowTeacher = new WindowTeacher();
+            //windowTeacher.InitializeComponent();
+            //windowTeacher.firstNameBox.Focus();
+            //windowTeacher.Show();
             Close();
         }
 

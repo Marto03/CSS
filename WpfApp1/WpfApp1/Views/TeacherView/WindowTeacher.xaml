@@ -3,11 +3,12 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:local="clr-namespace:WpfApp1.Model"
-        xmlns:viewmodel="clr-namespace:WpfApp1" d:DataContext="{d:DesignInstance Type=local:Teacher}"
         mc:Ignorable="d"
         WindowStartupLocation = "CenterScreen"
         Title="WindowTeacher" Height="600" Width="800">
+    <!--xmlns:local ="clr-namespace:WpfApp1.ViewModel.Buttons"-->
+    <!--xmlns:viewmodel="clr-namespace:WpfApp1" xmlns:viewmodel1="clr-namespace:WpfApp1.ViewModel" 
+        d:DataContext="{d:DesignInstance Type=viewmodel1:TeacherViewModel}"-->
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="50"/>
@@ -20,7 +21,6 @@
     FontSize="50" Visibility="Visible" HorizontalAlignment="Center"
            VerticalAlignment="Center"/>
 
-
         <Grid Grid.Row="1">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="200"/>
@@ -28,57 +28,59 @@
             </Grid.ColumnDefinitions>
             <TextBlock Name="firstNameBlock"  Grid.Row="1" Text="First name"  Visibility="Visible"
     VerticalAlignment="Top" HorizontalAlignment="Left" Margin="20"/>
-            <TextBox Text="{Binding Path =Fname,Mode=TwoWay}" Name="firstNameBox" Grid.Row="1" Grid.Column="1" Visibility="Visible"
-             Focusable="True"
-    HorizontalAlignment="Stretch" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"
-    Keyboard.KeyDown="FirstNameBox_KeyDown" FontSize="20" Margin="10"
- VerticalAlignment="Top"/>
+            <TextBox Text="{Binding Fname, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                     Name="firstNameBox" Grid.Row="1" Grid.Column="1" Visibility="Visible"
+                     Focusable="True"
+                     HorizontalAlignment="Stretch" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"
+                     FontSize="20" Margin="10"
+                     VerticalAlignment="Top"/>
 
             <TextBlock Name="lastNameBlock"  Grid.Row="1" Grid.Column="0"  Visibility="Visible"
                Text="Last Name"
     VerticalAlignment="Top" HorizontalAlignment="Left" Margin="20,50"/>
-            <TextBox Text="{Binding Path=Lname, Mode=TwoWay}" Name="lastNameBox" Grid.Row="1" Grid.Column ="1"  Visibility="Visible"
+            <TextBox Text="{Binding Lname, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" Name="lastNameBox" Grid.Row="1" Grid.Column ="1"  Visibility="Visible"
     HorizontalAlignment="Stretch" HorizontalContentAlignment="Center"  VerticalAlignment="Top"
-    Keyboard.KeyDown="LastNameBox_KeyDown" FontSize="20" Margin="10,45"/>
+    FontSize="20" Margin="10,45"/>
 
             <TextBlock Name="ageBlock"  Grid.Row="1" Grid.Column="0"  Visibility="Visible"
            Text="Age"
         VerticalAlignment="Top" HorizontalAlignment="Left" Margin="20,80"/>
-            <TextBox Text="{Binding Path=Age, Mode=TwoWay}" Name="ageBox" Grid.Row="1" Grid.Column ="1"  Visibility="Visible"
-                     viewmodel:TextBoxPlaceHolder.Placeholder=""
+            <TextBox
+                Text="{Binding Age, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" Name="ageBox" Grid.Row="1" Grid.Column ="1"  Visibility="Visible"
+                    
         HorizontalAlignment="Stretch" HorizontalContentAlignment="Center"  VerticalAlignment="Top"
-        Keyboard.KeyDown="AgeBox_KeyDown" FontSize="20" Margin="10,80"/>
+        FontSize="20" Margin="10,80"/>
 
             <TextBlock Name="idBlock"  Grid.Row="1" Grid.Column="0"  Visibility="Visible"
         Text="id"
         VerticalAlignment="Top" HorizontalAlignment="Left" Margin="20,115"/>
-            <TextBox Text="{Binding Path=Id, Mode=TwoWay}" Name="idBox" Grid.Row="1" Grid.Column ="1"  Visibility="Visible"
-                     viewmodel:TextBoxPlaceHolder.Placeholder=""
+            <TextBox Text="{Binding Id, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" Name="idBox" Grid.Row="1" Grid.Column ="1"  Visibility="Visible"
+                     
         HorizontalAlignment="Stretch" HorizontalContentAlignment="Center"  VerticalAlignment="Top"
-        Keyboard.KeyDown="IdBox_KeyDown" FontSize="20" Margin="10,115"/>
+        FontSize="20" Margin="10,115"/>
 
             <TextBlock Name="yearsExperienceBlock"  Grid.Row="1" Grid.Column="0" Text="Years Experience"  Visibility="Visible" 
                 VerticalAlignment="Top" HorizontalAlignment="Left" Margin="20,150"/>
-            <TextBox Text="{Binding Path=YearsExperience, Mode=TwoWay}" Name="yearsExperienceBox" Grid.Row="1" Grid.Column ="1"  Visibility="Visible"
-                     viewmodel:TextBoxPlaceHolder.Placeholder=""
+            <TextBox Text="{Binding YearsExperience, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" Name="yearsExperienceBox" Grid.Row="1" Grid.Column ="1"  Visibility="Visible"
+                     
                 HorizontalAlignment="Stretch" HorizontalContentAlignment="Center"  VerticalAlignment="Top"
-                Keyboard.KeyDown="YearsExperienceBox_KeyDown" FontSize="20" Margin="10,150"/>
+                FontSize="20" Margin="10,150"/>
 
             <TextBlock Name="titleBlock"  Grid.Row="1" Grid.Column="0" Text="title"  Visibility="Visible" 
                 VerticalAlignment="Top" HorizontalAlignment="Left" Margin="20,185"/>
-            <TextBox Text="{Binding Path=Title, Mode=TwoWay}" Name="titleBox" Grid.Row="1" Grid.Column ="1"  Visibility="Visible"
+            <TextBox Text="{Binding Title, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" Name="titleBox" Grid.Row="1" Grid.Column ="1"  Visibility="Visible"
                 HorizontalAlignment="Stretch" HorizontalContentAlignment="Center"  VerticalAlignment="Top"
-                Keyboard.KeyDown="TitleBox_KeyDown" FontSize="20" Margin="10,185"/>
+                FontSize="20" Margin="10,185"/>
 
             <TextBlock Name="specBlock"  Grid.Row="1" Grid.Column="0"  Visibility="Visible"
         Text="speciality"
         VerticalAlignment="Top" HorizontalAlignment="Left" Margin="20,220"/>
-            <TextBox Text="{Binding Path=Speciality, Mode=TwoWay}" Name="specBox" Grid.Row="1" Grid.Column ="1"  Visibility="Visible"
+            <TextBox Text="{Binding Speciality, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" Name="specBox" Grid.Row="1" Grid.Column ="1"  Visibility="Visible"
         HorizontalAlignment="Stretch" HorizontalContentAlignment="Center"  VerticalAlignment="Top"
-        Keyboard.KeyDown="SpecBox_KeyDown" FontSize="20" Margin="10,220"/>
+        FontSize="20" Margin="10,220"/>
 
         </Grid>
-        <Button Name="backToMenu" Grid.Row="2"  Content="Return to Menu" HorizontalAlignment="Stretch"
-    VerticalAlignment="Stretch" Click="BackToMenu_Click" Focusable="False" Visibility="Visible"/>
+        <Button Command="{Binding BackToMenuButton}" Name="backToMenu" Grid.Row="2"  Content="Return to Menu" HorizontalAlignment="Stretch"
+    VerticalAlignment="Stretch" Focusable="False" Visibility="Visible"/>
     </Grid>
 </Window>

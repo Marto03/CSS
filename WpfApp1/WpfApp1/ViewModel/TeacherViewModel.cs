@@ -1,107 +1,167 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.ComponentModel;
+using System.DirectoryServices.ActiveDirectory;
+using System.IO;
+using System.Linq;
+using System.Text.Json;
+using System.Windows.Controls;
+using System.Windows.Input;
+using System.Xml.Linq;
+using WpfApp1.Commands;
 using WpfApp1.Model;
+using WpfApp1.Views.TeacherView;
 
 namespace WpfApp1.ViewModel
 {
     public class TeacherViewModel : INotifyPropertyChanged
     {
-        private readonly Teacher _st;
-
+        //private string pathTeachers = "C:\\Users\\Microinvest\\source\\repos\\FileCreating\\WpfTeachers.json";
+        private Teacher _teacher;
         public TeacherViewModel()
         {
-            _st = new(Fname, Lname, Age, Id,YearsExperience,Title,Speciality);
+            _teacher = new Teacher(Fname, Lname, Age, Id, YearsExperience, Title, Speciality);
         }
         public string Fname
         {
-            get => _st.Fname;
+            get => _teacher?.Fname;
             set
             {
-                if (_st.Fname != value)
+                if (_teacher.Fname != value)
                 {
-                    _st.Fname = value;
-                    OnPropertyChanged(nameof(Fname));
+                    if (!string.IsNullOrEmpty(value) && value.All(char.IsLetter))
+                    {
+                        _teacher.Fname = value;
+                        OnPropertyChanged(nameof(Fname));
+                    }
                 }
             }
         }
         public string Lname
         {
-            get => _st.Lname;
+            get => _teacher?.Lname;
             set
             {
-                if (_st.Lname != value)
+                if (_teacher.Lname != value)
                 {
-                    _st.Lname = value;
-                    OnPropertyChanged(nameof(Lname));
+                    if (!string.IsNullOrEmpty(value) && value.All(char.IsLetter))
+                    {
+                        _teacher.Lname = value;
+                        OnPropertyChanged(nameof(Lname));
+                    }
                 }
             }
         }
         public int Age
         {
-            get => _st.Age;
+            get => _teacher?.Age ?? 0;
             set
             {
-                if (_st.Age != value)
+                if (_teacher.Age != value)
                 {
-                    _st.Age = value;
-                    OnPropertyChanged(nameof(Age));
+                    if (int.TryParse(value.ToString(), out int parsedAge) && parsedAge > 0)
+                    {
+                        _teacher.Age = parsedAge;
+                        OnPropertyChanged(nameof(Age));
+                    }
                 }
             }
         }
         public long Id
         {
-            get => _st.Id;
+            get => _teacher?.Id ?? 0;
             set
             {
-                if (_st.Id != value)
+                if (_teacher.Id != value)
                 {
-                    _st.Id = value;
-                    OnPropertyChanged(nameof(Id));
+                    if (long.TryParse(value.ToString(), out long parsedId) && parsedId > 0)
+                    {
+                        if (value.ToString().Length <= 10)
+                        {
+                            _teacher.Id = parsedId;
+                            OnPropertyChanged(nameof(Id));
+                        }
+                    }
                 }
             }
         }
         public int YearsExperience
         {
-            get => _st.YearsExperience;
+            get => _teacher?.YearsExperience ?? 0;
             set
             {
-                if (_st.YearsExperience != value)
+                if (_teacher.YearsExperience != value)
                 {
-                    _st.YearsExperience = value;
-                    OnPropertyChanged(nameof(YearsExperience));
+                    if (int.TryParse(value.ToString(), out int parsedYearsExperience) && parsedYearsExperience > 0)
+                    {
+                        _teacher.YearsExperience = parsedYearsExperience;
+                        OnPropertyChanged(nameof(YearsExperience));
+                    }
                 }
             }
         }
         public string Title
         {
-            get => _st.Title;
+            get => _teacher?.Title;
             set
             {
-                if (_st.Title != value)
+                if (_teacher.Title != value)
                 {
-                    _st.Title = value;
-                    OnPropertyChanged(nameof(Title));
+                    if (!string.IsNullOrEmpty(value) && value.All(char.IsLetter))
+                    {
+                        _teacher.Title = value;
+                        OnPropertyChanged(nameof(Title));
+                    }
                 }
             }
         }
         public string Speciality
         {
-            get => _st.Speciality;
+            get => _teacher?.Speciality;
             set
             {
-                if (_st.Speciality != value)
+                if (_teacher.Speciality != value)
                 {
-                    _st.Speciality = value;
-                    OnPropertyChanged(nameof(Speciality));
+
+                    if (!string.IsNullOrEmpty(value) && value.All(char.IsLetter))
+                    {
+                        _teacher.Speciality = value;
+                        OnPropertyChanged(nameof(Speciality));
+                    }
                 }
             }
         }
+        //private List<Teacher> teachers = new List<Teacher>();
         private void OnPropertyChanged(string v)
         {
-            throw new NotImplementedException();
+            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(v));
+
+            //teachers.Add(_teacher);
         }
 
         public event PropertyChangedEventHandler? PropertyChanged;
+
+        private RelayCommand backToMenuButton;
+        public ICommand BackToMenuButton => backToMenuButton ??= new RelayCommand(PerformBackToMenuButton);
+
+
+        private void PerformBackToMenuButton()
+        {
+            //MainWindow mainWindow = new MainWindow();
+            //mainWindow.InitializeComponent();
+            //mainWindow.Show();
+
+            WindowTeacher viewModel = new WindowTeacher();
+            viewModel.PerformBackToMenuButton();
+
+            //string json = JsonSerializer.Serialize(teachers, new JsonSerializerOptions
+            //{
+            //    WriteIndented = true
+            //});
+
+            //File.WriteAllText(pathTeachers, json);
+
+        }
     }
 
 }

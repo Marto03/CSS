@@ -20,18 +20,12 @@ namespace WpfApp1.Commands
             remove { CommandManager.RequerySuggested -= value; }
         }
 
-        event EventHandler? ICommand.CanExecuteChanged
+        event EventHandler ICommand.CanExecuteChanged
         {
-            add
-            {
-                throw new NotImplementedException();
-            }
-
-            remove
-            {
-                throw new NotImplementedException();
-            }
+            add { CommandManager.RequerySuggested += value; }
+            remove { CommandManager.RequerySuggested -= value; }
         }
+
 
         public bool CanExecute(object parameter)
         {
