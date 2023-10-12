@@ -5,6 +5,7 @@ using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows;
 using System.Windows.Input;
 using WpfApp1.Commands;
 using WpfApp1.ViewModel.Buttons;
@@ -15,104 +16,92 @@ namespace WpfApp1.ViewModel
 {
     public class MainWindowViewModel : INotifyPropertyChanged
     {
-            //public ICommand? ButtonBackToMenu { get; private set; }
-            private RelayCommand backToMenuButton;
-            public ICommand BackToMenuButton => backToMenuButton ??= new RelayCommand(PerformBackToMenuButton);
+        //public ICommand? ButtonBackToMenu { get; private set; }
+        private readonly string pathTeachers = "C:\\Users\\Microinvest\\source\\repos\\FileCreating\\WpfTeachers.json";
+        private readonly string pathStudents = "C:\\Users\\Microinvest\\source\\repos\\FileCreating\\WpfStudents.json";
+        private List<Window> openedWindows = new List<Window>();
+        private RelayCommand backToMenuButton;
+        public ICommand BackToMenuButton => backToMenuButton ??= new RelayCommand(PerformBackToMenuButton);
 
-            public void PerformBackToMenuButton()
+        public void CloseAllOpenWindows()
+        {
+            foreach (Window window in Application.Current.Windows)
             {
-                MainWindow mainWindow = new MainWindow();
-                mainWindow.InitializeComponent();
+                if (window != Application.Current.MainWindow)
+                {
+                    window.Close();
+                }
+            }
+        }
+
+
+        public void PerformBackToMenuButton()
+        {
+            CloseAllOpenWindows();
+
+            MainWindow mainWindow = Application.Current.MainWindow as MainWindow;
+            if (mainWindow != null)
+            {
                 mainWindow.Show();
-                
-            }
-        
-        public class CreateStudentsButton
-        {
-            private string pathStudents = "C:\\Users\\Microinvest\\source\\repos\\FileCreating\\WpfStudents.json";
-            public RelayCommand ButtonAddStudents;
-            public CreateStudentsButton()
-            {
-                ButtonAddStudents = new RelayCommand(StudentsCreating);
-            }
-            private void StudentsCreating()
-            {
-                if (!File.Exists(pathStudents))
-                {
-                    File.Create(pathStudents);
-                    string defaultFile = "[]";
-                    File.WriteAllText(pathStudents, defaultFile);
-                }
-                if (string.IsNullOrWhiteSpace(File.ReadAllText(pathStudents)))
-                {
-                    string defaultFile = "[]";
-                    File.WriteAllText(pathStudents, defaultFile);
-
-                }
-                WindowStudent student = new WindowStudent();
-                var studentViewModel = new StudentViewModel();
-                student.DataContext = studentViewModel;
-                student.Show();
             }
         }
-        private string pathTeachers = "C:\\Users\\Microinvest\\source\\repos\\FileCreating\\WpfTeachers.json";
-
-        public event PropertyChangedEventHandler? PropertyChanged;
-
-        public RelayCommand? ButtonAddTeachers;
-        public ICommand CreateTeachersButton => ButtonAddTeachers ??= new RelayCommand(PerformCreateTeachersButton);
-
-        private void PerformCreateTeachersButton()
-        {
-            if (!File.Exists(pathTeachers))
-            {
-                File.Create(pathTeachers);
-                string defaultFile = "[]";
-                File.WriteAllText(pathTeachers, defaultFile);
-            }
-            if (string.IsNullOrWhiteSpace(File.ReadAllText(pathTeachers)))
-            {
-                string defaultFile = "[]";
-                File.WriteAllText(pathTeachers, defaultFile);
-            }
-            WindowTeacher teacher = new WindowTeacher();
-            teacher.InitializeComponent();
-            var teacherViewModel = new TeacherViewModel();
-            teacher.DataContext = teacherViewModel;
-            teacher.Show();
-        }
-
-        private void TeachersCreating()
-        {
-            if (!File.Exists(pathTeachers))
-            {
-                File.Create(pathTeachers);
-                string defaultFile = "[]";
-                File.WriteAllText(pathTeachers, defaultFile);
-            }
-            if (string.IsNullOrWhiteSpace(File.ReadAllText(pathTeachers)))
-            {
-                string defaultFile = "[]";
-                File.WriteAllText(pathTeachers, defaultFile);
-            }
-            WindowTeacher teacher = new WindowTeacher();
-            teacher.InitializeComponent();
-            var teacherViewModel = new TeacherViewModel();
-            teacher.DataContext = teacherViewModel;
-            teacher.Show();
-        }
+        //openedWindows.Add(student);
+        //openedWindows.Add(teacher);
+        //foreach (var window in openedWindows)
+        //{
+        //    window.Close();
+        //}
+        //teacher.Visibility = Visibility.Collapsed;
+        //teacher.Close();
+        //student.Close();
 
         private RelayCommand buttonAddStudents;
         public ICommand ButtonAddStudents => buttonAddStudents ??= new RelayCommand(PerformButtonAddStudents);
-
         private void PerformButtonAddStudents()
         {
-            WindowStudent windowstudent = new WindowStudent();
-            var studentViewModel = new StudentViewModel();
-            windowstudent.InitializeComponent();
-            windowstudent.DataContext = studentViewModel;
-            windowstudent.Show();
+            if (!File.Exists(pathStudents))
+            {
+                File.Create(pathStudents);
+                string defaultFile = "[]";
+                File.WriteAllText(pathStudents, defaultFile);
+            }
+            if (string.IsNullOrWhiteSpace(File.ReadAllText(pathStudents)))
+            {
+                string defaultFile = "[]";
+                File.WriteAllText(pathStudents, defaultFile);
 
+            }
+
+            WindowStudent student = new WindowStudent();
+            StudentViewModel studentViewModel = new StudentViewModel();
+            studentViewModel.Message = "Student's data";
+            student.DataContext = studentViewModel;
+            student.Show();
+        }
+
+        public event PropertyChangedEventHandler? PropertyChanged;
+
+        private RelayCommand buttonAddTeachers;
+        public ICommand ButtonAddTeachers => buttonAddTeachers ??= new RelayCommand(PerformButtonAddTeachers);
+
+        private void PerformButtonAddTeachers()
+        {
+            if (!File.Exists(pathTeachers))
+            {
+                File.Create(pathTeachers);
+                string defaultFile = "[]";
+                File.WriteAllText(pathTeachers, defaultFile);
+            }
+            if (string.IsNullOrWhiteSpace(File.ReadAllText(pathTeachers)))
+            {
+                string defaultFile = "[]";
+                File.WriteAllText(pathTeachers, defaultFile);
+            }
+            WindowTeacher teacher = new WindowTeacher();
+            TeacherViewModel teacherViewModel = new TeacherViewModel();
+            teacherViewModel.Message = "Teacher's data";
+            teacher.DataContext = teacherViewModel;
+            teacher.Show();
         }
 
         private RelayCommand buttonShowStudents;
@@ -129,5 +118,7 @@ namespace WpfApp1.ViewModel
         private void PerformButtonShowTeachers()
         {
         }
+
+
     }
 }

@@ -4,21 +4,23 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:WpfApp1.ViewModel"
+        d:DataContext="{d:DesignInstance Type=local:StudentViewModel}"
         xmlns:viewmodel="clr-namespace:WpfApp1"
         
         mc:Ignorable="d"
         WindowStartupLocation = "CenterScreen"
-        Title="WindowStudent" Height="550" Width="800">
+        Title="WindowStudent" Height="650" Width="800">
     <!--d:DataContext="{d:DesignInstance Type =local:StudentViewModel}"-->
     <Grid>
         <Grid.RowDefinitions>
-            <RowDefinition x:Name="title" Height="50"/>
+            <RowDefinition x:Name="title" Height="40"/>
             <RowDefinition x:Name="mid" Height="10*"/>
             <RowDefinition x:Name="bot" Height="*"/>
         </Grid.RowDefinitions>
 
         <Rectangle Name="studentsChoiceColor" Grid.Row="0" Fill="Red" Visibility="Visible"/>
-        <TextBlock Name="showStudentsData" Grid.Row="0" Text="Students data" 
+        <TextBlock Name="showStudentsData" Grid.Row="0"
+                   Text="{Binding Message}"
             FontSize="50" Visibility="Visible" HorizontalAlignment="Center"
                    VerticalAlignment="Center"/>
 
@@ -29,8 +31,8 @@
             </Grid.ColumnDefinitions>
             <TextBlock Name="firstNameBlock"  Grid.Row="1" Text="First name"  Visibility="Visible"
             VerticalAlignment="Top" HorizontalAlignment="Left" Margin="20"/>
-            
-            <TextBox Name="firstNameBox" Text="{Binding Fname, Mode=TwoWay}" Grid.Row="1" Grid.Column="1" Visibility="Visible"
+
+            <TextBox Name="firstNameBox" Text="{Binding Fname, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" Grid.Row="1" Grid.Column="1" Visibility="Visible"
                      Focusable="True"
             HorizontalAlignment="Stretch" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"
             FontSize="20" Margin="10"
@@ -39,14 +41,14 @@
             <TextBlock Name="lastNameBlock"  Grid.Row="1" Grid.Column="0"  Visibility="Visible"
                        Text="Last Name"
             VerticalAlignment="Top" HorizontalAlignment="Left" Margin="20,50"/>
-            <TextBox Text="{Binding Lname, Mode=TwoWay}" Name="lastNameBox" Grid.Row="1" Grid.Column ="1"  Visibility="Visible"
+            <TextBox Text="{Binding Lname, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" Name="lastNameBox" Grid.Row="1" Grid.Column ="1"  Visibility="Visible"
             HorizontalAlignment="Stretch" HorizontalContentAlignment="Center"  VerticalAlignment="Top"
             FontSize="20" Margin="10,45"/>
 
             <TextBlock Name="ageBlock"  Grid.Row="1" Grid.Column="0"  Visibility="Visible"
                    Text="Age"
                 VerticalAlignment="Top" HorizontalAlignment="Left" Margin="20,80"/>
-            <TextBox Text="{Binding Age, Mode=TwoWay}" Name="ageBox" Grid.Row="1" Grid.Column ="1"  Visibility="Visible"
+            <TextBox Text="{Binding Age, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" Name="ageBox" Grid.Row="1" Grid.Column ="1"  Visibility="Visible"
                      viewmodel:TextBoxPlaceHolder.Placeholder=""
                 HorizontalAlignment="Stretch" HorizontalContentAlignment="Center"  VerticalAlignment="Top"
                 FontSize="20" Margin="10,80"/>
@@ -54,7 +56,7 @@
             <TextBlock Name="idBlock"  Grid.Row="1" Grid.Column="0"  Visibility="Visible"
                 Text="id"
                 VerticalAlignment="Top" HorizontalAlignment="Left" Margin="20,115"/>
-            <TextBox Text="{Binding Id, Mode=TwoWay}" Name="idBox" Grid.Row="1" Grid.Column ="1"  Visibility="Visible"
+            <TextBox Text="{Binding Id, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" Name="idBox" Grid.Row="1" Grid.Column ="1"  Visibility="Visible"
                      viewmodel:TextBoxPlaceHolder.Placeholder=""
                 HorizontalAlignment="Stretch" HorizontalContentAlignment="Center"  VerticalAlignment="Top"
                 FontSize="20" Margin="10,115"/>
@@ -62,24 +64,28 @@
             <TextBlock Name="specBlock"  Grid.Row="1" Grid.Column="0"  Visibility="Visible"
                 Text="speciality"
                 VerticalAlignment="Top" HorizontalAlignment="Left" Margin="20,150"/>
-            <TextBox Text="{Binding Speciality, Mode=TwoWay}" Name="specBox" Grid.Row="1" Grid.Column ="1"  Visibility="Visible"
+            <TextBox Text="{Binding Speciality, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" Name="specBox" Grid.Row="1" Grid.Column ="1"  Visibility="Visible"
                 HorizontalAlignment="Stretch" HorizontalContentAlignment="Center"  VerticalAlignment="Top"
                 FontSize="20" Margin="10,150"/>
 
             <TextBlock Name="courseBlock"  Grid.Row="1" Grid.Column="0" Text="course"  Visibility="Visible" 
                 VerticalAlignment="Top" HorizontalAlignment="Left" Margin="20,185"/>
-            <TextBox Text="{Binding Course,Mode=TwoWay}" Name="courseBox" Grid.Row="1" Grid.Column ="1"  Visibility="Visible"
+            <TextBox Text="{Binding Course,Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" Name="courseBox" Grid.Row="1" Grid.Column ="1"  Visibility="Visible"
                      viewmodel:TextBoxPlaceHolder.Placeholder=""
                 HorizontalAlignment="Stretch" HorizontalContentAlignment="Center"  VerticalAlignment="Top"
                 FontSize="20" Margin="10,185"/>
+            <Button Command="{Binding CreateStudentsButton}" IsEnabled="{Binding IsConditionMet}" Grid.Row="0" Grid.Column="1"  Content="Create student" Width="100" Height="50"
+                Margin="20,220" Visibility="Visible"/>
 
         </Grid>
-        <Button Command="{Binding BackToMenuButton}"  Name="backToMenu" Grid.Row="2"  Content="Return to Menu" HorizontalAlignment="Stretch"
+        <Button Command="{Binding BackToMenuButton}" Name="backToMenu" Grid.Row="2"  Content="Return to Menu" HorizontalAlignment="Stretch"
             VerticalAlignment="Stretch" Focusable="False" Visibility="Visible"/>
-        <Grid>
-            <TextBox x:Name="boxHolder" viewmodel:TextBoxPlaceHolder.Placeholder="smth"
+        <!--<TextBlock Name="showStudentsData1" Text="{Binding Message}" FontSize="20" Visibility="Visible" HorizontalAlignment="Center" VerticalAlignment="Center"/>-->
+        
+        <!--<Grid>-->
+            <!--<TextBox x:Name="boxHolder" viewmodel:TextBoxPlaceHolder.Placeholder="smth"
                      Visibility="Collapsed"/>
-        </Grid>
+        </Grid>-->
 
     </Grid>
 </Window>

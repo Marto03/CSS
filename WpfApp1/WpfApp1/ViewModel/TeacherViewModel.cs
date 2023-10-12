@@ -5,22 +5,46 @@ using System.DirectoryServices.ActiveDirectory;
 using System.IO;
 using System.Linq;
 using System.Text.Json;
+using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
 using System.Xml.Linq;
 using WpfApp1.Commands;
 using WpfApp1.Model;
+using WpfApp1.Validations;
 using WpfApp1.Views.TeacherView;
 
 namespace WpfApp1.ViewModel
 {
     public class TeacherViewModel : INotifyPropertyChanged
     {
-        //private string pathTeachers = "C:\\Users\\Microinvest\\source\\repos\\FileCreating\\WpfTeachers.json";
+        private string pathTeachers = "C:\\Users\\Microinvest\\source\\repos\\FileCreating\\WpfTeachers.json";
+        List<Teacher> teachers = new List<Teacher>();
+        public bool TeacherExists;
+
         private Teacher _teacher;
         public TeacherViewModel()
         {
+            teachers = ShownTeachers();
+            IsConditionMet = true;
             _teacher = new Teacher(Fname, Lname, Age, Id, YearsExperience, Title, Speciality);
+        }
+        public List<Teacher> ShownTeachers()
+        {
+            if (File.Exists(pathTeachers) && !string.IsNullOrWhiteSpace(File.ReadAllText(pathTeachers)))
+            {
+                string fileContent = File.ReadAllText(pathTeachers);
+                try
+                {
+                    List<Teacher> teachers = JsonSerializer.Deserialize<List<Teacher>>(fileContent);
+                    return teachers;
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show($"Error: {ex.Message}");
+                }
+            }
+            return new List<Teacher>();
         }
         public string Fname
         {
@@ -131,12 +155,33 @@ namespace WpfApp1.ViewModel
                 }
             }
         }
-        //private List<Teacher> teachers = new List<Teacher>();
+        private string _message;
+        public string Message
+        {
+            get { return _message; }
+            set
+            {
+                _message = value;
+                OnPropertyChanged(nameof(Message));
+            }
+        }
+
+        private bool _isConditionMet;
+        public bool IsConditionMet
+        {
+            get { return _isConditionMet; }
+            set
+            {
+                if (_isConditionMet != value)
+                {
+                    _isConditionMet = value;
+                    OnPropertyChanged(nameof(IsConditionMet));
+                }
+            }
+        }
         private void OnPropertyChanged(string v)
         {
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(v));
-
-            //teachers.Add(_teacher);
         }
 
         public event PropertyChangedEventHandler? PropertyChanged;
@@ -147,19 +192,38 @@ namespace WpfApp1.ViewModel
 
         private void PerformBackToMenuButton()
         {
-            //MainWindow mainWindow = new MainWindow();
-            //mainWindow.InitializeComponent();
-            //mainWindow.Show();
+            MainWindowViewModel mainWindowViewModel = new MainWindowViewModel();
+            mainWindowViewModel.PerformBackToMenuButton();
 
-            WindowTeacher viewModel = new WindowTeacher();
-            viewModel.PerformBackToMenuButton();
+        }
 
-            //string json = JsonSerializer.Serialize(teachers, new JsonSerializerOptions
-            //{
-            //    WriteIndented = true
-            //});
+        private RelayCommand createTeachersButton;
+        public ICommand CreateTeachersButton => createTeachersButton ??= new RelayCommand(PerformCreateTeachersButton);
 
-            //File.WriteAllText(pathTeachers, json);
+        private void PerformCreateTeachersButton()
+        {
+            TeacherValidations teacherValidations = new TeacherValidations(this);
+            string idS = _teacher.Id.ToString();
+            if (teacherValidations.IsValid())
+            {
+                TeacherExists = teachers.Any(person => person.Fname == _teacher.Fname && person.Lname == _teacher.Lname &&
+                    person.Age == _teacher.Age && person.Id == _teacher.Id);
+                if (TeacherExists)
+                {
+                    Message = "Teacher Exists";
+                }
+                else
+                {
+                    teachers.Add(_teacher);
+                    Message = "Created Successfully";
+                    string json = JsonSerializer.Serialize(teachers, new JsonSerializerOptions
+                    {
+                        WriteIndented = true
+                    });
+                    File.WriteAllText(pathTeachers, json);
+                    IsConditionMet = false;
+                }
+            }
 
         }
     }

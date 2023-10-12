@@ -4,9 +4,10 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         mc:Ignorable="d"
+        xmlns:local ="clr-namespace:WpfApp1.ViewModel"
         WindowStartupLocation = "CenterScreen"
-        Title="WindowTeacher" Height="600" Width="800">
-    <!--xmlns:local ="clr-namespace:WpfApp1.ViewModel.Buttons"-->
+        d:DataContext="{d:DesignInstance Type=local:TeacherViewModel}"
+        Title="WindowTeacher" Height="700" Width="800">
     <!--xmlns:viewmodel="clr-namespace:WpfApp1" xmlns:viewmodel1="clr-namespace:WpfApp1.ViewModel" 
         d:DataContext="{d:DesignInstance Type=viewmodel1:TeacherViewModel}"-->
     <Grid>
@@ -17,7 +18,7 @@
         </Grid.RowDefinitions>
 
         <Rectangle Name="studentsChoiceColor" Grid.Row="0" Fill="Red" Visibility="Visible"/>
-        <TextBlock Name="showTeachersData" Grid.Row="0" Text="Teachers data" 
+        <TextBlock Name="showTeachersData" Grid.Row="0" Text="{Binding Message}"
     FontSize="50" Visibility="Visible" HorizontalAlignment="Center"
            VerticalAlignment="Center"/>
 
@@ -79,8 +80,12 @@
         HorizontalAlignment="Stretch" HorizontalContentAlignment="Center"  VerticalAlignment="Top"
         FontSize="20" Margin="10,220"/>
 
+            <Button Command="{Binding CreateTeachersButton}" IsEnabled="{Binding IsConditionMet}" Grid.Row="0" Grid.Column="1"  Content="Create teacher" Width="100" Height="50"
+                Margin="20,250" Visibility="Visible"/>
+
         </Grid>
         <Button Command="{Binding BackToMenuButton}" Name="backToMenu" Grid.Row="2"  Content="Return to Menu" HorizontalAlignment="Stretch"
     VerticalAlignment="Stretch" Focusable="False" Visibility="Visible"/>
+        
     </Grid>
 </Window>

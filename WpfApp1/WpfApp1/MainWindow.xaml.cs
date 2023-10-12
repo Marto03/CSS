@@ -18,6 +18,8 @@ namespace WpfApp1
         public MainWindow()
         {
             InitializeComponent();
+            MainWindowViewModel _mainViewModel = new MainWindowViewModel();
+            base.DataContext = _mainViewModel;
             //var mainWindowsViewModel = new MainWindow();
             //DataContext = MainWindowViewModel();
             if (!File.Exists(pathStudents))
@@ -30,53 +32,53 @@ namespace WpfApp1
             }
         }
 
-        private void AddStudents_Click(object sender, RoutedEventArgs e)
-        {
-            if (!File.Exists(pathStudents))
-            {
-                File.Create(pathStudents);
-                string defaultFile = "[]";
-                File.WriteAllText(pathStudents, defaultFile);
-            }
-            if (string.IsNullOrWhiteSpace(File.ReadAllText(pathStudents)))
-            {
-                string defaultFile = "[]";
-                File.WriteAllText(pathStudents, defaultFile);
+        //private void AddStudents_Click(object sender, RoutedEventArgs e)
+        //{
+        //    if (!File.Exists(pathStudents))
+        //    {
+        //        File.Create(pathStudents);
+        //        string defaultFile = "[]";
+        //        File.WriteAllText(pathStudents, defaultFile);
+        //    }
+        //    if (string.IsNullOrWhiteSpace(File.ReadAllText(pathStudents)))
+        //    {
+        //        string defaultFile = "[]";
+        //        File.WriteAllText(pathStudents, defaultFile);
 
-            }
-            //WindowStudent student = new WindowStudent();
-            var studentViewModel = new StudentViewModel();
-            //student.DataContext = studentViewModel;
-            //student.InitializeComponent();
-            //student.firstNameBox.Focus();
-            //student.Show();
-            Close();
-        }
-        private void AddTeachers_Click(object sender, RoutedEventArgs e)
-        {
-            WindowTeacher windowTeacher = new WindowTeacher();
-            windowTeacher.InitializeComponent();
-            windowTeacher.Show();
+        //    }
+        //    //WindowStudent student = new WindowStudent();
+        //    var studentViewModel = new StudentViewModel();
+        //    //student.DataContext = studentViewModel;
+        //    //student.InitializeComponent();
+        //    //student.firstNameBox.Focus();
+        //    //student.Show();
+        //    Close();
+        //}
+        //private void AddTeachers_Click(object sender, RoutedEventArgs e)
+        //{
+        //    WindowTeacher windowTeacher = new WindowTeacher();
+        //    windowTeacher.InitializeComponent();
+        //    windowTeacher.Show();
 
 
-            if (!File.Exists(pathTeachers))
-            {
-                File.Create(pathTeachers);
-                string defaultFile = "[]";
-                File.WriteAllText(pathTeachers, defaultFile);
-            }
-            if (string.IsNullOrWhiteSpace(File.ReadAllText(pathTeachers)))
-            {
-                string defaultFile = "[]";
-                File.WriteAllText(pathTeachers, defaultFile);
+        //    if (!File.Exists(pathTeachers))
+        //    {
+        //        File.Create(pathTeachers);
+        //        string defaultFile = "[]";
+        //        File.WriteAllText(pathTeachers, defaultFile);
+        //    }
+        //    if (string.IsNullOrWhiteSpace(File.ReadAllText(pathTeachers)))
+        //    {
+        //        string defaultFile = "[]";
+        //        File.WriteAllText(pathTeachers, defaultFile);
 
-            }
-            //WindowTeacher windowTeacher = new WindowTeacher();
-            //windowTeacher.InitializeComponent();
-            //windowTeacher.firstNameBox.Focus();
-            //windowTeacher.Show();
-            Close();
-        }
+        //    }
+        //    //WindowTeacher windowTeacher = new WindowTeacher();
+        //    //windowTeacher.InitializeComponent();
+        //    //windowTeacher.firstNameBox.Focus();
+        //    //windowTeacher.Show();
+        //    Close();
+        //}
 
         private void ShowStudents_Click(object sender, RoutedEventArgs e)
         {

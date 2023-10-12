@@ -16,15 +16,9 @@ namespace WpfApp1.Views.TeacherView
     {
         private string fname;
         private string lname;
-        private string ageString;
         private int age;
-        private string idString;
         private long id;
-        private int yearsExperience;
-        private string yearsExperienceString;
-        private string title;
         private string spec;
-        private List<Teacher> teachers = new List<Teacher>();
         private List<BothPeople> bothPeople = new List<BothPeople>();
         private string pathTeachers = "C:\\Users\\Microinvest\\source\\repos\\FileCreating\\WpfTeachers.json";
         private string pathPeople = "C:\\Users\\Microinvest\\source\\repos\\FileCreating\\WpfallPeople.json";
@@ -34,7 +28,7 @@ namespace WpfApp1.Views.TeacherView
         {
             InitializeComponent();
             DataContext = new TeacherViewModel();
-            teachers = ShownTeachers();
+            //teachers = ShownTeachers();
             BothPeople peoples = new BothPeople(fname, lname, age, id, spec);
             bothPeople = peoples.ShownPeople();
         }
@@ -57,17 +51,6 @@ namespace WpfApp1.Views.TeacherView
                 }
             }
             return new List<Teacher>();
-        }
-
-        private RelayCommand backToMenuButton;
-        public ICommand BackToMenuButton => backToMenuButton ??= new RelayCommand(PerformBackToMenuButton);
-
-        public void PerformBackToMenuButton()
-        {
-            MainWindow mainWindow = new MainWindow();
-            mainWindow.InitializeComponent();
-            mainWindow.Show();
-            Close();
         }
     }
 }
