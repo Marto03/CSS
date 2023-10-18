@@ -16,9 +16,12 @@ namespace WpfApp1.ViewModel
     {
 
         private string pathStudents = "C:\\Users\\Microinvest\\source\\repos\\FileCreating\\WpfStudents.json";
-        List<Student> students = new List<Student>();
+        readonly List<Student> students = new List<Student>();
 
-        public ShownStudentsViewModel() => students = ShownStudents();
+        public ShownStudentsViewModel()
+        {
+            students = ShownStudents();
+        }
         public List<Student> ShownStudents()
         {
             if (File.Exists(pathStudents) && !string.IsNullOrWhiteSpace(File.ReadAllText(pathStudents)))
