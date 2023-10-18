@@ -9,14 +9,14 @@ using System.Windows;
 using WpfApp1.Model;
 using System.IO;
 using System.Text.Json;
+using WpfApp1.Views;
 
 namespace WpfApp1.ViewModel
 {
-    public class ShownStudentsViewModel : StudentViewModel
+    public class ShownStudentsViewModel : MainWindowViewModel
     {
-
         private string pathStudents = "C:\\Users\\Microinvest\\source\\repos\\FileCreating\\WpfStudents.json";
-        readonly List<Student> students = new List<Student>();
+        List<Student> students = new List<Student>();
 
         public ShownStudentsViewModel()
         {
@@ -24,6 +24,17 @@ namespace WpfApp1.ViewModel
         }
         public List<Student> ShownStudents()
         {
+            if (!File.Exists(pathStudents))
+            {
+                File.Create(pathStudents);
+                string defaultFile = "[]";
+                File.WriteAllText(pathStudents, defaultFile);
+            }
+            if (string.IsNullOrWhiteSpace(File.ReadAllText(pathStudents)))
+            {
+                string defaultFile = "[]";
+                File.WriteAllText(pathStudents, defaultFile);
+            }
             if (File.Exists(pathStudents) && !string.IsNullOrWhiteSpace(File.ReadAllText(pathStudents)))
             {
                 string fileContent = File.ReadAllText(pathStudents);

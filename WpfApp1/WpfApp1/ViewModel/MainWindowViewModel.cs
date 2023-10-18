@@ -8,6 +8,7 @@ using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Input;
 using WpfApp1.Commands;
+using WpfApp1.Model;
 using WpfApp1.ViewModel.Buttons;
 using WpfApp1.Views;
 using WpfApp1.Views.StudentView;
@@ -19,11 +20,13 @@ namespace WpfApp1.ViewModel
     {
         //public ICommand? ButtonBackToMenu { get; private set; }
         //private List<Window> openedWindows = new List<Window>();
+        List<Student> students = new List<Student>();
         private RelayCommand backToMenuButton;
         public ICommand BackToMenuButton => backToMenuButton ??= new RelayCommand(PerformBackToMenuButton);
 
         public void CloseAllOpenWindows()
         {
+            //Application.Current.MainWindow.Show();
             foreach (Window window in Application.Current.Windows)
             {
                 if (window != Application.Current.MainWindow)
@@ -32,8 +35,6 @@ namespace WpfApp1.ViewModel
                 }
             }
         }
-
-
         public void PerformBackToMenuButton()
         {
             Application.Current.MainWindow.Hide();
@@ -45,21 +46,11 @@ namespace WpfApp1.ViewModel
                 mainWindow.Show();
             }
         }
-
-    //    openedWindows.Add(student);
-    //        openedWindows.Add(teacher);
-    //        foreach (var window in openedWindows)
-    //        {
-    //            window.Close();
-    //        }
-    //teacher.Visibility = Visibility.Collapsed;
-    //        teacher.Close();
-    //        student.Close();
-
         private RelayCommand buttonAddStudents;
         public ICommand ButtonAddStudents => buttonAddStudents ??= new RelayCommand(PerformButtonAddStudents);
         private void PerformButtonAddStudents()
         {
+            Application.Current.MainWindow.Hide();
             WindowStudent student = new WindowStudent();
             StudentViewModel studentViewModel = new StudentViewModel();
             student.DataContext = studentViewModel;
@@ -73,6 +64,7 @@ namespace WpfApp1.ViewModel
 
         private void PerformButtonAddTeachers()
         {
+            Application.Current.MainWindow.Hide();
             WindowTeacher teacher = new WindowTeacher();
             TeacherViewModel teacherViewModel = new TeacherViewModel();
             teacher.DataContext = teacherViewModel;
@@ -84,6 +76,7 @@ namespace WpfApp1.ViewModel
 
         private void PerformButtonShowStudents()
         {
+            Application.Current.MainWindow.Hide();
             ShownStudentsView shownStudentsView = new ShownStudentsView();
             ShownStudentsViewModel vw = new ShownStudentsViewModel();
             shownStudentsView.DataContext = vw;
@@ -95,6 +88,12 @@ namespace WpfApp1.ViewModel
 
         private void PerformButtonShowTeachers()
         {
+            Application.Current.MainWindow.Hide();
+            ShownTeachersView shownTeachersView = new ShownTeachersView();
+            ShownTeachersViewModel shownTeachersViewModel = new ShownTeachersViewModel();
+            shownTeachersView.DataContext = shownTeachersViewModel;
+            shownTeachersView.Show();
+
         }
 
 

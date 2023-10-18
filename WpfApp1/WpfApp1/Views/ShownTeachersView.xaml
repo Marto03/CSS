@@ -1,0 +1,91 @@
+﻿<Window x:Class="WpfApp1.Views.ShownTeachersView"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:WpfApp1.ViewModel"
+        d:DataContext="{d:DesignInstance Type=local:ShownTeachersViewModel}"
+        mc:Ignorable="d"
+        WindowStartupLocation = "CenterScreen"
+        Title="ShownTeachersView" Height="500" Width="800">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition x:Name="row0" Height="70"/>
+            <RowDefinition x:Name="row1" Height="*"/>
+            <RowDefinition x:Name="row2" Height="50"/>
+        </Grid.RowDefinitions>
+        <Grid>
+            <Rectangle Fill="Cyan"/>
+            <TextBlock Text="All created teachers" Grid.Row="0" VerticalAlignment="Center"
+               HorizontalAlignment="Center" FontSize="50" />
+        </Grid>
+        <ListView Name="TeacherListView" Visibility="Visible" HorizontalAlignment="Stretch" 
+  HorizontalContentAlignment="Center" IsEnabled="True" VerticalContentAlignment="Center" VerticalAlignment="Stretch"
+  Focusable="True" Grid.Row="1" Grid.RowSpan="3">
+
+            <ListView.View>
+                <GridView>
+                    <GridViewColumn Header="First Name" Width="150">
+                        <GridViewColumn.CellTemplate>
+                            <DataTemplate>
+                                <TextBlock Text="{Binding Fname}" FontSize="15" HorizontalAlignment="Center"  TextAlignment="Center"/>
+                            </DataTemplate>
+
+                        </GridViewColumn.CellTemplate>
+                    </GridViewColumn>
+
+                    <GridViewColumn Header="Last Name" Width="120" >
+                        <GridViewColumn.CellTemplate>
+                            <DataTemplate>
+                                <TextBlock Text="{Binding Lname}" FontSize="15" Focusable="False" HorizontalAlignment="Center"  TextAlignment="Center"/>
+                            </DataTemplate>
+                        </GridViewColumn.CellTemplate>
+                    </GridViewColumn>
+
+                    <GridViewColumn Header="Age" Width="60" >
+                        <GridViewColumn.CellTemplate>
+                            <DataTemplate>
+                                <TextBlock Text="{Binding Age}" FontSize="15" Focusable="False" HorizontalAlignment="Center"  TextAlignment="Center"/>
+                            </DataTemplate>
+                        </GridViewColumn.CellTemplate>
+                    </GridViewColumn>
+
+                    <GridViewColumn Header="ID" Width="120" >
+                        <GridViewColumn.CellTemplate>
+                            <DataTemplate>
+                                <TextBlock Text="{Binding Id}" FontSize="15" Focusable="False" HorizontalAlignment="Center"  TextAlignment="Center"/>
+                            </DataTemplate>
+                        </GridViewColumn.CellTemplate>
+                    </GridViewColumn>
+
+                    <GridViewColumn Header="YearsExperience" Width="120" >
+                        <GridViewColumn.CellTemplate>
+                            <DataTemplate>
+                                <TextBlock Text="{Binding YearsExperience}" FontSize="15" Focusable="False" HorizontalAlignment="Center"  TextAlignment="Center"/>
+                            </DataTemplate>
+                        </GridViewColumn.CellTemplate>
+                    </GridViewColumn>
+
+                    <GridViewColumn Header="Title" Width="120" >
+                        <GridViewColumn.CellTemplate>
+                            <DataTemplate>
+                                <TextBlock Text="{Binding Title}" FontSize="15" Focusable="False" HorizontalAlignment="Center"  TextAlignment="Center"/>
+                            </DataTemplate>
+                        </GridViewColumn.CellTemplate>
+                    </GridViewColumn>
+
+                    <GridViewColumn Header="Speciality" Width="120">
+                        <GridViewColumn.CellTemplate>
+                            <DataTemplate>
+                                <TextBlock Text="{Binding Speciality}" FontSize="15" Focusable="False" HorizontalAlignment="Center"  TextAlignment="Center"/>
+                            </DataTemplate>
+                        </GridViewColumn.CellTemplate>
+                    </GridViewColumn>
+                </GridView>
+            </ListView.View>
+        </ListView>
+
+        <Button Name="backToMenu" Command="{Binding BackToMenuButton}" Grid.Row="2" Height="50" Content="Return to Menu" HorizontalAlignment="Stretch"
+        VerticalAlignment="Center"  Focusable="False" Visibility="Visible"/>
+    </Grid>
+</Window>

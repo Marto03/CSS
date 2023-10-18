@@ -28,7 +28,6 @@ namespace WpfApp1.ViewModel
             students = ShownStudents();
             Message = "Student's data";
             IsConditionMet = true;
-            _st = new(Fname, Lname, Age, Id, Speciality, Course);
         }
         public List<Student> ShownStudents()
         {
@@ -47,68 +46,104 @@ namespace WpfApp1.ViewModel
             }
             return new List<Student>();
         }
+        private string _Fname;
         public string Fname
         {
-            get => _st?.Fname;
+            get => _Fname;
             set
             {
-                if (_st.Fname != value)
+                if (_Fname != value)
                 {
                     if (!string.IsNullOrEmpty(value) && value.All(char.IsLetter))
                     {
-                        _st.Fname = value;
+                        _Fname = value;
                         OnPropertyChanged(nameof(Fname));
                     }
                 }
             }
         }
+        private string _Lname;
         public string Lname
         {
-            get => _st?.Lname;
+            get => _Lname;
             set
             {
-                if (_st.Lname != value)
+                if (_Lname != value)
                 {
                     if (!string.IsNullOrEmpty(value) && value.All(char.IsLetter))
                     {
-                        _st.Lname = value;
+                        _Lname = value;
                         OnPropertyChanged(nameof(Lname));
                     }
                         
                 }
             }
         }
+        private int _Age;
         public int Age
         {
-            get => _st?.Age ?? 0;
+            get => _Age;
             set
             {
-                if (_st.Age != value)
+                if (_Age != value)
                 {
                     if (int.TryParse(value.ToString(), out int parsedAge) && parsedAge > 0)
                     {
-                        _st.Age = value;
+                        _Age = value;
                         OnPropertyChanged(nameof(Age));
                     }
                 }
             }
         }
+        private long _Id;
         public long Id
         {
-            get => _st?.Id ?? 0;
+            get => _Id;
             set
             {
-                if (_st.Id != value)
+                if (_Id != value)
                 {
                     if (long.TryParse(value.ToString(), out long parsedId) && parsedId > 0)
                     {
                         if (value.ToString().Length <= 10)
                         {
-                            _st.Id = value;
+                            _Id = value;
                             OnPropertyChanged(nameof(Id));
                         }
                     }
                        
+                }
+            }
+        }
+        private string _Speciality;
+        public string Speciality
+        {
+            get => _Speciality;
+            set
+            {
+                if (_Speciality != value)
+                {
+                    if (!string.IsNullOrEmpty(value) && value.All(char.IsLetter))
+                    {
+                        _Speciality = value;
+                        OnPropertyChanged(nameof(Speciality));
+                    }
+                }
+            }
+        }
+        private int _Course;
+        public int Course
+        {
+            get => _Course;
+            set
+            {
+                if (_Course != value)
+                {
+                    if (int.TryParse(value.ToString(), out int parsedCourse) && parsedCourse > 0)
+                    {
+                        _Course = value;
+                        OnPropertyChanged(nameof(Course));
+                    }
                 }
             }
         }
@@ -121,36 +156,6 @@ namespace WpfApp1.ViewModel
                 {
                     _StudentExists = value;
                     OnPropertyChanged(nameof(StudentExists));
-                }
-            }
-        }
-        public string Speciality
-        {
-            get => _st?.Speciality;
-            set
-            {
-                if (_st.Speciality != value)
-                {
-                    if (!string.IsNullOrEmpty(value) && value.All(char.IsLetter))
-                    {
-                        _st.Speciality = value;
-                        OnPropertyChanged(nameof(Speciality));
-                    }
-                }
-            }
-        }
-        public int Course
-        {
-            get => _st?.Course ?? 0;
-            set
-            {
-                if (_st.Course != value)
-                {
-                    if (int.TryParse(value.ToString(), out int parsedCourse) && parsedCourse > 0)
-                    {
-                        _st.Course = value;
-                        OnPropertyChanged(nameof(Course));
-                    }
                 }
             }
         }
@@ -200,14 +205,18 @@ namespace WpfApp1.ViewModel
 
         private void PerformCreateStudentsButton()
         {
-            string idS = _st.Id.ToString();
             StudentValidations studentValidations = new StudentValidations(this);
             if (studentValidations.IsValid())
             {
+                string IdS = Id.ToString();
+                if (IdS.Length == 9)
+                {
+                    IdS = Id.ToString("D10");
+                }
+                StudentExists = students.Any(person => person.Fname == Fname && person.Lname == Lname &&
+                    person.Age == Age && person.Id == Id);
 
-                StudentExists = students.Any(person => person.Fname == _st.Fname && person.Lname == _st.Lname &&
-                    person.Age == _st.Age && person.Id == _st.Id);
-
+                _st = new(Fname, Lname, Age, long.Parse(IdS), Speciality, Course);
                 if (StudentExists)
                 {
                     Message = "Student exists";

@@ -19,7 +19,7 @@ namespace WpfApp1.Validations
             if (viewModel != null)
             {
                 string? idS = viewModel.Id.ToString();
-                if (viewModel.Fname != null && viewModel.Lname != null && viewModel.Age != 0 && viewModel.Id != 0 && idS.Length == 10
+                if (viewModel.Fname != null && viewModel.Lname != null && viewModel.Age != 0 && (idS.Length == 10 || idS.Length == 9)
                     && viewModel.Speciality != null && viewModel.Course != 0)
                 {
                     return true;

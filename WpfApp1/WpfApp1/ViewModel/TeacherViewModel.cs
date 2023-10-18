@@ -16,6 +16,8 @@ using WpfApp1.Views.TeacherView;
 
 namespace WpfApp1.ViewModel
 {
+    /* Must fix the setters and getters
+     */
     public class TeacherViewModel : INotifyPropertyChanged
     {
         private string pathTeachers = "C:\\Users\\Microinvest\\source\\repos\\FileCreating\\WpfTeachers.json";
@@ -28,7 +30,7 @@ namespace WpfApp1.ViewModel
             Message = "Teacher's data";
             teachers = ShownTeachers();
             IsConditionMet = true;
-            _teacher = new Teacher(Fname, Lname, Age, Id, YearsExperience, Title, Speciality);
+            _teacher = new Teacher(Fname, Lname, Age, Id, YearsExperience, Title, Speciality); // must place that when the button is activated
         }
         public List<Teacher> ShownTeachers()
         {

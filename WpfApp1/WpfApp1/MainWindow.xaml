@@ -37,8 +37,8 @@
                 <ColumnDefinition Width="*"/>
                 <ColumnDefinition/>
             </Grid.ColumnDefinitions>
-            <Button Command="{Binding ButtonShowStudents}" Name ="showStudents"  Grid.Row="1" Grid.Column="0" Content="Show all Students" FontSize="35" Click="ShowStudents_Click"/>
-            <Button Command="{Binding ButtonShowTeachers}" Name ="showTeachers"  Grid.Row="1" Grid.Column="1" Content="Show all Teachers" FontSize="35" Click="ShowTeachers_Click"/>
+            <Button Command="{Binding ButtonShowStudents}" Name ="showStudents"  Grid.Row="1" Grid.Column="0" Content="Show all Students" FontSize="35" />
+            <Button Command="{Binding ButtonShowTeachers}" Name ="showTeachers"  Grid.Row="1" Grid.Column="1" Content="Show all Teachers" FontSize="35" />
         </Grid>
         <Grid Name="ShowPeople" Grid.Row="3">
             <Grid.ColumnDefinitions>
