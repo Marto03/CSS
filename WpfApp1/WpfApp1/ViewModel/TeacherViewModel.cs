@@ -25,6 +25,7 @@ namespace WpfApp1.ViewModel
         private Teacher _teacher;
         public TeacherViewModel()
         {
+            Message = "Teacher's data";
             teachers = ShownTeachers();
             IsConditionMet = true;
             _teacher = new Teacher(Fname, Lname, Age, Id, YearsExperience, Title, Speciality);

@@ -26,6 +26,7 @@ namespace WpfApp1.ViewModel
         public StudentViewModel()
         {
             students = ShownStudents();
+            Message = "Student's data";
             IsConditionMet = true;
             _st = new(Fname, Lname, Age, Id, Speciality, Course);
         }

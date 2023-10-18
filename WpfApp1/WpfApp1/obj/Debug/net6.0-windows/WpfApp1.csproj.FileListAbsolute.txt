@@ -26,3 +26,5 @@ C:\Users\Microinvest\source\repos\WpfApp1\WpfApp1\obj\Debug\net6.0-windows\Views
 C:\Users\Microinvest\source\repos\WpfApp1\WpfApp1\obj\Debug\net6.0-windows\Views\TeacherView\WindowTeacher.g.cs
 C:\Users\Microinvest\source\repos\WpfApp1\WpfApp1\obj\Debug\net6.0-windows\Views\StudentView\WindowStudent.baml
 C:\Users\Microinvest\source\repos\WpfApp1\WpfApp1\obj\Debug\net6.0-windows\Views\TeacherView\WindowTeacher.baml
+C:\Users\Microinvest\source\repos\WpfApp1\WpfApp1\obj\Debug\net6.0-windows\Views\ShownStudentsView.g.cs
+C:\Users\Microinvest\source\repos\WpfApp1\WpfApp1\obj\Debug\net6.0-windows\Views\ShownStudentsView.baml

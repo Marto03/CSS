@@ -27,6 +27,18 @@ namespace WpfApp1.Views.StudentView
         public WindowStudent()
         {
             InitializeComponent();
+            if (!File.Exists(pathStudents))
+            {
+                File.Create(pathStudents);
+                string defaultFile = "[]";
+                File.WriteAllText(pathStudents, defaultFile);
+            }
+            if (string.IsNullOrWhiteSpace(File.ReadAllText(pathStudents)))
+            {
+                string defaultFile = "[]";
+                File.WriteAllText(pathStudents, defaultFile);
+
+            }
             //students = ShownStudents();
             BothPeople allPeople = new BothPeople(fname, lname, age, id, spec);
             bothPeople = allPeople.ShownPeople();

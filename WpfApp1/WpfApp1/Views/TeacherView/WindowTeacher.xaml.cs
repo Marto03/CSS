@@ -27,6 +27,17 @@ namespace WpfApp1.Views.TeacherView
         public WindowTeacher()
         {
             InitializeComponent();
+            if (!File.Exists(pathTeachers))
+            {
+                File.Create(pathTeachers);
+                string defaultFile = "[]";
+                File.WriteAllText(pathTeachers, defaultFile);
+            }
+            if (string.IsNullOrWhiteSpace(File.ReadAllText(pathTeachers)))
+            {
+                string defaultFile = "[]";
+                File.WriteAllText(pathTeachers, defaultFile);
+            }
             DataContext = new TeacherViewModel();
             //teachers = ShownTeachers();
             BothPeople peoples = new BothPeople(fname, lname, age, id, spec);

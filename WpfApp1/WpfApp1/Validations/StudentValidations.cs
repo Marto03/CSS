@@ -9,7 +9,7 @@ namespace WpfApp1.Validations
 {
     internal class StudentValidations
     {
-        StudentViewModel ?viewModel;
+        StudentViewModel? viewModel;
         public StudentValidations(StudentViewModel viewModel)
         {
             this.viewModel = viewModel;
