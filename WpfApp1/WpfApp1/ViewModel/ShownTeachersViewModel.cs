@@ -1,10 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Controls;
-using System.Windows.Input;
 using System.Windows;
 using WpfApp1.Model;
 using System.IO;
@@ -23,17 +18,6 @@ namespace WpfApp1.ViewModel
         }
         public List<Teacher> ShownTeachers()
         {
-            if (!File.Exists(pathTeachers))
-            {
-                File.Create(pathTeachers);
-                string defaultFile = "[]";
-                File.WriteAllText(pathTeachers, defaultFile);
-            }
-            if (string.IsNullOrWhiteSpace(File.ReadAllText(pathTeachers)))
-            {
-                string defaultFile = "[]";
-                File.WriteAllText(pathTeachers, defaultFile);
-            }
             if (File.Exists(pathTeachers) && !string.IsNullOrWhiteSpace(File.ReadAllText(pathTeachers)))
             {
                 string fileContent = File.ReadAllText(pathTeachers);

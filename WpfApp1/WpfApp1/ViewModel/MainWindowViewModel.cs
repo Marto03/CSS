@@ -1,15 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.IO;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.ComponentModel;
 using System.Windows;
 using System.Windows.Input;
 using WpfApp1.Commands;
-using WpfApp1.Model;
-using WpfApp1.ViewModel.Buttons;
 using WpfApp1.Views;
 using WpfApp1.Views.StudentView;
 using WpfApp1.Views.TeacherView;
@@ -18,15 +10,11 @@ namespace WpfApp1.ViewModel
 {
     public class MainWindowViewModel : INotifyPropertyChanged
     {
-        //public ICommand? ButtonBackToMenu { get; private set; }
-        //private List<Window> openedWindows = new List<Window>();
-        List<Student> students = new List<Student>();
         private RelayCommand backToMenuButton;
         public ICommand BackToMenuButton => backToMenuButton ??= new RelayCommand(PerformBackToMenuButton);
 
         public void CloseAllOpenWindows()
         {
-            //Application.Current.MainWindow.Show();
             foreach (Window window in Application.Current.Windows)
             {
                 if (window != Application.Current.MainWindow)
@@ -93,9 +81,19 @@ namespace WpfApp1.ViewModel
             ShownTeachersViewModel shownTeachersViewModel = new ShownTeachersViewModel();
             shownTeachersView.DataContext = shownTeachersViewModel;
             shownTeachersView.Show();
-
         }
 
+        private RelayCommand buttonShowAllPeople;
+        public ICommand ButtonShowAllPeople => buttonShowAllPeople ??= new RelayCommand(PerformButtonShowAllPeople);
+
+        private void PerformButtonShowAllPeople()
+        {
+            Application.Current.MainWindow.Hide();
+            ShownPeopleView shownPeopleView = new ShownPeopleView();
+            ShownPeopleViewModel shownPeopleViewModel = new ShownPeopleViewModel();
+            shownPeopleView.DataContext = shownPeopleViewModel;
+            shownPeopleView.Show();
+        }
 
     }
 }

@@ -44,7 +44,8 @@
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="*"/>
             </Grid.ColumnDefinitions>
-            <Button Name="showAllPeople" Content="Show all added people" FontSize="35" Click="ShowAllPeople_Click"/>
+            <Button Name="showAllPeople"
+                    Command ="{Binding ButtonShowAllPeople}" Content="Show all added people" FontSize="35"/>
         </Grid>
 
         <Grid Name="botCol" Grid.Row="4">
@@ -57,9 +58,6 @@
             </Grid.ColumnDefinitions>
 
         </Grid>
-
-        <Button Name="backToMenu" Grid.Row="4" Content="Return to Menu" HorizontalAlignment="Stretch"
-        VerticalAlignment="Stretch" Click="BackToMenu_Click" Focusable="False" Visibility="Collapsed"/>
 
         <Grid >
 

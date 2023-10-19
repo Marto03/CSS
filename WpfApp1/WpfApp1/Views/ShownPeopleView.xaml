@@ -16,7 +16,7 @@
         </Grid.RowDefinitions>
         <Grid>
             <Rectangle Fill="Cyan"/>
-            <TextBlock Text="All created teachers" Grid.Row="0" VerticalAlignment="Center"
+            <TextBlock Text="All created people" Grid.Row="0" VerticalAlignment="Center"
        HorizontalAlignment="Center" FontSize="50" />
         </Grid>
 

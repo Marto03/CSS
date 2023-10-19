@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using WpfApp1.ViewModel;
+﻿using WpfApp1.ViewModel;
 
 namespace WpfApp1.Validations
 {
@@ -18,8 +13,7 @@ namespace WpfApp1.Validations
         {
             if (viewModel != null)
             {
-                string? idS = viewModel.Id.ToString();
-                if (viewModel.Fname != null && viewModel.Lname != null && viewModel.Age != 0 && (idS.Length == 10 || idS.Length == 9)
+                if (viewModel.Fname != null && viewModel.Lname != null && viewModel.Age != 0 && viewModel.Id.Length == 10
                     && viewModel.Speciality != null && viewModel.Course != 0)
                 {
                     return true;

@@ -20,8 +20,8 @@
                HorizontalAlignment="Center" FontSize="50" />
         </Grid>
         <ListView Name="TeacherListView" Visibility="Visible" HorizontalAlignment="Stretch" 
-  HorizontalContentAlignment="Center" IsEnabled="True" VerticalContentAlignment="Center" VerticalAlignment="Stretch"
-  Focusable="True" Grid.Row="1" Grid.RowSpan="3">
+  HorizontalContentAlignment="Center" IsEnabled="True" VerticalContentAlignment="Stretch" VerticalAlignment="Stretch"
+  Focusable="True" Grid.Row="1">
 
             <ListView.View>
                 <GridView>

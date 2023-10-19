@@ -1,185 +1,33 @@
 [
   {
-    "Fname": null,
-    "Lname": "adszxc",
-    "Age": 3,
-    "Id": 1231231231,
-    "Speciality": "asdf",
-    "Course": 3
-  },
-  {
-    "Fname": null,
-    "Lname": "asdf",
-    "Age": 2,
-    "Id": 3333333333,
-    "Speciality": "dfg",
-    "Course": 5
-  },
-  {
-    "Fname": null,
-    "Lname": "zvxcvzxcv",
-    "Age": 123,
-    "Id": 1231231231,
-    "Speciality": "asdf",
-    "Course": 4
-  },
-  {
-    "Fname": null,
-    "Lname": "zxcvv",
-    "Age": 123123123,
-    "Id": 1231231231,
-    "Speciality": "asdfasdf",
-    "Course": 3
-  },
-  {
-    "Fname": null,
-    "Lname": "zxcv",
-    "Age": 123,
-    "Id": 1231231231,
-    "Speciality": "sfd",
-    "Course": 54
-  },
-  {
-    "Fname": null,
-    "Lname": "zcxvzxcv",
-    "Age": 123,
-    "Id": 1231231231,
-    "Speciality": "asdff",
-    "Course": 5
-  },
-  {
-    "Fname": null,
-    "Lname": "zxvczvx",
-    "Age": 12312,
-    "Id": 3232342342,
-    "Speciality": "dfg",
-    "Course": 6
-  },
-  {
-    "Fname": null,
-    "Lname": "asdf",
-    "Age": 123,
-    "Id": 4344534534,
-    "Speciality": "dfgh",
-    "Course": 6
-  },
-  {
-    "Fname": null,
-    "Lname": "z",
-    "Age": 3,
-    "Id": 1231231231,
-    "Speciality": "sdf",
-    "Course": 7
-  },
-  {
-    "Fname": null,
-    "Lname": "a",
-    "Age": 10,
-    "Id": 1231231231,
-    "Speciality": "dsf",
-    "Course": 10
-  },
-  {
-    "Fname": null,
-    "Lname": "zasfd",
-    "Age": 123,
-    "Id": 1231231231,
-    "Speciality": "sdf",
-    "Course": 43
-  },
-  {
-    "Fname": "vzxcv",
-    "Lname": "zlafsd",
-    "Age": 123,
-    "Id": 1231231231,
-    "Speciality": "sdfgsdf",
-    "Course": 6
-  },
-  {
-    "Fname": "smth",
-    "Lname": "asdf",
-    "Age": 12,
-    "Id": 1222222222,
-    "Speciality": "asdf",
-    "Course": 12
-  },
-  {
-    "Fname": "asdf",
-    "Lname": "asd",
-    "Age": 14,
-    "Id": 1444444444,
-    "Speciality": "asdf",
-    "Course": 14
-  },
-  {
-    "Fname": "asdf",
-    "Lname": "asdg",
-    "Age": 15,
-    "Id": 1555555555,
-    "Speciality": "asd",
-    "Course": 15
-  },
-  {
     "Fname": "marto",
-    "Lname": "a",
+    "Lname": "alexandrov",
     "Age": 1,
-    "Id": 1231231231,
-    "Speciality": "a",
+    "Id": "0323434534",
+    "Speciality": "fasd",
+    "Course": 2
+  },
+  {
+    "Fname": "s",
+    "Lname": "s",
+    "Age": 1,
+    "Id": "1111111111",
+    "Speciality": "s",
     "Course": 1
   },
   {
-    "Fname": "martoa",
+    "Fname": "a",
     "Lname": "a",
     "Age": 1,
-    "Id": 1231231231,
-    "Speciality": "a",
+    "Id": "1111111111",
+    "Speciality": "s",
     "Course": 1
   },
   {
-    "Fname": "asdf",
-    "Lname": "zxcv",
-    "Age": 123,
-    "Id": 1231231231,
-    "Speciality": "asdf",
-    "Course": 3
-  },
-  {
-    "Fname": "asfd",
-    "Lname": "zxcv",
+    "Fname": "random",
+    "Lname": "stuff",
     "Age": 2,
-    "Id": 0,
-    "Speciality": "xzcvv",
-    "Course": 3
-  },
-  {
-    "Fname": "as",
-    "Lname": "asd",
-    "Age": 2,
-    "Id": 1231231243,
-    "Speciality": "sad",
-    "Course": 3
-  },
-  {
-    "Fname": "zxcv",
-    "Lname": "asdf",
-    "Age": 2,
-    "Id": 123123123,
-    "Speciality": "zxcv",
-    "Course": 12
-  },
-  {
-    "Fname": "asdf",
-    "Lname": "zxcv",
-    "Age": 3,
-    "Id": 123123123,
-    "Speciality": "asdf",
-    "Course": 3
-  },
-  {
-    "Fname": "zxcv",
-    "Lname": "asdf",
-    "Age": 123,
-    "Id": 1231231231,
+    "Id": "0312312312",
     "Speciality": "asdf",
     "Course": 3
   }

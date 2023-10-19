@@ -1,17 +1,14 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.IO;
 using System.Linq;
 using System.Text.Json;
 using System.Windows;
-using System.Windows.Controls;
 using System.Windows.Input;
 using WpfApp1.Commands;
 using WpfApp1.Model;
 using WpfApp1.Validations;
-using WpfApp1.Views.StudentView;
 
 namespace WpfApp1.ViewModel
 {
@@ -20,11 +17,15 @@ namespace WpfApp1.ViewModel
         private Student _st;
         
         private string pathStudents = "C:\\Users\\Microinvest\\source\\repos\\FileCreating\\WpfStudents.json";
+        private string pathPeople = "C:\\Users\\Microinvest\\source\\repos\\FileCreating\\WpfallPeople.json";
         List<Student> students = new List<Student>();
+        List<BothPeople> bothPeople = new List<BothPeople>();
 
         private bool _StudentExists;
         public StudentViewModel()
         {
+            ShownPeopleViewModel viewModel = new ShownPeopleViewModel();
+            bothPeople = viewModel.ShownPeople();
             students = ShownStudents();
             Message = "Student's data";
             IsConditionMet = true;
@@ -95,17 +96,17 @@ namespace WpfApp1.ViewModel
                 }
             }
         }
-        private long _Id;
-        public long Id
+        private string _Id;
+        public string Id
         {
             get => _Id;
             set
             {
                 if (_Id != value)
                 {
-                    if (long.TryParse(value.ToString(), out long parsedId) && parsedId > 0)
+                    if (long.TryParse(value, out long parsedId))
                     {
-                        if (value.ToString().Length <= 10)
+                        if (value.Length <= 10)
                         {
                             _Id = value;
                             OnPropertyChanged(nameof(Id));
@@ -159,6 +160,7 @@ namespace WpfApp1.ViewModel
                 }
             }
         }
+
         private string _message;
         public string Message
         {
@@ -182,7 +184,6 @@ namespace WpfApp1.ViewModel
                 }
             }
         }
-
         private void OnPropertyChanged(string v)
         {
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(v));
@@ -208,28 +209,36 @@ namespace WpfApp1.ViewModel
             StudentValidations studentValidations = new StudentValidations(this);
             if (studentValidations.IsValid())
             {
-                string IdS = Id.ToString();
-                if (IdS.Length == 9)
-                {
-                    IdS = Id.ToString("D10");
-                }
+                long IdLong = long.Parse(Id);
+                Id = "D10";
                 StudentExists = students.Any(person => person.Fname == Fname && person.Lname == Lname &&
                     person.Age == Age && person.Id == Id);
 
-                _st = new(Fname, Lname, Age, long.Parse(IdS), Speciality, Course);
                 if (StudentExists)
                 {
                     Message = "Student exists";
                 }
                 else
                 {
+                    _st = new(Fname, Lname, Age, Id, Speciality, Course);
+                    PeopleValidations peopleValidations = new PeopleValidations(_st);
                     students.Add(_st);
+                    if (!peopleValidations.Exists())
+                    {
+                        bothPeople.Add(_st);
+                    }
                     string json = JsonSerializer.Serialize(students, new JsonSerializerOptions
                     {
                         WriteIndented = true
                     });
 
+                    string json1 = JsonSerializer.Serialize(bothPeople, new JsonSerializerOptions
+                    {
+                        WriteIndented = true
+                    });
+
                     File.WriteAllText(pathStudents, json);
+                    File.WriteAllText(pathPeople, json1);
                     Message = "Created successfully";
                     IsConditionMet = false;
                 }
