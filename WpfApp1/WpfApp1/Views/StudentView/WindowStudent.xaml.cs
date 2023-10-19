@@ -1,11 +1,9 @@
-﻿using System.ComponentModel;
-using System.Windows;
+﻿using System.Windows;
 
 namespace WpfApp1.Views.StudentView
 {
-    public partial class WindowStudent : Window, INotifyPropertyChanged
+    public partial class WindowStudent : Window
     {
-        public event PropertyChangedEventHandler? PropertyChanged;
         public WindowStudent()
         {
             InitializeComponent();

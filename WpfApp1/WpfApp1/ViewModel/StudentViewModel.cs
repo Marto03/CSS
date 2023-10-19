@@ -20,8 +20,15 @@ namespace WpfApp1.ViewModel
         private string pathPeople = "C:\\Users\\Microinvest\\source\\repos\\FileCreating\\WpfallPeople.json";
         List<Student> students = new List<Student>();
         List<BothPeople> bothPeople = new List<BothPeople>();
-
+        private string _Fname;
+        private string _Lname;
+        private int _Age;
+        private string _Id;
+        private string _Speciality;
+        private int _Course;
         private bool _StudentExists;
+        private string _message;
+        private bool _isConditionMet;
         public StudentViewModel()
         {
             ShownPeopleViewModel viewModel = new ShownPeopleViewModel();
@@ -30,24 +37,6 @@ namespace WpfApp1.ViewModel
             Message = "Student's data";
             IsConditionMet = true;
         }
-        public List<Student> ShownStudents()
-        {
-            if (File.Exists(pathStudents) && !string.IsNullOrWhiteSpace(File.ReadAllText(pathStudents)))
-            {
-                string fileContent = File.ReadAllText(pathStudents);
-                try
-                {
-                    List<Student> student = JsonSerializer.Deserialize<List<Student>>(fileContent);
-                    return student;
-                }
-                catch (Exception ex)
-                {
-                    MessageBox.Show($"Error: {ex.Message}");
-                }
-            }
-            return new List<Student>();
-        }
-        private string _Fname;
         public string Fname
         {
             get => _Fname;
@@ -63,7 +52,6 @@ namespace WpfApp1.ViewModel
                 }
             }
         }
-        private string _Lname;
         public string Lname
         {
             get => _Lname;
@@ -80,7 +68,6 @@ namespace WpfApp1.ViewModel
                 }
             }
         }
-        private int _Age;
         public int Age
         {
             get => _Age;
@@ -96,7 +83,6 @@ namespace WpfApp1.ViewModel
                 }
             }
         }
-        private string _Id;
         public string Id
         {
             get => _Id;
@@ -116,7 +102,6 @@ namespace WpfApp1.ViewModel
                 }
             }
         }
-        private string _Speciality;
         public string Speciality
         {
             get => _Speciality;
@@ -132,7 +117,6 @@ namespace WpfApp1.ViewModel
                 }
             }
         }
-        private int _Course;
         public int Course
         {
             get => _Course;
@@ -148,6 +132,23 @@ namespace WpfApp1.ViewModel
                 }
             }
         }
+        public List<Student> ShownStudents()
+        {
+            if (File.Exists(pathStudents) && !string.IsNullOrWhiteSpace(File.ReadAllText(pathStudents)))
+            {
+                string fileContent = File.ReadAllText(pathStudents);
+                try
+                {
+                    List<Student> student = JsonSerializer.Deserialize<List<Student>>(fileContent);
+                    return student;
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show($"Error: {ex.Message}");
+                }
+            }
+            return new List<Student>();
+        }
         public bool StudentExists
         {
             get { return _StudentExists; }
@@ -161,7 +162,6 @@ namespace WpfApp1.ViewModel
             }
         }
 
-        private string _message;
         public string Message
         {
             get { return _message; }
@@ -171,7 +171,6 @@ namespace WpfApp1.ViewModel
                 OnPropertyChanged(nameof(Message));
             }
         }
-        private bool _isConditionMet;
         public bool IsConditionMet
         {
             get { return _isConditionMet; }
@@ -193,8 +192,6 @@ namespace WpfApp1.ViewModel
 
         private RelayCommand backToMenuButton;
         public ICommand BackToMenuButton => backToMenuButton ??= new RelayCommand(PerformBackToMenuButton);
-
-
         private void PerformBackToMenuButton()
         {
             MainWindowViewModel mainWindowViewModel = new MainWindowViewModel();

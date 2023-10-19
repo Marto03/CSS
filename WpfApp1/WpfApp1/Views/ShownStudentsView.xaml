@@ -19,7 +19,8 @@
             <TextBlock Text="All created students" Grid.Row="0" VerticalAlignment="Center"
                        HorizontalAlignment="Center" FontSize="50" />
         </Grid>
-        <ListView Name="studentListView" Visibility="Visible" HorizontalAlignment="Stretch" 
+        <ListView Name="studentListView" Visibility="Visible" HorizontalAlignment="Stretch"
+                  ItemsSource="{Binding Students}"
                   HorizontalContentAlignment="Center" IsEnabled="True" VerticalAlignment="Stretch" Grid.Row="1">
             <ListView.View>
                 <GridView>

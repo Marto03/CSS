@@ -18,36 +18,26 @@ namespace WpfApp1.ViewModel
         private string pathPeople = "C:\\Users\\Microinvest\\source\\repos\\FileCreating\\WpfallPeople.json";
         List<Teacher> teachers = new List<Teacher>();
         List<BothPeople> bothPeople = new List<BothPeople>();
+        private string _Fname;
+        private string _Lname;
+        private int _Age;
+        private string _Id;
+        private int _YearsExperience;
+        private string _Title;
+        private string _Speciality;
+        private string _message;
+        private bool _isConditionMet;
         public bool TeacherExists;
-
         private Teacher _teacher;
         public TeacherViewModel()
         {
             Message = "Teacher's data";
             teachers = ShownTeachers();
             ShownPeopleViewModel viewModel = new ShownPeopleViewModel();
-
             bothPeople = viewModel.ShownPeople();
             IsConditionMet = true;
         }
-        public List<Teacher> ShownTeachers()
-        {
-            if (File.Exists(pathTeachers) && !string.IsNullOrWhiteSpace(File.ReadAllText(pathTeachers)))
-            {
-                string fileContent = File.ReadAllText(pathTeachers);
-                try
-                {
-                    List<Teacher> teachers = JsonSerializer.Deserialize<List<Teacher>>(fileContent);
-                    return teachers;
-                }
-                catch (Exception ex)
-                {
-                    MessageBox.Show($"Error: {ex.Message}");
-                }
-            }
-            return new List<Teacher>();
-        }
-        private string _Fname;
+
         public string Fname
         {
             get => _Fname;
@@ -63,7 +53,6 @@ namespace WpfApp1.ViewModel
                 }
             }
         }
-        private string _Lname;
         public string Lname
         {
             get => _Lname;
@@ -79,7 +68,6 @@ namespace WpfApp1.ViewModel
                 }
             }
         }
-        private int _Age;
         public int Age
         {
             get => _Age;
@@ -95,7 +83,6 @@ namespace WpfApp1.ViewModel
                 }
             }
         }
-        private string _Id;
         public string Id
         {
             get => _Id;
@@ -114,7 +101,6 @@ namespace WpfApp1.ViewModel
                 }
             }
         }
-        private int _YearsExperience;
         public int YearsExperience
         {
             get => _YearsExperience;
@@ -130,7 +116,6 @@ namespace WpfApp1.ViewModel
                 }
             }
         }
-        private string _Title;
         public string Title
         {
             get => _Title;
@@ -146,7 +131,6 @@ namespace WpfApp1.ViewModel
                 }
             }
         }
-        private string _Speciality;
         public string Speciality
         {
             get => _Speciality;
@@ -163,7 +147,6 @@ namespace WpfApp1.ViewModel
                 }
             }
         }
-        private string _message;
         public string Message
         {
             get { return _message; }
@@ -174,7 +157,6 @@ namespace WpfApp1.ViewModel
             }
         }
 
-        private bool _isConditionMet;
         public bool IsConditionMet
         {
             get { return _isConditionMet; }
@@ -186,6 +168,23 @@ namespace WpfApp1.ViewModel
                     OnPropertyChanged(nameof(IsConditionMet));
                 }
             }
+        }
+        public List<Teacher> ShownTeachers()
+        {
+            if (File.Exists(pathTeachers) && !string.IsNullOrWhiteSpace(File.ReadAllText(pathTeachers)))
+            {
+                string fileContent = File.ReadAllText(pathTeachers);
+                try
+                {
+                    List<Teacher> teachers = JsonSerializer.Deserialize<List<Teacher>>(fileContent);
+                    return teachers;
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show($"Error: {ex.Message}");
+                }
+            }
+            return new List<Teacher>();
         }
         private void OnPropertyChanged(string v)
         {
@@ -240,8 +239,6 @@ namespace WpfApp1.ViewModel
                     IsConditionMet = false;
                 }
             }
-
         }
     }
-
 }

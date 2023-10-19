@@ -11,11 +11,15 @@ namespace WpfApp1.ViewModel
     {
         private string pathTeachers = "C:\\Users\\Microinvest\\source\\repos\\FileCreating\\WpfTeachers.json";
         List<Teacher> teachers = new List<Teacher>();
-
         public ShownTeachersViewModel()
         {
             teachers = ShownTeachers();
         }
+        public List<Teacher> Teachers
+        {
+            get { return teachers; }
+        }
+
         public List<Teacher> ShownTeachers()
         {
             if (File.Exists(pathTeachers) && !string.IsNullOrWhiteSpace(File.ReadAllText(pathTeachers)))

@@ -19,7 +19,8 @@
             <TextBlock Text="All created teachers" Grid.Row="0" VerticalAlignment="Center"
                HorizontalAlignment="Center" FontSize="50" />
         </Grid>
-        <ListView Name="TeacherListView" Visibility="Visible" HorizontalAlignment="Stretch" 
+        <ListView Name="TeacherListView" Visibility="Visible" HorizontalAlignment="Stretch"
+                  ItemsSource="{Binding Teachers}"
   HorizontalContentAlignment="Center" IsEnabled="True" VerticalContentAlignment="Stretch" VerticalAlignment="Stretch"
   Focusable="True" Grid.Row="1">
 

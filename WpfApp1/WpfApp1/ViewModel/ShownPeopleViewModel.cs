@@ -10,11 +10,16 @@ namespace WpfApp1.ViewModel
     public class ShownPeopleViewModel : MainWindowViewModel
     {
         private string pathPeople = "C:\\Users\\Microinvest\\source\\repos\\FileCreating\\WpfallPeople.json";
+
         private List<BothPeople> bothPeople = new List<BothPeople>();
 
         public ShownPeopleViewModel()
         {
             bothPeople = ShownPeople();
+        }
+        public List<BothPeople> BothPeople
+        {
+            get { return bothPeople; }
         }
 
         public List<BothPeople> ShownPeople()

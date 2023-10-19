@@ -9,7 +9,12 @@ namespace WpfApp1.Validations
     public class PeopleValidations
     {
         private bool _PersonExists;
+        BothPeople? both;
         List<BothPeople> bothPeople = new List<BothPeople>();
+        public PeopleValidations(BothPeople p)
+        {
+            this.both = p;
+        }
 
         public bool PersonExists
         {
@@ -19,14 +24,8 @@ namespace WpfApp1.Validations
                 if (_PersonExists != value)
                 {
                     _PersonExists = value;
-                    OnPropertyChanged(nameof(PersonExists));
                 }
             }
-        }
-        BothPeople? both;
-        public PeopleValidations(BothPeople p)
-        {
-            this.both = p;
         }
         public bool Exists()
         {
@@ -40,11 +39,5 @@ namespace WpfApp1.Validations
             }
             return true;
         }
-        public event PropertyChangedEventHandler? PropertyChanged;
-        private void OnPropertyChanged(string v)
-        {
-            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(v));
-        }
-        
     }
 }

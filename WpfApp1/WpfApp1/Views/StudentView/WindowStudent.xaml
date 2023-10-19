@@ -80,12 +80,5 @@
         </Grid>
         <Button Command="{Binding BackToMenuButton}" Name="backToMenu" Grid.Row="2"  Content="Return to Menu" HorizontalAlignment="Stretch"
             VerticalAlignment="Stretch" Focusable="False" Visibility="Visible"/>
-        <!--<TextBlock Name="showStudentsData1" Text="{Binding Message}" FontSize="20" Visibility="Visible" HorizontalAlignment="Center" VerticalAlignment="Center"/>-->
-        
-        <!--<Grid>-->
-            <!--<TextBox x:Name="boxHolder" viewmodel:TextBoxPlaceHolder.Placeholder="smth"
-                     Visibility="Collapsed"/>
-        </Grid>-->
-
     </Grid>
 </Window>

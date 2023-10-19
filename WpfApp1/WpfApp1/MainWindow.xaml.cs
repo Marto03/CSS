@@ -12,7 +12,7 @@ namespace WpfApp1
         {
             InitializeComponent();
             MainWindowViewModel _mainViewModel = new MainWindowViewModel();
-            base.DataContext = _mainViewModel;
+            DataContext = _mainViewModel;
             string defaultFile = "[]";
             if (!File.Exists(pathStudents))
             {

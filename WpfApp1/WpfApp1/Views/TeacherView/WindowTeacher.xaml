@@ -8,8 +8,6 @@
         WindowStartupLocation = "CenterScreen"
         d:DataContext="{d:DesignInstance Type=local:TeacherViewModel}"
         Title="WindowTeacher" Height="700" Width="800">
-    <!--xmlns:viewmodel="clr-namespace:WpfApp1" xmlns:viewmodel1="clr-namespace:WpfApp1.ViewModel" 
-        d:DataContext="{d:DesignInstance Type=viewmodel1:TeacherViewModel}"-->
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="50"/>

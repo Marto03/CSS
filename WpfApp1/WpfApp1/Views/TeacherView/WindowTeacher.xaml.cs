@@ -1,17 +1,12 @@
-﻿using System.Collections.Generic;
-using System.ComponentModel;
-using System.Windows;
-using WpfApp1.ViewModel;
+﻿using System.Windows;
 
 namespace WpfApp1.Views.TeacherView
 {
-    public partial class WindowTeacher : Window , INotifyPropertyChanged
+    public partial class WindowTeacher : Window
     {
         public WindowTeacher()
         {
             InitializeComponent();
-            DataContext = new TeacherViewModel();
         }
-        public event PropertyChangedEventHandler? PropertyChanged;
     }
 }
