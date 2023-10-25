@@ -8,6 +8,7 @@ using System.Windows;
 using System.Windows.Input;
 using WpfApp1.Commands;
 using WpfApp1.Model;
+using WpfApp1.Model.Context;
 using WpfApp1.Validations;
 
 namespace WpfApp1.ViewModel
@@ -33,7 +34,10 @@ namespace WpfApp1.ViewModel
         {
             ShownPeopleViewModel viewModel = new ShownPeopleViewModel();
             bothPeople = viewModel.ShownPeople();
-            students = ShownStudents();
+            //using var context = new PubContext();
+            //students = context.Students.ToList();
+            //context.SaveChanges();
+            //students = ShownStudents();
             Message = "Student's data";
             IsConditionMet = true;
         }
@@ -208,8 +212,8 @@ namespace WpfApp1.ViewModel
             {
                 long IdLong = long.Parse(Id);
                 Id = "D10";
-                StudentExists = students.Any(person => person.Fname == Fname && person.Lname == Lname &&
-                    person.Age == Age && person.Id == Id);
+                StudentExists = students.Any(person => (person.Fname == Fname && person.Lname == Lname &&
+                    person.Age == Age) || (person.Id == Id));
 
                 if (StudentExists)
                 {
@@ -217,25 +221,34 @@ namespace WpfApp1.ViewModel
                 }
                 else
                 {
+                    //StudentRepository studentRepository = new();
                     _st = new(Fname, Lname, Age, Id, Speciality, Course);
+                    // Must remove those from here and instead place it in Service, which has add method who is calling the Repo who is doing those
+                    using var context = new PubContext();
+                    context.Students.Add(_st);
+                    
+                    context.SaveChanges();
+                    // ===================================================================================================
+
+                    //StudentRepository.AddStudent(_st);
                     PeopleValidations peopleValidations = new PeopleValidations(_st);
-                    students.Add(_st);
+                    //students.Add(_st);
                     if (!peopleValidations.Exists())
                     {
                         bothPeople.Add(_st);
                     }
-                    string json = JsonSerializer.Serialize(students, new JsonSerializerOptions
-                    {
-                        WriteIndented = true
-                    });
+                    //string json = JsonSerializer.Serialize(students, new JsonSerializerOptions
+                    //{
+                    //    WriteIndented = true
+                    //});
 
-                    string json1 = JsonSerializer.Serialize(bothPeople, new JsonSerializerOptions
-                    {
-                        WriteIndented = true
-                    });
+                    //string json1 = JsonSerializer.Serialize(bothPeople, new JsonSerializerOptions
+                    //{
+                    //    WriteIndented = true
+                    //});
 
-                    File.WriteAllText(pathStudents, json);
-                    File.WriteAllText(pathPeople, json1);
+                    //File.WriteAllText(pathStudents, json);
+                    //File.WriteAllText(pathPeople, json1);
                     Message = "Created successfully";
                     IsConditionMet = false;
                 }

@@ -4,6 +4,8 @@ using System.Windows;
 using WpfApp1.Model;
 using System.IO;
 using System.Text.Json;
+using WpfApp1.Model.Context;
+using System.Linq;
 
 namespace WpfApp1.ViewModel
 {
@@ -13,7 +15,9 @@ namespace WpfApp1.ViewModel
         List<Teacher> teachers = new List<Teacher>();
         public ShownTeachersViewModel()
         {
-            teachers = ShownTeachers();
+            using var context = new PubContext();
+            teachers = context.Teachers.ToList();
+            //teachers = ShownTeachers();
         }
         public List<Teacher> Teachers
         {

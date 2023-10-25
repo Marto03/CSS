@@ -4,6 +4,8 @@ using System.Windows;
 using WpfApp1.Model;
 using System.IO;
 using System.Text.Json;
+using WpfApp1.Model.Context;
+using System.Linq;
 
 namespace WpfApp1.ViewModel
 {
@@ -13,7 +15,10 @@ namespace WpfApp1.ViewModel
         List<Student> students = new List<Student>();
         public ShownStudentsViewModel()
         {
-            students = ShownStudents();
+            using var context = new PubContext();
+            context.SaveChanges();
+            //students = ShownStudents();
+            students = context.Students.ToList();
         }
         public List<Student> Students
         {

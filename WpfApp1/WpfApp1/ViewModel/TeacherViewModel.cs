@@ -8,6 +8,7 @@ using System.Windows;
 using System.Windows.Input;
 using WpfApp1.Commands;
 using WpfApp1.Model;
+using WpfApp1.Model.Context;
 using WpfApp1.Validations;
 
 namespace WpfApp1.ViewModel
@@ -219,6 +220,11 @@ namespace WpfApp1.ViewModel
                 else
                 {
                     _teacher = new Teacher(Fname, Lname, Age, Id, YearsExperience, Title, Speciality);
+                    // Must remove those from here and instead place it in Service, which has add method who is calling the Repo who is doing those
+                    using var context = new PubContext();
+                    context.Teachers.Add(_teacher);
+                    context.SaveChanges();
+                    // ===============================================================================
                     teachers.Add(_teacher);
                     PeopleValidations peopleValidations = new PeopleValidations(_teacher);
                     if (!peopleValidations.Exists())
