@@ -54,7 +54,7 @@
                     <GridViewColumn Header="ID" Width="120" >
                         <GridViewColumn.CellTemplate>
                             <DataTemplate>
-                                <TextBlock Text="{Binding Id}" FontSize="15" Focusable="False" HorizontalAlignment="Center"  TextAlignment="Center"/>
+                                <TextBlock Text="{Binding IdS}" FontSize="15" Focusable="False" HorizontalAlignment="Center"  TextAlignment="Center"/>
                             </DataTemplate>
                         </GridViewColumn.CellTemplate>
                     </GridViewColumn>

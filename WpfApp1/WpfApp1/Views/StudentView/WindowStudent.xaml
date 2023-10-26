@@ -56,7 +56,7 @@
             <TextBlock Name="idBlock"  Grid.Row="1" Grid.Column="0"  Visibility="Visible"
                 Text="id"
                 VerticalAlignment="Top" HorizontalAlignment="Left" Margin="20,115"/>
-            <TextBox Text="{Binding Id, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" Name="idBox" Grid.Row="1" Grid.Column ="1"  Visibility="Visible"
+            <TextBox Text="{Binding IdS, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" Name="idBox" Grid.Row="1" Grid.Column ="1"  Visibility="Visible"
                      viewmodel:TextBoxPlaceHolder.Placeholder=""
                 HorizontalAlignment="Stretch" HorizontalContentAlignment="Center"  VerticalAlignment="Top"
                 FontSize="20" Margin="10,115"/>

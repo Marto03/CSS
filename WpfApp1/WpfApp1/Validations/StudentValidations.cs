@@ -13,7 +13,7 @@ namespace WpfApp1.Validations
         {
             if (viewModel != null)
             {
-                if (viewModel.Fname != null && viewModel.Lname != null && viewModel.Age != 0 && viewModel.Id.Length == 10
+                if (viewModel.Fname != null && viewModel.Lname != null && viewModel.Age != 0 && viewModel.IdS.Length == 10
                     && viewModel.Speciality != null && viewModel.Course != 0)
                 {
                     return true;

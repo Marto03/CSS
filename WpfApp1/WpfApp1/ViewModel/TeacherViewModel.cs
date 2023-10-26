@@ -1,4 +1,5 @@
-﻿using System;
+﻿using People.Database.Models;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.IO;
@@ -7,9 +8,8 @@ using System.Text.Json;
 using System.Windows;
 using System.Windows.Input;
 using WpfApp1.Commands;
-using WpfApp1.Model;
-using WpfApp1.Model.Context;
 using WpfApp1.Validations;
+using WpfApp1.Services;
 
 namespace WpfApp1.ViewModel
 {
@@ -34,8 +34,8 @@ namespace WpfApp1.ViewModel
         {
             Message = "Teacher's data";
             teachers = ShownTeachers();
-            ShownPeopleViewModel viewModel = new ShownPeopleViewModel();
-            bothPeople = viewModel.ShownPeople();
+            //ShownPeopleViewModel viewModel = new ShownPeopleViewModel();
+            //bothPeople = viewModel.BothPeoples;
             IsConditionMet = true;
         }
 
@@ -84,7 +84,7 @@ namespace WpfApp1.ViewModel
                 }
             }
         }
-        public string Id
+        public string IdS
         {
             get => _Id;
             set
@@ -96,7 +96,7 @@ namespace WpfApp1.ViewModel
                         if (value.Length <= 10)
                         {
                             _Id = value;
-                            OnPropertyChanged(nameof(Id));
+                            OnPropertyChanged(nameof(IdS));
                         }
                     }
                 }
@@ -207,41 +207,43 @@ namespace WpfApp1.ViewModel
         private void PerformCreateTeachersButton()
         {
             TeacherValidations teacherValidations = new TeacherValidations(this);
-            long IdLong = long.Parse(Id);
-            Id = "D10";
+            //long IdLong = long.Parse(IdS);
             if (teacherValidations.IsValid())
             {
                 TeacherExists = teachers.Any(person => person.Fname == Fname && person.Lname == Lname &&
-                    person.Age == Age && person.Id == Id);
+                    person.Age == Age && person.IdS == IdS);
                 if (TeacherExists)
                 {
                     Message = "Teacher Exists";
                 }
                 else
                 {
-                    _teacher = new Teacher(Fname, Lname, Age, Id, YearsExperience, Title, Speciality);
+                    _teacher = new Teacher(Fname, Lname, Age, IdS, YearsExperience, Title, Speciality);
                     // Must remove those from here and instead place it in Service, which has add method who is calling the Repo who is doing those
-                    using var context = new PubContext();
-                    context.Teachers.Add(_teacher);
-                    context.SaveChanges();
+                    //using var context = new PubContext();
+                    //context.Teachers.Add(_teacher);
+                    //context.SaveChanges();
                     // ===============================================================================
+                    Service s = new();
+                    s.AddTeachersService(_teacher);
                     teachers.Add(_teacher);
                     PeopleValidations peopleValidations = new PeopleValidations(_teacher);
-                    if (!peopleValidations.Exists())
-                    {
-                        bothPeople.Add(_teacher);
-                    }
+                    //if (!peopleValidations.Exists())
+                    //{
+                    //    //s.AddPeopleService(_teacher);
+                    //    //bothPeople.Add(_teacher);
+                    //}
                     Message = "Created Successfully";
-                    string json = JsonSerializer.Serialize(teachers, new JsonSerializerOptions
-                    {
-                        WriteIndented = true
-                    });
-                    string json1 = JsonSerializer.Serialize(bothPeople, new JsonSerializerOptions
-                    {
-                        WriteIndented = true
-                    });
-                    File.WriteAllText(pathTeachers, json);
-                    File.WriteAllText(pathPeople, json1);
+                    //string json = JsonSerializer.Serialize(teachers, new JsonSerializerOptions
+                    //{
+                    //    WriteIndented = true
+                    //});
+                    //string json1 = JsonSerializer.Serialize(bothPeople, new JsonSerializerOptions
+                    //{
+                    //    WriteIndented = true
+                    //});
+                    //File.WriteAllText(pathTeachers, json);
+                    //File.WriteAllText(pathPeople, json1);
                     IsConditionMet = false;
                 }
             }

@@ -7,9 +7,9 @@ using System.Text.Json;
 using System.Windows;
 using System.Windows.Input;
 using WpfApp1.Commands;
-using WpfApp1.Model;
-using WpfApp1.Model.Context;
 using WpfApp1.Validations;
+using WpfApp1.Services;
+using People.Database.Models;
 
 namespace WpfApp1.ViewModel
 {
@@ -32,8 +32,8 @@ namespace WpfApp1.ViewModel
         private bool _isConditionMet;
         public StudentViewModel()
         {
-            ShownPeopleViewModel viewModel = new ShownPeopleViewModel();
-            bothPeople = viewModel.ShownPeople();
+            //ShownPeopleViewModel viewModel = new ShownPeopleViewModel();
+            //bothPeople = viewModel.ShownPeople();
             //using var context = new PubContext();
             //students = context.Students.ToList();
             //context.SaveChanges();
@@ -87,7 +87,7 @@ namespace WpfApp1.ViewModel
                 }
             }
         }
-        public string Id
+        public string IdS
         {
             get => _Id;
             set
@@ -99,7 +99,7 @@ namespace WpfApp1.ViewModel
                         if (value.Length <= 10)
                         {
                             _Id = value;
-                            OnPropertyChanged(nameof(Id));
+                            OnPropertyChanged(nameof(IdS));
                         }
                     }
                        
@@ -210,10 +210,8 @@ namespace WpfApp1.ViewModel
             StudentValidations studentValidations = new StudentValidations(this);
             if (studentValidations.IsValid())
             {
-                long IdLong = long.Parse(Id);
-                Id = "D10";
                 StudentExists = students.Any(person => (person.Fname == Fname && person.Lname == Lname &&
-                    person.Age == Age) || (person.Id == Id));
+                    person.Age == Age) || (person.IdS == IdS));
 
                 if (StudentExists)
                 {
@@ -222,21 +220,24 @@ namespace WpfApp1.ViewModel
                 else
                 {
                     //StudentRepository studentRepository = new();
-                    _st = new(Fname, Lname, Age, Id, Speciality, Course);
+                    _st = new(Fname, Lname, Age, IdS, Speciality, Course);
+                    Service s = new();
+                    s.AddStudentsService(_st);
                     // Must remove those from here and instead place it in Service, which has add method who is calling the Repo who is doing those
-                    using var context = new PubContext();
-                    context.Students.Add(_st);
+                    //using var context = new PubContext();
+                    //using var context = new PubContext();
+                    //context.Students.Add(_st);
                     
-                    context.SaveChanges();
+                    //context.SaveChanges();
                     // ===================================================================================================
 
                     //StudentRepository.AddStudent(_st);
                     PeopleValidations peopleValidations = new PeopleValidations(_st);
                     //students.Add(_st);
-                    if (!peopleValidations.Exists())
-                    {
-                        bothPeople.Add(_st);
-                    }
+                    //if (!peopleValidations.Exists())
+                    //{
+                    //    bothPeople.Add(_st);
+                    //}
                     //string json = JsonSerializer.Serialize(students, new JsonSerializerOptions
                     //{
                     //    WriteIndented = true

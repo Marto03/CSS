@@ -69,3 +69,12 @@ C:\Users\Microinvest\source\repos\WpfApp1\WpfApp1\bin\Debug\net6.0-windows\runti
 C:\Users\Microinvest\source\repos\WpfApp1\WpfApp1\bin\Debug\net6.0-windows\runtimes\win-x64\native\Microsoft.Data.SqlClient.SNI.dll
 C:\Users\Microinvest\source\repos\WpfApp1\WpfApp1\bin\Debug\net6.0-windows\runtimes\win-x86\native\Microsoft.Data.SqlClient.SNI.dll
 C:\Users\Microinvest\source\repos\WpfApp1\WpfApp1\bin\Debug\net6.0-windows\runtimes\win\lib\net6.0\System.Runtime.Caching.dll
+C:\Users\Microinvest\source\repos\WpfApp1\WpfApp1\bin\Debug\net6.0-windows\People.Database.dll
+C:\Users\Microinvest\source\repos\WpfApp1\WpfApp1\bin\Debug\net6.0-windows\People.Database.pdb
+C:\Users\Microinvest\source\repos\WpfApp1\WpfApp1\bin\Debug\net6.0-windows\Humanizer.dll
+C:\Users\Microinvest\source\repos\WpfApp1\WpfApp1\bin\Debug\net6.0-windows\Microsoft.EntityFrameworkCore.Design.dll
+C:\Users\Microinvest\source\repos\WpfApp1\WpfApp1\bin\Debug\net6.0-windows\Microsoft.Extensions.DependencyModel.dll
+C:\Users\Microinvest\source\repos\WpfApp1\WpfApp1\bin\Debug\net6.0-windows\Mono.TextTemplating.dll
+C:\Users\Microinvest\source\repos\WpfApp1\WpfApp1\bin\Debug\net6.0-windows\System.Text.Encodings.Web.dll
+C:\Users\Microinvest\source\repos\WpfApp1\WpfApp1\bin\Debug\net6.0-windows\System.Text.Json.dll
+C:\Users\Microinvest\source\repos\WpfApp1\WpfApp1\bin\Debug\net6.0-windows\runtimes\browser\lib\net6.0\System.Text.Encodings.Web.dll

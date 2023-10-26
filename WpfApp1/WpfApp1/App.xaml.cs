@@ -1,7 +1,6 @@
-﻿using System.Linq;
+﻿using Microsoft.EntityFrameworkCore;
+using People.Database;
 using System.Windows;
-using WpfApp1.Model;
-using WpfApp1.Model.Context;
 
 namespace WpfApp1
 {
@@ -9,7 +8,7 @@ namespace WpfApp1
     {
         /*
          * Service must be added to WpfApp1 project, 
-         * repositories of student and teacher must be in People.Database
+         * repositories of student and teacher must be in Peoples.Database
          * maybe interfaces as well there ,
          * Context must be there as well
          */

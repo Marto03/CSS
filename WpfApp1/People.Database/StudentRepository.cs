@@ -1,4 +1,6 @@
 ﻿using Microsoft.EntityFrameworkCore;
+using People.Database.Models;
+
 namespace People.Database
 {
     /*
@@ -8,16 +10,16 @@ namespace People.Database
 
     public class StudentRepository
     {
-        private PubContext _context;
-        private IStudent _student;
-        public StudentRepository(IStudent student)
+        private Student _st;
+        public StudentRepository(Student st)
         {
-            _context = context;
-            _student = student;
+            _st = st;
         }
-        public List<IStudent> GetStudents()
+        public void AddStudents(Student student)
         {
-            return _student.toList();
+            using var context = new PubContext();
+            context.Students.Add(student);
+            context.SaveChanges();
         }
     }
 }
