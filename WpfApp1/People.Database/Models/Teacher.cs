@@ -1,4 +1,6 @@
-﻿namespace People.Database.Models
+﻿using System.ComponentModel.DataAnnotations;
+
+namespace People.Database.Models
 {
     public class Teacher : BothPeople
     {
@@ -13,7 +15,8 @@
             Title = title;
             Speciality = speciality;
         }
-
+        [Key]
+        public int Id{ get; set; }
         public string Fname { get; set; }
         public string Lname { get; set; }
         public int Age { get; set; }
@@ -21,7 +24,5 @@
         public int YearsExperience { get; set; }
         public string Title { get; set; }
         public string Speciality { get; set; }
-
     }
-
 }
