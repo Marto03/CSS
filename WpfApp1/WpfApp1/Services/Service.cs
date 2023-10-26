@@ -23,11 +23,5 @@ namespace WpfApp1.Services
             var teacherRepository = new TeacherRepository(_teacher);
             teacherRepository.AddTeachers(_teacher);
         }
-        //public void AddPeopleService(BothPeople people)
-        //{
-        //    _people = people;
-        //    var bothPeopleRepo = new BothPeopleRepository(_people);
-        //    bothPeopleRepo.AddBothPeople(_people);
-        //}
     }
 }

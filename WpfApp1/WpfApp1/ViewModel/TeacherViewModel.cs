@@ -33,9 +33,6 @@ namespace WpfApp1.ViewModel
         public TeacherViewModel()
         {
             Message = "Teacher's data";
-            //teachers = ShownTeachers();
-            //ShownPeopleViewModel viewModel = new ShownPeopleViewModel();
-            //bothPeople = viewModel.BothPeoples;
             IsConditionMet = true;
         }
 
@@ -170,23 +167,6 @@ namespace WpfApp1.ViewModel
                 }
             }
         }
-        //public List<Teacher> ShownTeachers()
-        //{
-        //    if (File.Exists(pathTeachers) && !string.IsNullOrWhiteSpace(File.ReadAllText(pathTeachers)))
-        //    {
-        //        string fileContent = File.ReadAllText(pathTeachers);
-        //        try
-        //        {
-        //            List<Teacher> teachers = JsonSerializer.Deserialize<List<Teacher>>(fileContent);
-        //            return teachers;
-        //        }
-        //        catch (Exception ex)
-        //        {
-        //            MessageBox.Show($"Error: {ex.Message}");
-        //        }
-        //    }
-        //    return new List<Teacher>();
-        //}
         private void OnPropertyChanged(string v)
         {
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(v));
@@ -207,7 +187,6 @@ namespace WpfApp1.ViewModel
         private void PerformCreateTeachersButton()
         {
             TeacherValidations teacherValidations = new TeacherValidations(this);
-            //long IdLong = long.Parse(IdS);
             if (teacherValidations.IsValid())
             {
                 TeacherExists = teachers.Any(person => person.Fname == Fname && person.Lname == Lname &&
@@ -219,31 +198,15 @@ namespace WpfApp1.ViewModel
                 else
                 {
                     _teacher = new Teacher(Fname, Lname, Age, IdS, YearsExperience, Title, Speciality);
-                    // Must remove those from here and instead place it in Service, which has add method who is calling the Repo who is doing those
-                    //using var context = new PubContext();
-                    //context.Teachers.Add(_teacher);
-                    //context.SaveChanges();
-                    // ===============================================================================
                     Service s = new();
                     s.AddTeachersService(_teacher);
                     PeopleValidations peopleValidations = new PeopleValidations(_teacher);
                     if (!peopleValidations.Exists())
                     {
                         bothPeople.Add(_teacher);
-                        //bothPeople.Add(_teacher);
                     }
                     teachers.Add(_teacher);
                     Message = "Created Successfully";
-                    //string json = JsonSerializer.Serialize(teachers, new JsonSerializerOptions
-                    //{
-                    //    WriteIndented = true
-                    //});
-                    //string json1 = JsonSerializer.Serialize(bothPeople, new JsonSerializerOptions
-                    //{
-                    //    WriteIndented = true
-                    //});
-                    //File.WriteAllText(pathTeachers, json);
-                    //File.WriteAllText(pathPeople, json1);
                     IsConditionMet = false;
                 }
             }

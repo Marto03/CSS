@@ -23,7 +23,6 @@ namespace People.Database
             modelBuilder.Entity<Student>().Property(s => s.Speciality);
             modelBuilder.Entity<Student>().Property(s => s.Course);
 
-            // Define other entity configurations if needed
             modelBuilder.Entity<Teacher>().HasKey(teacher => new {teacher.Id});
             modelBuilder.Entity<Teacher>().Property(s => s.Fname);
             modelBuilder.Entity<Teacher>().Property(s => s.Lname);

@@ -19,14 +19,6 @@ namespace WpfApp1
             {
                 context.Database.Migrate();
             }
-
-            //AddStudent();
-
-            //void AddStudent()
-            //{
-            //    using var context = new PubContext();
-            //    var students = context.Students.ToList();
-            //}
         }
     }
 }

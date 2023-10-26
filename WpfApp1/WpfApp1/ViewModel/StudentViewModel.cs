@@ -17,8 +17,6 @@ namespace WpfApp1.ViewModel
     {
         private Student _st;
         
-        private string pathStudents = "C:\\Users\\Microinvest\\source\\repos\\FileCreating\\WpfStudents.json";
-        private string pathPeople = "C:\\Users\\Microinvest\\source\\repos\\FileCreating\\WpfallPeople.json";
         List<Student> students = new List<Student>();
         List<BothPeople> bothPeople = new List<BothPeople>();
         private string _Fname;
@@ -32,12 +30,6 @@ namespace WpfApp1.ViewModel
         private bool _isConditionMet;
         public StudentViewModel()
         {
-            //ShownPeopleViewModel viewModel = new ShownPeopleViewModel();
-            //bothPeople = viewModel.ShownPeople();
-            //using var context = new PubContext();
-            //students = context.Students.ToList();
-            //context.SaveChanges();
-            //students = ShownStudents();
             Message = "Student's data";
             IsConditionMet = true;
         }
@@ -136,23 +128,23 @@ namespace WpfApp1.ViewModel
                 }
             }
         }
-        public List<Student> ShownStudents()
-        {
-            if (File.Exists(pathStudents) && !string.IsNullOrWhiteSpace(File.ReadAllText(pathStudents)))
-            {
-                string fileContent = File.ReadAllText(pathStudents);
-                try
-                {
-                    List<Student> student = JsonSerializer.Deserialize<List<Student>>(fileContent);
-                    return student;
-                }
-                catch (Exception ex)
-                {
-                    MessageBox.Show($"Error: {ex.Message}");
-                }
-            }
-            return new List<Student>();
-        }
+        //public List<Student> ShownStudents()
+        //{
+        //    if (File.Exists(pathStudents) && !string.IsNullOrWhiteSpace(File.ReadAllText(pathStudents)))
+        //    {
+        //        string fileContent = File.ReadAllText(pathStudents);
+        //        try
+        //        {
+        //            List<Student> student = JsonSerializer.Deserialize<List<Student>>(fileContent);
+        //            return student;
+        //        }
+        //        catch (Exception ex)
+        //        {
+        //            MessageBox.Show($"Error: {ex.Message}");
+        //        }
+        //    }
+        //    return new List<Student>();
+        //}
         public bool StudentExists
         {
             get { return _StudentExists; }
@@ -219,37 +211,14 @@ namespace WpfApp1.ViewModel
                 }
                 else
                 {
-                    //StudentRepository studentRepository = new();
                     _st = new(Fname, Lname, Age, IdS, Speciality, Course);
                     Service s = new();
                     s.AddStudentsService(_st);
-                    // Must remove those from here and instead place it in Service, which has add method who is calling the Repo who is doing those
-                    //using var context = new PubContext();
-                    //using var context = new PubContext();
-                    //context.Students.Add(_st);
-                    
-                    //context.SaveChanges();
-                    // ===================================================================================================
-
-                    //StudentRepository.AddStudent(_st);
                     PeopleValidations peopleValidations = new PeopleValidations(_st);
-                    //students.Add(_st);
                     if (!peopleValidations.Exists())
                     {
                         bothPeople.Add(_st);
                     }
-                    //string json = JsonSerializer.Serialize(students, new JsonSerializerOptions
-                    //{
-                    //    WriteIndented = true
-                    //});
-
-                    //string json1 = JsonSerializer.Serialize(bothPeople, new JsonSerializerOptions
-                    //{
-                    //    WriteIndented = true
-                    //});
-
-                    //File.WriteAllText(pathStudents, json);
-                    //File.WriteAllText(pathPeople, json1);
                     Message = "Created successfully";
                     IsConditionMet = false;
                 }
