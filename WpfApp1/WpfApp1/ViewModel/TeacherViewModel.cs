@@ -10,13 +10,13 @@ using System.Windows.Input;
 using WpfApp1.Commands;
 using WpfApp1.Validations;
 using WpfApp1.Services;
+using People.Database.Migrations;
+using People.Database;
 
 namespace WpfApp1.ViewModel
 {
     public class TeacherViewModel : INotifyPropertyChanged
     {
-        private string pathTeachers = "C:\\Users\\Microinvest\\source\\repos\\FileCreating\\WpfTeachers.json";
-        private string pathPeople = "C:\\Users\\Microinvest\\source\\repos\\FileCreating\\WpfallPeople.json";
         List<Teacher> teachers = new List<Teacher>();
         List<BothPeople> bothPeople = new List<BothPeople>();
         private string _Fname;
@@ -33,7 +33,7 @@ namespace WpfApp1.ViewModel
         public TeacherViewModel()
         {
             Message = "Teacher's data";
-            teachers = ShownTeachers();
+            //teachers = ShownTeachers();
             //ShownPeopleViewModel viewModel = new ShownPeopleViewModel();
             //bothPeople = viewModel.BothPeoples;
             IsConditionMet = true;
@@ -170,23 +170,23 @@ namespace WpfApp1.ViewModel
                 }
             }
         }
-        public List<Teacher> ShownTeachers()
-        {
-            if (File.Exists(pathTeachers) && !string.IsNullOrWhiteSpace(File.ReadAllText(pathTeachers)))
-            {
-                string fileContent = File.ReadAllText(pathTeachers);
-                try
-                {
-                    List<Teacher> teachers = JsonSerializer.Deserialize<List<Teacher>>(fileContent);
-                    return teachers;
-                }
-                catch (Exception ex)
-                {
-                    MessageBox.Show($"Error: {ex.Message}");
-                }
-            }
-            return new List<Teacher>();
-        }
+        //public List<Teacher> ShownTeachers()
+        //{
+        //    if (File.Exists(pathTeachers) && !string.IsNullOrWhiteSpace(File.ReadAllText(pathTeachers)))
+        //    {
+        //        string fileContent = File.ReadAllText(pathTeachers);
+        //        try
+        //        {
+        //            List<Teacher> teachers = JsonSerializer.Deserialize<List<Teacher>>(fileContent);
+        //            return teachers;
+        //        }
+        //        catch (Exception ex)
+        //        {
+        //            MessageBox.Show($"Error: {ex.Message}");
+        //        }
+        //    }
+        //    return new List<Teacher>();
+        //}
         private void OnPropertyChanged(string v)
         {
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(v));
@@ -226,13 +226,13 @@ namespace WpfApp1.ViewModel
                     // ===============================================================================
                     Service s = new();
                     s.AddTeachersService(_teacher);
-                    teachers.Add(_teacher);
                     PeopleValidations peopleValidations = new PeopleValidations(_teacher);
-                    //if (!peopleValidations.Exists())
-                    //{
-                    //    //s.AddPeopleService(_teacher);
-                    //    //bothPeople.Add(_teacher);
-                    //}
+                    if (!peopleValidations.Exists())
+                    {
+                        bothPeople.Add(_teacher);
+                        //bothPeople.Add(_teacher);
+                    }
+                    teachers.Add(_teacher);
                     Message = "Created Successfully";
                     //string json = JsonSerializer.Serialize(teachers, new JsonSerializerOptions
                     //{

@@ -23,6 +23,12 @@ namespace People.Database.Migrations
 
             modelBuilder.Entity("People.Database.Models.Student", b =>
                 {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
                     b.Property<int>("Age")
                         .HasColumnType("int");
 
@@ -45,11 +51,19 @@ namespace People.Database.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
+                    b.HasKey("Id");
+
                     b.ToTable("Students");
                 });
 
             modelBuilder.Entity("People.Database.Models.Teacher", b =>
                 {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
                     b.Property<int>("Age")
                         .HasColumnType("int");
 
@@ -75,6 +89,8 @@ namespace People.Database.Migrations
 
                     b.Property<int>("YearsExperience")
                         .HasColumnType("int");
+
+                    b.HasKey("Id");
 
                     b.ToTable("Teachers");
                 });

@@ -234,10 +234,10 @@ namespace WpfApp1.ViewModel
                     //StudentRepository.AddStudent(_st);
                     PeopleValidations peopleValidations = new PeopleValidations(_st);
                     //students.Add(_st);
-                    //if (!peopleValidations.Exists())
-                    //{
-                    //    bothPeople.Add(_st);
-                    //}
+                    if (!peopleValidations.Exists())
+                    {
+                        bothPeople.Add(_st);
+                    }
                     //string json = JsonSerializer.Serialize(students, new JsonSerializerOptions
                     //{
                     //    WriteIndented = true

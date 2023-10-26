@@ -11,8 +11,8 @@ using People.Database;
 namespace People.Database.Migrations
 {
     [DbContext(typeof(PubContext))]
-    [Migration("20231026131855_Students")]
-    partial class Students
+    [Migration("20231026135417_StudentsID")]
+    partial class StudentsID
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -26,6 +26,12 @@ namespace People.Database.Migrations
 
             modelBuilder.Entity("People.Database.Models.Student", b =>
                 {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
                     b.Property<int>("Age")
                         .HasColumnType("int");
 
@@ -48,11 +54,19 @@ namespace People.Database.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
+                    b.HasKey("Id");
+
                     b.ToTable("Students");
                 });
 
             modelBuilder.Entity("People.Database.Models.Teacher", b =>
                 {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
                     b.Property<int>("Age")
                         .HasColumnType("int");
 
@@ -78,6 +92,8 @@ namespace People.Database.Migrations
 
                     b.Property<int>("YearsExperience")
                         .HasColumnType("int");
+
+                    b.HasKey("Id");
 
                     b.ToTable("Teachers");
                 });
