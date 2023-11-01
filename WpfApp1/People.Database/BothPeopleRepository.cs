@@ -1,5 +1,6 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using People.Database.Models;
+using People.Database.Services;
 
 namespace People.Database
 {
@@ -11,26 +12,34 @@ namespace People.Database
         public List<BothPeople> GetBothPeople()
         {
             using var context = new PubContext();
-
-            _teachers = context.Teachers.ToList();
-            _students = context.Students.ToList();
+            Service s = new();
+            //_teachers = context.Teachers.ToList();
+            //_students = context.Students.ToList();
+            _students = s.GetStudentsService();
+            _teachers = s.GetTeachersService();
             _BothPeople = new List<BothPeople>();
-            foreach (var teacher in _teachers)
+            AllPeopleValidation n = new(); 
+            if (!n.Exists())
             {
-                if (!_BothPeople.Any(person => person.Fname == teacher.Fname && person.Lname == teacher.Lname &&
-                    person.Age == teacher.Age && person.IdS == teacher.IdS && person.Speciality == teacher.Speciality))
-                {
-                    _BothPeople.Add(teacher);
-                }
+                _BothPeople.AddRange(_students);
+                _BothPeople.AddRange(_teachers);
             }
-            foreach (var student in _students)
-            {
-                if (!_BothPeople.Any(person => person.Fname == student.Fname && person.Lname == student.Lname &&
-                    person.Age == student.Age && person.IdS == student.IdS && person.Speciality == student.Speciality))
-                {
-                    _BothPeople.Add(student);
-                }
-            }
+            //foreach (var teacher in _teachers)
+            //{
+            //    if (!_BothPeople.Any(person => person.Fname == teacher.Fname && person.Lname == teacher.Lname &&
+            //        person.Age == teacher.Age && person.IdS == teacher.IdS && person.Speciality == teacher.Speciality))
+            //    {
+            //        _BothPeople.Add(teacher);
+            //    }
+            //}
+            //foreach (var student in _students)
+            //{
+            //    if (!_BothPeople.Any(person => person.Fname == student.Fname && person.Lname == student.Lname &&
+            //        person.Age == student.Age && person.IdS == student.IdS && person.Speciality == student.Speciality))
+            //    {
+            //        _BothPeople.Add(student);
+            //    }
+            //}
             return _BothPeople;
         }
     }

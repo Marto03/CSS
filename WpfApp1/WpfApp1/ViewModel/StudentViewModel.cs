@@ -1,16 +1,12 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.ComponentModel;
-using System.IO;
 using System.Linq;
-using System.Text.Json;
-using System.Windows;
 using System.Windows.Input;
 using WpfApp1.Commands;
 using WpfApp1.Validations;
-using WpfApp1.Services;
 using People.Database.Models;
 using People.Database;
+using People.Database.Services;
 
 namespace WpfApp1.ViewModel
 {
@@ -19,7 +15,6 @@ namespace WpfApp1.ViewModel
         private Student _st;
         
         List<Student> students = new List<Student>();
-        List<BothPeople> bothPeople = new List<BothPeople>();
         private string _Fname;
         private string _Lname;
         private int _Age;
@@ -129,23 +124,6 @@ namespace WpfApp1.ViewModel
                 }
             }
         }
-        //public List<Student> ShownStudents()
-        //{
-        //    if (File.Exists(pathStudents) && !string.IsNullOrWhiteSpace(File.ReadAllText(pathStudents)))
-        //    {
-        //        string fileContent = File.ReadAllText(pathStudents);
-        //        try
-        //        {
-        //            List<Student> student = JsonSerializer.Deserialize<List<Student>>(fileContent);
-        //            return student;
-        //        }
-        //        catch (Exception ex)
-        //        {
-        //            MessageBox.Show($"Error: {ex.Message}");
-        //        }
-        //    }
-        //    return new List<Student>();
-        //}
         public bool StudentExists
         {
             get { return _StudentExists; }
@@ -217,11 +195,6 @@ namespace WpfApp1.ViewModel
                     _st = new(Fname, Lname, Age, IdS, Speciality, Course);
                     Service s = new();
                     s.AddStudentsService(_st);
-                    //PeopleValidations peopleValidations = new PeopleValidations(_st);
-                    //if (!peopleValidations.Exists())
-                    //{
-                    //    bothPeople.Add(_st);
-                    //}
                     Message = "Created successfully";
                     IsConditionMet = false;
                 }

@@ -1,24 +1,18 @@
 ﻿using People.Database.Models;
-using System;
 using System.Collections.Generic;
 using System.ComponentModel;
-using System.IO;
 using System.Linq;
-using System.Text.Json;
-using System.Windows;
 using System.Windows.Input;
 using WpfApp1.Commands;
 using WpfApp1.Validations;
-using WpfApp1.Services;
-using People.Database.Migrations;
 using People.Database;
+using People.Database.Services;
 
 namespace WpfApp1.ViewModel
 {
     public class TeacherViewModel : INotifyPropertyChanged
     {
         List<Teacher> teachers = new List<Teacher>();
-        List<BothPeople> bothPeople = new List<BothPeople>();
         private string _Fname;
         private string _Lname;
         private int _Age;
@@ -202,11 +196,6 @@ namespace WpfApp1.ViewModel
                     _teacher = new Teacher(Fname, Lname, Age, IdS, YearsExperience, Title, Speciality);
                     Service s = new();
                     s.AddTeachersService(_teacher);
-                    //PeopleValidations peopleValidations = new PeopleValidations(_teacher);
-                    //if (!peopleValidations.Exists())
-                    //{
-                    //    bothPeople.Add(_teacher);
-                    //}
                     teachers.Add(_teacher);
                     Message = "Created Successfully";
                     IsConditionMet = false;
