@@ -189,8 +189,10 @@ namespace WpfApp1.ViewModel
             TeacherValidations teacherValidations = new TeacherValidations(this);
             if (teacherValidations.IsValid())
             {
+                using var context = new PubContext();
+                teachers = context.Teachers.ToList();
                 TeacherExists = teachers.Any(person => person.Fname == Fname && person.Lname == Lname &&
-                    person.Age == Age && person.IdS == IdS);
+                    person.Age == Age || person.IdS == IdS);
                 if (TeacherExists)
                 {
                     Message = "Teacher Exists";
@@ -200,11 +202,11 @@ namespace WpfApp1.ViewModel
                     _teacher = new Teacher(Fname, Lname, Age, IdS, YearsExperience, Title, Speciality);
                     Service s = new();
                     s.AddTeachersService(_teacher);
-                    PeopleValidations peopleValidations = new PeopleValidations(_teacher);
-                    if (!peopleValidations.Exists())
-                    {
-                        bothPeople.Add(_teacher);
-                    }
+                    //PeopleValidations peopleValidations = new PeopleValidations(_teacher);
+                    //if (!peopleValidations.Exists())
+                    //{
+                    //    bothPeople.Add(_teacher);
+                    //}
                     teachers.Add(_teacher);
                     Message = "Created Successfully";
                     IsConditionMet = false;

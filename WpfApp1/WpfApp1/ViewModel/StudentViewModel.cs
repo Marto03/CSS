@@ -10,6 +10,7 @@ using WpfApp1.Commands;
 using WpfApp1.Validations;
 using WpfApp1.Services;
 using People.Database.Models;
+using People.Database;
 
 namespace WpfApp1.ViewModel
 {
@@ -202,8 +203,10 @@ namespace WpfApp1.ViewModel
             StudentValidations studentValidations = new StudentValidations(this);
             if (studentValidations.IsValid())
             {
-                StudentExists = students.Any(person => (person.Fname == Fname && person.Lname == Lname &&
-                    person.Age == Age) || (person.IdS == IdS));
+                using var context = new PubContext();
+                students = context.Students.ToList();
+                StudentExists = students.Any(person => person.Fname == Fname && person.Lname == Lname &&
+                    person.Age == Age || person.IdS == IdS);
 
                 if (StudentExists)
                 {
@@ -214,11 +217,11 @@ namespace WpfApp1.ViewModel
                     _st = new(Fname, Lname, Age, IdS, Speciality, Course);
                     Service s = new();
                     s.AddStudentsService(_st);
-                    PeopleValidations peopleValidations = new PeopleValidations(_st);
-                    if (!peopleValidations.Exists())
-                    {
-                        bothPeople.Add(_st);
-                    }
+                    //PeopleValidations peopleValidations = new PeopleValidations(_st);
+                    //if (!peopleValidations.Exists())
+                    //{
+                    //    bothPeople.Add(_st);
+                    //}
                     Message = "Created successfully";
                     IsConditionMet = false;
                 }

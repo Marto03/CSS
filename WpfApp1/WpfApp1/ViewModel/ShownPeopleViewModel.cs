@@ -24,8 +24,31 @@ namespace WpfApp1.ViewModel
             using var context = new PubContext();
             teachers = context.Teachers.ToList();
             students = context.Students.ToList();
-            bothPeople.AddRange(teachers);
-            bothPeople.AddRange(students);
+            //int teach = teachers.Count();
+            //int student = students.Count();
+            foreach (var teacher in teachers)
+            {
+                if (!bothPeople.Any(person => person.Fname == teacher.Fname && person.Lname == teacher.Lname &&
+                    person.Age == teacher.Age && person.IdS == teacher.IdS && person.Speciality == teacher.Speciality))
+                {
+                    bothPeople.Add(teacher);
+                }
+            }
+
+            foreach (var student in students)
+            {
+                if (!bothPeople.Any(person => person.Fname == student.Fname && person.Lname == student.Lname &&
+                    person.Age == student.Age && person.IdS == student.IdS && person.Speciality == student.Speciality))
+                {
+                    bothPeople.Add(student);
+                }
+            }
+            //if (!students[student-1].Equals(teachers[teach-1]))
+            //{
+
+            //    bothPeople.AddRange(teachers);
+            //    bothPeople.AddRange(students);
+            //}
         }
         public List<BothPeople> Peoples
         {

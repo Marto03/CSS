@@ -10,19 +10,6 @@ namespace WpfApp1
             InitializeComponent();
             MainWindowViewModel _mainViewModel = new MainWindowViewModel();
             DataContext = _mainViewModel;
-            //string defaultFile = "[]";
-            //if (!File.Exists(pathStudents))
-            //{
-            //    File.WriteAllText(pathStudents, defaultFile);
-            //}
-            //if (!File.Exists(pathTeachers))
-            //{
-            //    File.WriteAllText(pathTeachers, defaultFile);
-            //}
-            //if(!File.Exists(pathPeople))
-            //{
-            //    File.WriteAllText(pathPeople, defaultFile);
-            //}
         }
     }
 }
