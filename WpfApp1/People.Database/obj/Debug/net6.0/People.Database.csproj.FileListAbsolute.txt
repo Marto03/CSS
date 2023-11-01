@@ -1,0 +1,14 @@
+C:\Users\Microinvest\source\repos\WpfApp1\People.Database\obj\Debug\net6.0\People.Database.csproj.AssemblyReference.cache
+C:\Users\Microinvest\source\repos\WpfApp1\People.Database\obj\Debug\net6.0\People.Database.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\Microinvest\source\repos\WpfApp1\People.Database\obj\Debug\net6.0\People.Database.AssemblyInfoInputs.cache
+C:\Users\Microinvest\source\repos\WpfApp1\People.Database\obj\Debug\net6.0\People.Database.AssemblyInfo.cs
+C:\Users\Microinvest\source\repos\WpfApp1\People.Database\obj\Debug\net6.0\People.Database.csproj.CoreCompileInputs.cache
+C:\Users\Microinvest\source\repos\WpfApp1\People.Database\bin\Debug\net6.0\People.Database.deps.json
+C:\Users\Microinvest\source\repos\WpfApp1\People.Database\bin\Debug\net6.0\People.Database.dll
+C:\Users\Microinvest\source\repos\WpfApp1\People.Database\bin\Debug\net6.0\People.Database.pdb
+C:\Users\Microinvest\source\repos\WpfApp1\People.Database\obj\Debug\net6.0\People.Database.dll
+C:\Users\Microinvest\source\repos\WpfApp1\People.Database\obj\Debug\net6.0\refint\People.Database.dll
+C:\Users\Microinvest\source\repos\WpfApp1\People.Database\obj\Debug\net6.0\People.Database.pdb
+C:\Users\Microinvest\source\repos\WpfApp1\People.Database\obj\Debug\net6.0\ref\People.Database.dll
+C:\Users\Microinvest\source\repos\WpfApp1\People.Database\bin\Debug\net6.0\People.Database.runtimeconfig.json
+C:\Users\Microinvest\source\repos\WpfApp1\People.Database\obj\Debug\net6.0\People.Database.genruntimeconfig.cache

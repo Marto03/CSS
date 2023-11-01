@@ -1,0 +1,14 @@
+{
+  "version": 2,
+<<<<<<< HEAD
+  "dgSpecHash": "6y+/YaIV6p6QEM6Qv7iY0jRcQ0WIZZdrgS1cKVrP+wVIaFMdS1w/mWbCl2nosrBE6xqpG1JFCUV/VoWfgCpoTw==",
+  "success": true,
+  "projectFilePath": "C:\\Users\\Microinvest\\source\\repos\\DifferentCollections\\DifferentCollections\\DifferentCollections.csproj",
+=======
+  "dgSpecHash": "f6lJA7BSI+/SXAXd5hc3g6/JRWCeVyb6fx7EdjlCELS05p3ow15qdP7aSAiWCsaTDuzWRTLuKd8tqF0fAF6jsg==",
+  "success": true,
+  "projectFilePath": "D:\\C#\\DifferentCollections\\DifferentCollections\\DifferentCollections.csproj",
+>>>>>>> d0ae06a9cb8fd17fad8c791b956f0716bcfa84aa
+  "expectedPackageFiles": [],
+  "logs": []
+}

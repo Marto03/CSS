@@ -1,0 +1,122 @@
+[
+  {
+    "Fname": "marto",
+    "Lname": "alexandrov",
+    "Age": 1,
+    "Id": "0323434534",
+    "Speciality": "fasd",
+    "Course": 2
+  },
+  {
+    "Fname": "s",
+    "Lname": "s",
+    "Age": 1,
+    "Id": "1111111111",
+    "Speciality": "s",
+    "Course": 1
+  },
+  {
+    "Fname": "a",
+    "Lname": "a",
+    "Age": 1,
+    "Id": "1111111111",
+    "Speciality": "s",
+    "Course": 1
+  },
+  {
+    "Fname": "random",
+    "Lname": "stuff",
+    "Age": 2,
+    "Id": "0312312312",
+    "Speciality": "asdf",
+    "Course": 3
+  },
+  {
+    "Fname": "a",
+    "Lname": "a",
+    "Age": 2,
+    "Id": "1111111111",
+    "Speciality": "s",
+    "Course": 1
+  },
+  {
+    "Fname": "test",
+    "Lname": "test",
+    "Age": 23,
+    "Id": "0123123123",
+    "Speciality": "asdf",
+    "Course": 3123
+  },
+  {
+    "Fname": "testsett",
+    "Lname": "asdf",
+    "Age": 123,
+    "Id": "1233333333",
+    "Speciality": "asdf",
+    "Course": 3
+  },
+  {
+    "Fname": "asdf",
+    "Lname": "adzvxc",
+    "Age": 23,
+    "Id": "1231231231",
+    "Speciality": "afsd",
+    "Course": 3
+  },
+  {
+    "Fname": "sfd",
+    "Lname": "lagsdg",
+    "Age": 23123,
+    "Id": "1231231232",
+    "Speciality": "sdfd",
+    "Course": 654
+  },
+  {
+    "Fname": "marto",
+    "Lname": "asdfasdf",
+    "Age": 23123,
+    "Id": "1233333333",
+    "Speciality": "fsdf",
+    "Course": 54
+  },
+  {
+    "Fname": "randasdf",
+    "Lname": "asdgaszcv",
+    "Age": 123123213,
+    "Id": "1233333333",
+    "Speciality": "fasdf",
+    "Course": 123
+  },
+  {
+    "Fname": "asdasfasf",
+    "Lname": "zxcv",
+    "Age": 12,
+    "Id": "1231231231",
+    "Speciality": "fdsfsd",
+    "Course": 43
+  },
+  {
+    "Fname": "hjkhjk",
+    "Lname": "hjkghjk",
+    "Age": 564,
+    "Id": "5675675675",
+    "Speciality": "dghjf",
+    "Course": 4
+  },
+  {
+    "Fname": "rand",
+    "Lname": "asdfasdf",
+    "Age": 234234,
+    "Id": "4534534534",
+    "Speciality": "dfhdhfg",
+    "Course": 43
+  },
+  {
+    "Fname": "a",
+    "Lname": "a",
+    "Age": 12,
+    "Id": "1111111111",
+    "Speciality": "as",
+    "Course": 1
+  }
+]
