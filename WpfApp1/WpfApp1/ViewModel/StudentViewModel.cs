@@ -205,7 +205,7 @@ namespace WpfApp1.ViewModel
             {
                 using var context = new PubContext();
                 students = context.Students.ToList();
-                StudentExists = students.Any(person => person.Fname == Fname && person.Lname == Lname &&
+                StudentExists = students.Any(person => /*person.Fname == Fname && */person.Lname == Lname &&
                     person.Age == Age || person.IdS == IdS);
 
                 if (StudentExists)
