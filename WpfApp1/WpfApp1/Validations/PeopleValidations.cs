@@ -31,7 +31,7 @@ namespace WpfApp1.Validations
         {
             //ShownPeopleViewModel viewModel = new ShownPeopleViewModel();
             Service s = new();
-            bothPeople = s.GetTeachersService;
+            bothPeople = s.GetBothPeopleService();
             PersonExists = bothPeople.Any(person => person.Fname == both.Fname && person.Lname == both.Lname &&
                     person.Age == both.Age && person.IdS == both.IdS && person.Speciality == both.Speciality);
             if(!PersonExists)

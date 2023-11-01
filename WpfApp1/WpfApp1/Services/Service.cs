@@ -25,6 +25,8 @@ namespace WpfApp1.Services
         }
         public List<Student> GetStudentsService()
         {
+            var studentRepository = new StudentRepository(_student);
+            studentRepository.GetAllStudents(_students);
             using var context = new PubContext();
             _students = context.Students.ToList();
             return _students;
@@ -43,6 +45,10 @@ namespace WpfApp1.Services
         }
         public List<BothPeople> GetBothPeopleService()
         {
+            using var context = new PubContext();
+            _teachers = context.Teachers.ToList();
+            _students = context.Students.ToList();
+            _BothPeople = new List<BothPeople>();
             foreach (var teacher in _teachers)
             {
                 if (!_BothPeople.Any(person => person.Fname == teacher.Fname && person.Lname == teacher.Lname &&

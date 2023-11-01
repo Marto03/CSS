@@ -1,4 +1,5 @@
 ﻿using Microsoft.EntityFrameworkCore;
+using People.Database.Migrations;
 using People.Database.Models;
 
 namespace People.Database
@@ -20,6 +21,12 @@ namespace People.Database
             using var context = new PubContext();
             context.Students.Add(student);
             context.SaveChanges();
+        }
+        public List<Student> GetAllStudents(List<Student> s)
+        {
+            using var context = new PubContext();
+            s = context.Students.ToList();
+            return s;
         }
     }
 }

@@ -6,6 +6,7 @@ using System.Text.Json;
 using People.Database.Models;
 using People.Database;
 using System.Linq;
+using WpfApp1.Services;
 
 namespace WpfApp1.ViewModel
 {
@@ -14,8 +15,10 @@ namespace WpfApp1.ViewModel
         List<Teacher> teachers = new List<Teacher>();
         public ShownTeachersViewModel()
         {
-            using var context = new PubContext();
-            teachers = context.Teachers.ToList();
+            //using var context = new PubContext();
+            //teachers = context.Teachers.ToList();
+            Service s = new();
+            teachers = s.GetTeachersService();
         }
         public List<Teacher> Teachers
         {
