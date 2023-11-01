@@ -18,7 +18,7 @@ namespace People.Database
             _students = s.GetStudentsService();
             _teachers = s.GetTeachersService();
             _BothPeople = new List<BothPeople>();
-            AllPeopleValidation n = new(); 
+            AllPeopleValidation n = new(); // Must fix the validation
             if (!n.Exists())
             {
                 _BothPeople.AddRange(_students);

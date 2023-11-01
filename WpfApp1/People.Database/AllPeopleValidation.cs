@@ -35,11 +35,12 @@ namespace People.Database
 
             //bothPeople.AddRange(students);
             //bothPeople.AddRange(teachers);
-            foreach (var teacher in teachers)
+            foreach(var teacher in teachers)
             {
-                if (!students.Any(person => person.Fname == teacher.Fname && person.Lname == teacher.Lname &&
+                if (!students.Exists(person => person.Fname == teacher.Fname && person.Lname == teacher.Lname &&
                     person.Age == teacher.Age && person.IdS == teacher.IdS && person.Speciality == teacher.Speciality))
                 {
+
                     bothPeople.Add(teacher);
                     PersonExists = true;
                 }
