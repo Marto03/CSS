@@ -12,3 +12,17 @@ C:\Users\Microinvest\source\repos\WpfApp1\People.Database\obj\Debug\net6.0\Peopl
 C:\Users\Microinvest\source\repos\WpfApp1\People.Database\obj\Debug\net6.0\ref\People.Database.dll
 C:\Users\Microinvest\source\repos\WpfApp1\People.Database\bin\Debug\net6.0\People.Database.runtimeconfig.json
 C:\Users\Microinvest\source\repos\WpfApp1\People.Database\obj\Debug\net6.0\People.Database.genruntimeconfig.cache
+D:\Projects\WpfApp1\People.Database\bin\Debug\net6.0\People.Database.deps.json
+D:\Projects\WpfApp1\People.Database\bin\Debug\net6.0\People.Database.runtimeconfig.json
+D:\Projects\WpfApp1\People.Database\bin\Debug\net6.0\People.Database.dll
+D:\Projects\WpfApp1\People.Database\bin\Debug\net6.0\People.Database.pdb
+D:\Projects\WpfApp1\People.Database\obj\Debug\net6.0\People.Database.csproj.AssemblyReference.cache
+D:\Projects\WpfApp1\People.Database\obj\Debug\net6.0\People.Database.GeneratedMSBuildEditorConfig.editorconfig
+D:\Projects\WpfApp1\People.Database\obj\Debug\net6.0\People.Database.AssemblyInfoInputs.cache
+D:\Projects\WpfApp1\People.Database\obj\Debug\net6.0\People.Database.AssemblyInfo.cs
+D:\Projects\WpfApp1\People.Database\obj\Debug\net6.0\People.Database.csproj.CoreCompileInputs.cache
+D:\Projects\WpfApp1\People.Database\obj\Debug\net6.0\People.Database.dll
+D:\Projects\WpfApp1\People.Database\obj\Debug\net6.0\refint\People.Database.dll
+D:\Projects\WpfApp1\People.Database\obj\Debug\net6.0\People.Database.pdb
+D:\Projects\WpfApp1\People.Database\obj\Debug\net6.0\People.Database.genruntimeconfig.cache
+D:\Projects\WpfApp1\People.Database\obj\Debug\net6.0\ref\People.Database.dll

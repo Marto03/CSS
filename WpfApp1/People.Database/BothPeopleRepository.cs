@@ -1,25 +1,37 @@
-﻿//using Microsoft.EntityFrameworkCore;
-//using People.Database.Models;
+﻿using Microsoft.EntityFrameworkCore;
+using People.Database.Models;
 
-//namespace People.Database
-//{
-//    /*
-//     * Here in order to work i must add Interfaces for the students and teachers and implement them in the main project 
-//     * Also need Dependency injection
-//     */
+namespace People.Database
+{
+    public class BothPeopleRepository
+    {
+        List<Student> _students;
+        List<Teacher> _teachers;
+        List<BothPeople> _BothPeople;
+        public List<BothPeople> GetBothPeople()
+        {
+            using var context = new PubContext();
 
-//    public class BothPeopleRepository
-//    {
-//        private BothPeople _people;
-//        public BothPeopleRepository(BothPeople people)
-//        {
-//            _people = people;
-//        }
-//        public void AddBothPeople(BothPeople people)
-//        {
-//            using var context = new PubContext();
-//            context.Peoples.Add(people);
-//            context.SaveChanges();
-//        }
-//    }
-//}
+            _teachers = context.Teachers.ToList();
+            _students = context.Students.ToList();
+            _BothPeople = new List<BothPeople>();
+            foreach (var teacher in _teachers)
+            {
+                if (!_BothPeople.Any(person => person.Fname == teacher.Fname && person.Lname == teacher.Lname &&
+                    person.Age == teacher.Age && person.IdS == teacher.IdS && person.Speciality == teacher.Speciality))
+                {
+                    _BothPeople.Add(teacher);
+                }
+            }
+            foreach (var student in _students)
+            {
+                if (!_BothPeople.Any(person => person.Fname == student.Fname && person.Lname == student.Lname &&
+                    person.Age == student.Age && person.IdS == student.IdS && person.Speciality == student.Speciality))
+                {
+                    _BothPeople.Add(student);
+                }
+            }
+            return _BothPeople;
+        }
+    }
+}

@@ -21,5 +21,11 @@ namespace People.Database
             context.Teachers.Add(teachers);
             context.SaveChanges();
         }
+        public List<Teacher> GetAllTeachers(List<Teacher> t)
+        {
+            using var context = new PubContext();
+            t = context.Teachers.ToList();
+            return t;
+        }
     }
 }

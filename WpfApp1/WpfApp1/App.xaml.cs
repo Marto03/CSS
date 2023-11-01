@@ -17,7 +17,7 @@ namespace WpfApp1
             base.OnStartup(e);
             using (var context = new PubContext())
             {
-                context.Database.Migrate();
+                context.Database.EnsureCreated();
             }
         }
     }
