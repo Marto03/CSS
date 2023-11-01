@@ -1,6 +1,7 @@
 ﻿using People.Database.Models;
 using System.Collections.Generic;
 using System.Linq;
+using WpfApp1.Services;
 using WpfApp1.ViewModel;
 
 namespace WpfApp1.Validations
@@ -28,8 +29,9 @@ namespace WpfApp1.Validations
         }
         public bool Exists()
         {
-            ShownPeopleViewModel viewModel = new ShownPeopleViewModel();
-            bothPeople = viewModel.Peoples;
+            //ShownPeopleViewModel viewModel = new ShownPeopleViewModel();
+            Service s = new();
+            bothPeople = s.GetTeachersService;
             PersonExists = bothPeople.Any(person => person.Fname == both.Fname && person.Lname == both.Lname &&
                     person.Age == both.Age && person.IdS == both.IdS && person.Speciality == both.Speciality);
             if(!PersonExists)

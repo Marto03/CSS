@@ -6,6 +6,7 @@ using System.IO;
 using System.Linq;
 using System.Text.Json;
 using System.Windows;
+using WpfApp1.Services;
 using WpfApp1.Validations;
 
 namespace WpfApp1.ViewModel
@@ -20,29 +21,33 @@ namespace WpfApp1.ViewModel
         {
             // It is getting here first , and then check if a person exists , which is always true because , it appends it first and is always there
             // must be fixed
-            
-            using var context = new PubContext();
-            teachers = context.Teachers.ToList();
-            students = context.Students.ToList();
+
+            Service s = new();
+            //using var context = new PubContext();
+            //teachers = context.Teachers.ToList();
+            //students = context.Students.ToList();
+            //students = s.GetStudentsService();
+            //teachers = s.GetTeachersService();
+            bothPeople = s.GetBothPeopleService();
             //int teach = teachers.Count();
             //int student = students.Count();
-            foreach (var teacher in teachers)
-            {
-                if (!bothPeople.Any(person => person.Fname == teacher.Fname && person.Lname == teacher.Lname &&
-                    person.Age == teacher.Age && person.IdS == teacher.IdS && person.Speciality == teacher.Speciality))
-                {
-                    bothPeople.Add(teacher);
-                }
-            }
+            //foreach (var teacher in teachers)
+            //{
+            //    if (!bothPeople.Any(person => person.Fname == teacher.Fname && person.Lname == teacher.Lname &&
+            //        person.Age == teacher.Age && person.IdS == teacher.IdS && person.Speciality == teacher.Speciality))
+            //    {
+            //        bothPeople.Add(teacher);
+            //    }
+            //}
 
-            foreach (var student in students)
-            {
-                if (!bothPeople.Any(person => person.Fname == student.Fname && person.Lname == student.Lname &&
-                    person.Age == student.Age && person.IdS == student.IdS && person.Speciality == student.Speciality))
-                {
-                    bothPeople.Add(student);
-                }
-            }
+            //foreach (var student in students)
+            //{
+            //    if (!bothPeople.Any(person => person.Fname == student.Fname && person.Lname == student.Lname &&
+            //        person.Age == student.Age && person.IdS == student.IdS && person.Speciality == student.Speciality))
+            //    {
+            //        bothPeople.Add(student);
+            //    }
+            //}
             //if (!students[student-1].Equals(teachers[teach-1]))
             //{
 
