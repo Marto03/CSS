@@ -12,9 +12,9 @@ TRACE;DEBUG;NET;NET6_0;NETCOREAPP
 D:\Projects\WpfApp1\WpfApp1\App.xaml
 6362353251
 
-25729954562
+21-1811374603
 224949950798
 MainWindow.xaml;Views\ShownPeopleView.xaml;Views\ShownStudentsView.xaml;Views\ShownTeachersView.xaml;Views\StudentView\WindowStudent.xaml;Views\TeacherView\WindowTeacher.xaml;
 
-True
+False
 
