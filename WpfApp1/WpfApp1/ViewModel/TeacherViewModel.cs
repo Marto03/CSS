@@ -190,7 +190,7 @@ namespace WpfApp1.ViewModel
                 if (TeacherExists)
                 {
                     Message = "Teacher Exists";
-                }
+                } 
                 else
                 {
                     _teacher = new Teacher(Fname, Lname, Age, IdS, YearsExperience, Title, Speciality);

@@ -36,6 +36,7 @@ namespace People.Database.Services
             _teachers = teacherRepo.GetAllTeachers(_teachers);
             return _teachers;
         }
+
         public List<BothPeople> GetBothPeopleService()
         {
             var bothPeopleRepo = new BothPeopleRepository();
