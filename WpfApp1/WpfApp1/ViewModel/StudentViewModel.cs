@@ -209,26 +209,27 @@ namespace WpfApp1.ViewModel
             StudentValidations studentValidations = new StudentValidations(this);
             if (studentValidations.IsValid())
             {
-                using var context = new PubContext();
-                students = context.Students.ToList();
+                //using var context = new PubContext();
+                //students = context.Students.ToList();
 
-                teachers = context.Teachers.ToList();
+                //teachers = context.Teachers.ToList();
 
-                StudentExists = students.Any(student => student.Fname == Fname && student.Lname == Lname &&
-                student.Age == Age || student.IdS == IdS);
+                //StudentExists = students.Any(student => student.Fname == Fname && student.Lname == Lname &&
+                //student.Age == Age || student.IdS == IdS);
 
-                TeacherExists = teachers.Any(teacher => teacher.Fname == Fname && teacher.Lname == Lname &&
-                teacher.Age == Age || teacher.IdS == IdS);
+                //TeacherExists = teachers.Any(teacher => teacher.Fname == Fname && teacher.Lname == Lname &&
+                //teacher.Age == Age || teacher.IdS == IdS);
 
-                PersonExists = StudentExists || TeacherExists;
+                //PersonExists = StudentExists || TeacherExists;
+                _st = new(Fname, Lname, Age, IdS, Speciality, Course);
+                PeopleValidations validations = new(_st);
 
-                if (PersonExists)
+                if (validations.IsPersonValid())
                 {
                     Message = "Person exists";
                 }
                 else
                 {
-                    _st = new(Fname, Lname, Age, IdS, Speciality, Course);
                     Service s = new();
                     s.AddStudentsService(_st);
                     Message = "Created successfully";

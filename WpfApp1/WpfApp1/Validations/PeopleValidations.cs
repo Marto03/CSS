@@ -1,4 +1,5 @@
-﻿using People.Database.Models;
+﻿using People.Database;
+using People.Database.Models;
 using People.Database.Services;
 using System.Collections.Generic;
 using System.Linq;
@@ -7,37 +8,26 @@ namespace WpfApp1.Validations
 {
     public class PeopleValidations
     {
-        private bool _PersonExists;
-        BothPeople? both;
-        List<BothPeople> bothPeople = new List<BothPeople>();
+        BothPeople People { get; set; }
         public PeopleValidations(BothPeople p)
-        {
-            this.both = p;
+        {   
+            this.People = p;
         }
+        public bool IsPersonValid()
+        {
+            List<Student> students = new List<Student>();
+            List<Teacher> teachers = new List<Teacher>();
+            using var context = new PubContext();
+            students = context.Students.ToList();
 
-        public bool PersonExists
-        {
-            get { return _PersonExists; }
-            set
-            {
-                if (_PersonExists != value)
-                {
-                    _PersonExists = value;
-                }
-            }
-        }
-        public bool Exists(BothPeople p)
-        {
-            //ShownPeopleViewModel viewModel = new ShownPeopleViewModel();
-            Service s = new();
-            bothPeople = s.GetBothPeopleService();
-            PersonExists = bothPeople.Any(person => person.Fname == both.Fname && person.Lname == both.Lname &&
-                    person.Age == both.Age && person.IdS == both.IdS && person.Speciality == both.Speciality);
-            if (!PersonExists)
-            {
-                return false;
-            }
-            return true;
+            teachers = context.Teachers.ToList();
+            bool StudentExists = students.Any(student => student.Fname == People.Fname && student.Lname == People.Lname &&
+                 student.Age == People.Age || student.IdS == People.IdS);
+            bool TeacherExists = teachers.Any(teacher => teacher.Fname == People.Fname && teacher.Lname == People.Lname &&
+            teacher.Age == People.Age || teacher.IdS == People.IdS);
+
+            bool PersonExists = StudentExists || TeacherExists;
+            return PersonExists;
         }
     }
 }
