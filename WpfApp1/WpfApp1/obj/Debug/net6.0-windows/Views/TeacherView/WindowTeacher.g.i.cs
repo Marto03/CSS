@@ -189,7 +189,7 @@ namespace WpfApp1.Views.TeacherView {
                 return;
             }
             _contentLoaded = true;
-            System.Uri resourceLocater = new System.Uri("/WpfApp1;component/views/teacherview/windowteacher.xaml", System.UriKind.Relative);
+            System.Uri resourceLocater = new System.Uri("/WpfApp1;V1.0.0.0;component/views/teacherview/windowteacher.xaml", System.UriKind.Relative);
             
             #line 1 "..\..\..\..\..\Views\TeacherView\WindowTeacher.xaml"
             System.Windows.Application.LoadComponent(this, resourceLocater);

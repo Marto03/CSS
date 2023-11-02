@@ -4,12 +4,7 @@ namespace WpfApp1.Validations
 {
     internal class StudentValidations
     {
-        StudentViewModel? viewModel;
-        public StudentValidations(StudentViewModel viewModel)
-        {
-            this.viewModel = viewModel;
-        }
-        public bool IsValid()
+        public static bool IsValid(StudentViewModel viewModel)
         {
             if (viewModel != null)
             {

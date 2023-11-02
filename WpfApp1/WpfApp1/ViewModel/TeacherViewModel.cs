@@ -1,18 +1,15 @@
 ﻿using People.Database.Models;
-using System.Collections.Generic;
 using System.ComponentModel;
 using System.Linq;
 using System.Windows.Input;
 using WpfApp1.Commands;
 using WpfApp1.Validations;
-using People.Database;
 using People.Database.Services;
 
 namespace WpfApp1.ViewModel
 {
     public class TeacherViewModel : INotifyPropertyChanged
     {
-        List<Teacher> teachers = new List<Teacher>();
         private string _Fname;
         private string _Lname;
         private int _Age;
@@ -180,23 +177,18 @@ namespace WpfApp1.ViewModel
 
         private void PerformCreateTeachersButton()
         {
-            TeacherValidations teacherValidations = new TeacherValidations(this);
-            if (teacherValidations.IsValid())
+            //TeacherValidations teacherValidations = new TeacherValidations(this);
+            if (TeacherValidations.IsValid(this))
             {
-                using var context = new PubContext();
-                teachers = context.Teachers.ToList();
-                TeacherExists = teachers.Any(person => person.Fname == Fname && person.Lname == Lname &&
-                    person.Age == Age || person.IdS == IdS);
-                if (TeacherExists)
+                _teacher = new Teacher(Fname, Lname, Age, IdS, YearsExperience, Title, Speciality);
+                Service s = new();
+                if (PeopleValidations.IsPersonValid(_teacher))
                 {
                     Message = "Person Exists";
                 } 
                 else
                 {
-                    _teacher = new Teacher(Fname, Lname, Age, IdS, YearsExperience, Title, Speciality);
-                    Service s = new();
                     s.AddTeachersService(_teacher);
-                    teachers.Add(_teacher);
                     Message = "Created Successfully";
                     IsConditionMet = false;
                 }

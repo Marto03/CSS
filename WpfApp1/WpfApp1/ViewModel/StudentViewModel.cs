@@ -1,11 +1,9 @@
-﻿using System.Collections.Generic;
-using System.ComponentModel;
+﻿using System.ComponentModel;
 using System.Linq;
 using System.Windows.Input;
 using WpfApp1.Commands;
 using WpfApp1.Validations;
 using People.Database.Models;
-using People.Database;
 using People.Database.Services;
 
 namespace WpfApp1.ViewModel
@@ -14,17 +12,12 @@ namespace WpfApp1.ViewModel
     {
         private Student _st;
         
-        List<Student> students = new List<Student>();
-        List<Teacher> teachers = new List<Teacher>();
         private string _Fname;
         private string _Lname;
         private int _Age;
         private string _Id;
         private string _Speciality;
         private int _Course;
-        private bool _StudentExists;
-        private bool _TeacherExists;
-        private bool _PersonExists;
         private string _message;
         private bool _isConditionMet;
         public StudentViewModel()
@@ -128,43 +121,6 @@ namespace WpfApp1.ViewModel
             }
         }
 
-        public bool StudentExists
-        {
-            get { return _StudentExists; }
-            set
-            {
-                if (_StudentExists != value)
-                {
-                    _StudentExists = value;
-                    OnPropertyChanged(nameof(StudentExists));
-                }
-            }
-        }
-        public bool TeacherExists
-        {
-            get { return _TeacherExists; }
-            set
-            {
-                if (_TeacherExists != value)
-                {
-                    _TeacherExists = value;
-                    OnPropertyChanged(nameof(TeacherExists));
-                }
-            }
-        }
-        public bool PersonExists
-        {
-            get { return _PersonExists; }
-            set
-            {
-                if (_PersonExists != value)
-                {
-                    _PersonExists = value;
-                    OnPropertyChanged(nameof(PersonExists));
-                }
-            }
-        }
-
         public string Message
         {
             get { return _message; }
@@ -206,31 +162,18 @@ namespace WpfApp1.ViewModel
 
         private void PerformCreateStudentsButton()
         {
-            StudentValidations studentValidations = new StudentValidations(this);
-            if (studentValidations.IsValid())
+            //StudentValidations studentValidations = new StudentValidations(this);
+            if (StudentValidations.IsValid(this))
             {
-                //using var context = new PubContext();
-                //students = context.Students.ToList();
-
-                //teachers = context.Teachers.ToList();
-
-                //StudentExists = students.Any(student => student.Fname == Fname && student.Lname == Lname &&
-                //student.Age == Age || student.IdS == IdS);
-
-                //TeacherExists = teachers.Any(teacher => teacher.Fname == Fname && teacher.Lname == Lname &&
-                //teacher.Age == Age || teacher.IdS == IdS);
-
-                //PersonExists = StudentExists || TeacherExists;
                 _st = new(Fname, Lname, Age, IdS, Speciality, Course);
-                PeopleValidations validations = new(_st);
+                Service s = new();
 
-                if (validations.IsPersonValid())
+                if (PeopleValidations.IsPersonValid(_st))
                 {
                     Message = "Person exists";
                 }
                 else
                 {
-                    Service s = new();
                     s.AddStudentsService(_st);
                     Message = "Created successfully";
                     IsConditionMet = false;

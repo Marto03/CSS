@@ -1,6 +1,4 @@
-﻿using Azure;
-using People.Database.Migrations;
-using People.Database.Models;
+﻿using People.Database.Models;
 
 namespace People.Database
 {

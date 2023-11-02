@@ -1,6 +1,5 @@
 ﻿using People.Database;
 using People.Database.Models;
-using People.Database.Services;
 using System.Collections.Generic;
 using System.Linq;
 
@@ -8,15 +7,10 @@ namespace WpfApp1.Validations
 {
     public class PeopleValidations
     {
-        BothPeople People { get; set; }
-        public PeopleValidations(BothPeople p)
-        {   
-            this.People = p;
-        }
-        public bool IsPersonValid()
+        public static bool IsPersonValid(BothPeople People)
         {
-            List<Student> students = new List<Student>();
-            List<Teacher> teachers = new List<Teacher>();
+            List<Student> students = new();
+            List<Teacher> teachers = new();
             using var context = new PubContext();
             students = context.Students.ToList();
 

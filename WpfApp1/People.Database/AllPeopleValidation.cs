@@ -1,5 +1,4 @@
 ﻿using People.Database.Models;
-using People.Database.Services;
 
 namespace People.Database
 {

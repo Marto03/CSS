@@ -1,5 +1,4 @@
-﻿using Microsoft.EntityFrameworkCore;
-using People.Database.Models;
+﻿using People.Database.Models;
 
 namespace People.Database.Services
 {
@@ -14,7 +13,6 @@ namespace People.Database.Services
         public void AddStudentsService(Student st)
         {
             _student = st;
-            
             StudentRepository.AddStudents(_student);
         }
         public void AddTeachersService(Teacher teacher)
