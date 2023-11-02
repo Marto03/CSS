@@ -5,7 +5,6 @@ namespace People.Database.Services
 {
     public class Service
     {
-        public DbSet<Student> Students { get; set; }
         private Student _student;
         private Teacher _teacher;
         List<Student> _students;
@@ -15,25 +14,22 @@ namespace People.Database.Services
         public void AddStudentsService(Student st)
         {
             _student = st;
-            var studentRepository = new StudentRepository(_student);
-            studentRepository.AddStudents(_student);
+            
+            StudentRepository.AddStudents(_student);
         }
         public void AddTeachersService(Teacher teacher)
         {
             _teacher = teacher;
-            var teacherRepository = new TeacherRepository(_teacher);
-            teacherRepository.AddTeachers(_teacher);
+            TeacherRepository.AddTeachers(_teacher);
         }
         public List<Student> GetStudentsService()
         {
-            var studentRepository = new StudentRepository(_student);
-            _students = studentRepository.GetAllStudents(_students);
+            _students = StudentRepository.GetAllStudents(_students);
             return _students;
         }
         public List<Teacher> GetTeachersService()
         {
-            var teacherRepo = new TeacherRepository(_teacher);
-            _teachers = teacherRepo.GetAllTeachers(_teachers);
+            _teachers = TeacherRepository.GetAllTeachers(_teachers);
             return _teachers;
         }
 

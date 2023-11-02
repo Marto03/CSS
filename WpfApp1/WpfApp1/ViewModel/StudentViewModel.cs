@@ -15,6 +15,7 @@ namespace WpfApp1.ViewModel
         private Student _st;
         
         List<Student> students = new List<Student>();
+        List<Teacher> teachers = new List<Teacher>();
         private string _Fname;
         private string _Lname;
         private int _Age;
@@ -22,6 +23,8 @@ namespace WpfApp1.ViewModel
         private string _Speciality;
         private int _Course;
         private bool _StudentExists;
+        private bool _TeacherExists;
+        private bool _PersonExists;
         private string _message;
         private bool _isConditionMet;
         public StudentViewModel()
@@ -124,6 +127,7 @@ namespace WpfApp1.ViewModel
                 }
             }
         }
+
         public bool StudentExists
         {
             get { return _StudentExists; }
@@ -133,6 +137,30 @@ namespace WpfApp1.ViewModel
                 {
                     _StudentExists = value;
                     OnPropertyChanged(nameof(StudentExists));
+                }
+            }
+        }
+        public bool TeacherExists
+        {
+            get { return _TeacherExists; }
+            set
+            {
+                if (_TeacherExists != value)
+                {
+                    _TeacherExists = value;
+                    OnPropertyChanged(nameof(TeacherExists));
+                }
+            }
+        }
+        public bool PersonExists
+        {
+            get { return _PersonExists; }
+            set
+            {
+                if (_PersonExists != value)
+                {
+                    _PersonExists = value;
+                    OnPropertyChanged(nameof(PersonExists));
                 }
             }
         }
@@ -183,12 +211,20 @@ namespace WpfApp1.ViewModel
             {
                 using var context = new PubContext();
                 students = context.Students.ToList();
-                StudentExists = students.Any(person => /*person.Fname == Fname && */person.Lname == Lname &&
-                    person.Age == Age || person.IdS == IdS);
 
-                if (StudentExists)
+                teachers = context.Teachers.ToList();
+
+                StudentExists = students.Any(student => student.Fname == Fname && student.Lname == Lname &&
+                student.Age == Age || student.IdS == IdS);
+
+                TeacherExists = teachers.Any(teacher => teacher.Fname == Fname && teacher.Lname == Lname &&
+                teacher.Age == Age || teacher.IdS == IdS);
+
+                PersonExists = StudentExists || TeacherExists;
+
+                if (PersonExists)
                 {
-                    Message = "Student exists";
+                    Message = "Person exists";
                 }
                 else
                 {
