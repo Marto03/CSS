@@ -3,6 +3,7 @@ using Prism.Commands;
 using System;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
+using System.Data;
 using System.Data.SqlClient;
 using System.IO;
 using System.Runtime.CompilerServices;
@@ -18,7 +19,7 @@ namespace SqlToXSDSchema
         private DelegateCommand saveCommand;
         private DelegateCommand convertCommand;
         private bool isExecuted;
-        public ObservableCollection<object[]> QueryResult { get; } = new ObservableCollection<object[]>();
+        public DataTable QueryResult { get; } = new DataTable();
         public RelayCommand<DataGridAutoGeneratingColumnEventArgs> AutoGeneratingColumnCommand { get; }
 
         public MainWindowViewModel()
@@ -66,33 +67,29 @@ namespace SqlToXSDSchema
             }
         }
 
-        private async Task? ConvertCommandAction()
+        private async Task ConvertCommandAction()
         {
             string connectionString = "Server=localhost;Database=PubDatabase;Integrated Security=True;";
 
             using (SqlConnection connection = new SqlConnection(connectionString))
             {
-                connection.Open();
+                await connection.OpenAsync();
 
                 using (SqlCommand command = new SqlCommand(SqlQuery, connection))
                 {
                     try
                     {
-                        using (SqlDataReader reader = command?.ExecuteReader())
+                        using (SqlDataReader reader = await command.ExecuteReaderAsync())
                         {
                             QueryResult.Clear();
+                            QueryResult.Load(reader);
                             IsExecuted = true;
-                            while (reader.Read())
-                            {
-                                object[] row = new object[reader.FieldCount];
-                                reader.GetValues(row);
-                                QueryResult.Add(row);
-                            }
                         }
-                    }catch (SqlException e) 
+                    }
+                    catch (SqlException e)
                     {
                         QueryResult.Clear();
-                        return; 
+                        IsExecuted = false;
                     }
                 }
             }
