@@ -1,0 +1,57 @@
+﻿<Window x:Class="SqlToXSDSchema.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:SqlToXSDSchema"
+        xmlns:b="clr-namespace:SqlToXSDSchema.Behaviors"
+        xmlns:c="clr-namespace:SqlToXSDSchema.Converters"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="450" Width="800">
+    <Window.DataContext>
+        <local:MainWindowViewModel/>
+    </Window.DataContext>
+    <Window.Resources>
+        <c:BoolToVisibilityConverter x:Key="boolToVisibilityConverter"/>
+    </Window.Resources>
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="40"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="50"/>
+        </Grid.ColumnDefinitions>
+        <TextBlock 
+            Text="Input SQL query" 
+            HorizontalAlignment="Center" 
+            VerticalAlignment="Center" 
+            FontSize="16"/>
+        <TextBox 
+            x:Name="TextBoxInput"
+            Text="{Binding SqlQuery, UpdateSourceTrigger=PropertyChanged}"
+            b:TextBoxEnterKeyBehavior.EnterCommand="{Binding Path=ConvertCommand}"
+            Grid.Row="1"/>
+        <Button 
+            Content="Convert" 
+            Grid.Row="1" 
+            Command="{Binding Path=ConvertCommand}"
+            Grid.Column="1"/>
+        <Button 
+            Command="{Binding Path=SaveCommand}" 
+            Content="Save"
+            Grid.Column="1" 
+            IsEnabled="{Binding IsExecuted}"
+            Grid.Row="2"/>
+        <DataGrid 
+            x:Name="DataGridResults"
+            ItemsSource="{Binding QueryResult}" 
+            Grid.Row="2" 
+            Visibility="{Binding Path=IsExecuted , Converter={StaticResource boolToVisibilityConverter}}"
+            Grid.Column="0" 
+            Grid.ColumnSpan="1" 
+            b:DataGridAutoGeneratingColumnBehavior.AutoGeneratingColumnCommand="{Binding AutoGeneratingColumnCommand}"/>
+    </Grid>
+</Window>
