@@ -11,7 +11,7 @@ using System.Xml.Serialization;
 namespace SqlToXSDSchema.XsdSchema;
 public class XsdSchemaGenerator
 {
-    public async Task<string> ConvertToXsdAsync(string connectionString, DataTable dataTable)
+    public async Task<string?> ConvertToXsdAsync(string connectionString, DataTable dataTable)
     {
         try
         {
@@ -52,73 +52,21 @@ public class XsdSchemaGenerator
 
     private string GetXmlSchemaType(Type dataType)
     {
-        if (dataType == typeof(string))
-        {
-            return "xs:string";
-        }
-        else if (dataType == typeof(bool))
-        {
-            return "xs:boolean";
-        }
-        else if (dataType == typeof(byte))
-        {
-            return "xs:byte";
-        }
-        else if (dataType == typeof(sbyte))
-        {
-            return "xs:byte";
-        }
-        else if (dataType == typeof(short))
-        {
-            return "xs:short";
-        }
-        else if (dataType == typeof(ushort))
-        {
-            return "xs:unsignedShort";
-        }
-        else if (dataType == typeof(int))
-        {
-            return "xs:int";
-        }
-        else if (dataType == typeof(uint))
-        {
-            return "xs:unsignedInt";
-        }
-        else if (dataType == typeof(long))
-        {
-            return "xs:long";
-        }
-        else if (dataType == typeof(ulong))
-        {
-            return "xs:unsignedLong";
-        }
-        else if (dataType == typeof(float))
-        {
-            return "xs:float";
-        }
-        else if (dataType == typeof(double))
-        {
-            return "xs:double";
-        }
-        else if (dataType == typeof(decimal))
-        {
-            return "xs:decimal";
-        }
-        else if (dataType == typeof(DateTime))
-        {
-            return "xs:dateTime";
-        }
-        else if (dataType == typeof(TimeSpan))
-        {
-            return "xs:duration";
-        }
-        else if (dataType == typeof(Guid))
-        {
-            return "xs:guid";
-        }
-        else
-        {
-            return "xs:string";
-        }
+        if (dataType == typeof(string)) return "xs:string";
+        else if (dataType == typeof(bool)) return "xs:boolean";
+        else if ((dataType == typeof(byte)) || dataType == typeof(sbyte)) return "xs:byte";
+        else if (dataType == typeof(short)) return "xs:short";
+        else if (dataType == typeof(ushort)) return "xs:unsignedShort";
+        else if (dataType == typeof(int)) return "xs:int";
+        else if (dataType == typeof(uint)) return "xs:unsignedInt";
+        else if (dataType == typeof(long)) return "xs:long";
+        else if (dataType == typeof(ulong)) return "xs:unsignedLong";
+        else if (dataType == typeof(float)) return "xs:float";
+        else if (dataType == typeof(double)) return "xs:double";
+        else if (dataType == typeof(decimal)) return "xs:decimal";
+        else if (dataType == typeof(DateTime)) return "xs:dateTime";
+        else if (dataType == typeof(TimeSpan)) return "xs:duration";
+        else if (dataType == typeof(Guid)) return "xs:guid";
+        else return "xs:string";
     }
 }
